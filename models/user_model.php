@@ -45,10 +45,10 @@
              switch($this->perfil)
              {
                 case "0":
-                     header("location:".URL."vende/vende");             
+                     header("location:".URL."vende/index");             
                     break;
                 case "1":
-                     header("location:".URL."admin/admin");             
+                     header("location:".URL."admin/index");             
                     break;                
             }
                         

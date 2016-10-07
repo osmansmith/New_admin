@@ -10,6 +10,9 @@
       function login()
       {                    
            $this->view->render('login');
-      }                                  
+      }  
+      function perdido(){         
+          $this->view->render('404');
+      }
   }
 ?>

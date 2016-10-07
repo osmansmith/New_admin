@@ -1,11 +1,12 @@
-  <section id="container" >     
+
+            <section id="container" >     
       <!--header start-->
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="<?php echo URL?>admin/admin" class="logo"><b>Administrador</b></a>
+            <a href="<?php echo URL?>admin/index" class="logo"><b>Administrador</b></a>
             <!--logo end-->
            
             <div class="top-menu">
@@ -28,9 +29,9 @@
               	  <h5 class="centered"><?php echo session::getValue('nombre');?></h5>
               	  	
                   <li class="mt">
-                      <a class="active" href="<?php echo URL?>admin/admin">
+                      <a class="active" href="<?php echo URL?>admin/index">
                           <i class="fa fa-dashboard"></i>
-                          <span>Dashboard</span>
+                          <span>Escritorio</span>
                       </a>
                   </li>
 

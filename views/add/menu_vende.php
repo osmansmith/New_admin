@@ -1,4 +1,4 @@
-  <section id="container" >
+      <section id="container" >
      
       <!--header start-->
       <header class="header black-bg">
@@ -6,7 +6,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="<?php echo URL?>vende/vende" class="logo"><b>Vendedor</b></a>
+            <a href="<?php echo URL?>vende/index" class="logo"><b>Vendedor</b></a>
             <!--logo end-->
            
             <div class="top-menu">
@@ -29,7 +29,7 @@
               	  <h5 class="centered"><?php echo session::getValue('nombre');?></h5>
               	  	
                   <li class="mt">
-                      <a class="active" href="<?php echo URL?>vende/vende">
+                      <a class="active" href="<?php echo URL?>vende/index">
                           <i class="fa fa-dashboard"></i>
                           <span>Escritorio</span>
                       </a>
@@ -42,7 +42,7 @@
                       </a>
                       <ul class="sub">
                           <li><a  href="<?php echo URL?>vende/ingreso">Ingresar</a></li>
-                          <li><a  href="#">Listar</a></li>                                                                          
+                          <li><a  href="<?php echo URL?>vende/listado">Listar</a></li>                                                                          
                       </ul>
                   </li>            
               </ul>

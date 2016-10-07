@@ -10,7 +10,7 @@
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
 					  			<span class="li_heart"></span>
-					  			<h3>933</h3>
+					  			<h3><?php echo $_SERVER['PHP_SELF'];?></h3>
                   			</div>
 					  			<p>933 People liked your page the last 24hs. Whoohoo!</p>
                   		</div>

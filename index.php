@@ -32,10 +32,10 @@ if(isset($url[2])){ if($url[2] != ''){$params = $url[2];}}
               }else{
               $controller->{$method}();                    
               }                            
-          }else{ echo 'Error1'; 
+          }else{ header("location:".URL."index/perdido"); 
                }
       }else{ $controller->index(); 
            }
-  }else{ echo 'Error2'; 
+  }else{ header("location:".URL."index/perdido"); 
        }
      

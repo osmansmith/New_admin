@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+<?php if(session::getValue('perfil')){}else{header("location:".URL."index/login");}?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
