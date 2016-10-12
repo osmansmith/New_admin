@@ -1,4 +1,4 @@
-<?php if(session::getValue('id')){}else{header("location:".URL."index/login");}?>
+<?php //if(session::getValue('id')){}else{header("location:".URL."index/login");}?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
