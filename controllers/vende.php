@@ -26,6 +26,7 @@
            $this->view->render('vendedor/ingreso');
            $this->view->render('add/footer');
            $this->view->render('add/js_comun');     
+           $this->view->render('vendedor/add/js_ingreso');     
            $this->view->render('add/cierre');     
       } 
       function listado()
@@ -38,5 +39,9 @@
            $this->view->render('add/js_comun');           
            $this->view->render('add/cierre');           
       } 
+      function procesa_ingreso()
+      {
+          $this->view->render('vendedor/add/procesa_ingreso');
+      }
   }
 ?>
