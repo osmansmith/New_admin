@@ -16,6 +16,7 @@
            $this->view->render('vendedor/index');
            $this->view->render('add/footer');
            $this->view->render('add/js_comun');           
+           $this->view->render('add/cierre');           
       }
       function ingreso()
       {
@@ -25,6 +26,7 @@
            $this->view->render('vendedor/ingreso');
            $this->view->render('add/footer');
            $this->view->render('add/js_comun');     
+           $this->view->render('add/cierre');     
       } 
       function listado()
       {
@@ -34,6 +36,7 @@
            $this->view->render('vendedor/lista');
            $this->view->render('add/footer');
            $this->view->render('add/js_comun');           
+           $this->view->render('add/cierre');           
       } 
   }
 ?>

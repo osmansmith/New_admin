@@ -1,4 +1,5 @@
- <section id="main-content">
+ <?php $conexion = new Conexion;?>
+   <section id="main-content">
     <section class="wrapper site-min-height">
      <div class="row">
         <div class="col-sm-12 main-chart">
@@ -93,19 +94,22 @@
               <div class="form-group">
                      <label class="col-sm-4  control-label">Proyecto</label>
                  <div class="col-sm-8">
-                     <select name="" id="" class="form-control">
-                         <option value="" selected>Playa Ancha</option>
-                         <option value="">Lomas de San Joaquin</option>
+                     <select name="proyecto" id="proyecto" class="form-control">
+                         <option value="" selected>Elija una opción</option>
+                         <?php $sql="SELECT * FROM cotizador_proyecto";
+                               $conexion->consulta($sql);
+                               while($fila = $conexion->extraer_registro()){
+                                ?>
+                                <option value=""><?php echo utf8_encode($fila['pro_nom'])?></option>
+                          <?php   
+                          }?>
                      </select>
                  </div>
              </div>
               <div class="form-group">
                      <label class="col-sm-4  control-label">Modelos</label>
                  <div class="col-sm-8">
-                     <select name="" id="" class="form-control">
-                         <option value="" selected>G4</option>
-                         <option value="">A2</option>
-                         <option value="">R3</option>
+                     <select name="modelo" id="modelo" class="form-control">                         
                      </select>
                  </div>
              </div>
