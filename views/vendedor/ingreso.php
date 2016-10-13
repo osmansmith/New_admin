@@ -1,5 +1,5 @@
  <section id="main-content">
-    <section class="wrapper">
+    <section class="wrapper site-min-height">
      <div class="row">
         <div class="col-sm-12 main-chart">
             <h3 class="text-center" style="margin-bottom:50px;" >Realizar Cotizacion</h3>            
@@ -88,17 +88,8 @@
              </div>
              
          </div>
-             <div class="col-sm-10 col-sm-offset-1"><hr></div>      
+        <div class="col-sm-10 col-sm-offset-1"><hr></div>      
           <div class="col-sm-4 col-sm-offset-1">
-              <div class="form-group">
-                     <label class="col-sm-4  control-label">Como supo de nosotros</label>
-                 <div class="col-sm-8">
-                     <select name="" id="" class="form-control">
-                         <option value="" selected>Expo Viviendas</option>
-                         <option value="">Secreto a voces</option>
-                     </select>
-                 </div>
-             </div>
               <div class="form-group">
                      <label class="col-sm-4  control-label">Proyecto</label>
                  <div class="col-sm-8">
@@ -109,7 +100,7 @@
                  </div>
              </div>
               <div class="form-group">
-                     <label class="col-sm-4  control-label">Departamento</label>
+                     <label class="col-sm-4  control-label">Modelos</label>
                  <div class="col-sm-8">
                      <select name="" id="" class="form-control">
                          <option value="" selected>G4</option>
@@ -121,7 +112,7 @@
               <div class="form-group">
                      <label class="col-sm-4  control-label">Valor</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="number" class="form-control">
                  </div>
              </div>
               <div class="form-group">

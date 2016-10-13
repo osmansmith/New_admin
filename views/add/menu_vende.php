@@ -1,4 +1,4 @@
-      <section id="container" >
+<section id="container" >
      
       <!--header start-->
       <header class="header black-bg">
@@ -29,19 +29,19 @@
               	  <h5 class="centered"><?php echo session::getValue('nombre');?></h5>
               	  	
                   <li class="mt">
-                      <a class="active" href="<?php echo URL?>vende/index">
+                      <a href="<?php echo URL?>vende/index">
                           <i class="fa fa-dashboard"></i>
                           <span>Escritorio</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a class="active" href="javascript:;" >
                           <i class="fa fa-desktop"></i>
                           <span>Cotizaciones</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="<?php echo URL?>vende/ingreso">Ingresar</a></li>
+                          <li class="active"><a  href="<?php echo URL?>vende/ingreso">Ingresar</a></li>
                           <li><a  href="<?php echo URL?>vende/listado">Listar</a></li>                                                                          
                       </ul>
                   </li>            
