@@ -40,7 +40,7 @@
 		
 		                </span>-->
 		            </label>
-		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> Acceder</button>
+		            <button class="btn btn-theme03 btn-block" type="submit"><i class="fa fa-lock"></i> Acceder</button>
 		           <!-- <hr>-->
 		            
 		      
