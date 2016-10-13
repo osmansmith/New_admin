@@ -99,8 +99,10 @@
                          <?php $sql="SELECT * FROM cotizador_proyecto";
                                $conexion->consulta($sql);
                                while($fila = $conexion->extraer_registro()){
+                                   $nom = utf8_encode($fila['pro_nom']);
+                                   $id  = $fila['idcotizador_proyecto'];
                                 ?>
-                                <option value=""><?php echo utf8_encode($fila['pro_nom'])?></option>
+                                <option value="<?php echo $id?>"> <?php echo $nom?></option>
                           <?php   
                           }?>
                      </select>
