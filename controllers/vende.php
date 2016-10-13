@@ -24,7 +24,7 @@
            $this->view->render('add/menu_vende');
            $this->view->render('vendedor/ingreso');
            $this->view->render('add/footer');
-           $this->view->render('add/js_comun');           
+           $this->view->render('add/js_comun');     
       } 
       function listado()
       {
