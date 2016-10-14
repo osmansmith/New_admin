@@ -117,15 +117,15 @@
                  </div>
              </div>
               <div class="form-group">
-                     <label class="col-sm-4  control-label">Valor</label>
+                     <label class="col-sm-4  control-label">Valor Vivienda</label>
                  <div class="col-sm-8">
-                     <input type="number" class="form-control">
+                     <input type="number" id="valor_vivienda" name="valor_vivienda" class="form-control">
                  </div>
              </div>
               <div class="form-group">
                      <label class="col-sm-4  control-label">Porcentaje de Credito</label>
                  <div class="col-sm-8">
-                     <select name="" id="" class="form-control">
+                     <select name="porcentaje" id="porcentaje" class="form-control">
                          <option id="90" value="90">90</option>
                          <option value="80">80</option>
                          <option value="70">70</option>
@@ -158,14 +158,14 @@
               <div class="form-group">
                      <label class="col-sm-4  control-label">Credito*</label>
                  <div class="col-sm-8">
-                     <input type="text" id="credito" class="form-control">
+                     <input type="text" id="credito" name="credito" class="form-control">
                      <a class="btn btn-primary" id="boton_credito">Calcular credito</a>
                  </div>
              </div>
               <div class="form-group">
                      <label class="col-sm-4  control-label">Pago Directo</label>
                  <div class="col-sm-8">
-                     <input type="text" id="directo" class="form-control" >
+                     <input type="text" id="directo" name="directo" class="form-control" >
                  </div>
              </div>
               <div class="form-group">
