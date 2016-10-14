@@ -111,7 +111,8 @@
               <div class="form-group">
                      <label class="col-sm-4  control-label">Modelos</label>
                  <div class="col-sm-8">
-                     <select name="modelo" id="modelo" class="form-control">                         
+                     <select name="modelo" id="modelo" class="form-control">
+                     <option value="" selected>Seleccione un Proyecto</option>                         
                      </select>
                  </div>
              </div>
@@ -125,8 +126,10 @@
                      <label class="col-sm-4  control-label">Porcentaje de Credito</label>
                  <div class="col-sm-8">
                      <select name="" id="" class="form-control">
-                         <option value="" selected>90</option>
-                         <option value="">80</option>
+                         <option id="90" value="90">90</option>
+                         <option value="80">80</option>
+                         <option value="70">70</option>
+                         <option value="60">60</option>
                      </select>
                  </div>
              </div>
@@ -137,34 +140,44 @@
                      <label class="col-sm-4  control-label">Tipo de Contrato</label>
                  <div class="col-sm-8">
                      <select name="" id="" class="form-control">
-                         <option value="" selected>Credito Hipotecario</option>
-                         <option value="">Credito de Consumo</option>
+                         <option value="" selected>Seleccione tipo de contrato</option> 
+                         <?php
+                          $sql="SELECT * FROM cotizador_tipo_contrato";
+                               $conexion->consulta($sql);
+                               while($fila = $conexion->extraer_registro()){
+                                   $nom_con = utf8_encode($fila['nombre_con']);
+                                   $id_con  = $fila['id_con'];
+                                ?>
+                               <option value="<?php echo $id_con?>"><?php echo $nom_con?></option> 
+                         <?php
+                            }
+                         ?>                       
                      </select>
                  </div>
              </div>
               <div class="form-group">
                      <label class="col-sm-4  control-label">Credito*</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control" value="2339.1">
-                     <button class="btn btn-default">Calcular credito</button>
+                     <input type="text" id="credito" class="form-control">
+                     <a class="btn btn-primary" id="boton_credito">Calcular credito</a>
                  </div>
              </div>
               <div class="form-group">
                      <label class="col-sm-4  control-label">Pago Directo</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control" value="259.9">
+                     <input type="text" id="directo" class="form-control" >
                  </div>
              </div>
               <div class="form-group">
                      <label class="col-sm-4  control-label">Subsidio</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control" value="0">
+                     <input type="text" name="subsidio" id="subsidio" class="form-control" value="0">
                  </div>
              </div>
               <div class="form-group">
                      <label class="col-sm-4  control-label">Ahorro</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control" value="0">
+                     <input type="text" name="contado" id="contado" class="form-control" value="0">
                  </div>
              </div>  
           </div>

@@ -9,18 +9,26 @@
 			success: function(data) {
 				 $('#modelo').html(data);
 			}
-		})				
-		/*$.ajax({
-			type: 'POST',
-			url: ("select_porcentaje_valor.php"),
-			data:"nada=1",
-			success: function(data) {
-				 $('#porcentaje').html(data);
-			}
-		})	*/	
+		})								
 		//$('#valor_porcentaje').html('');
 		$('#credito').val('');
 		$('#directo').val('');
+	});
+    $('#boton_credito').click(function(){
+		var_porcentaje = $('#porcentaje').val();
+		var_modelo = $('#modelo').val();
+        var token = "btn_credito";
+		$.ajax({
+			type: 'POST',
+			url: ("<?php echo URL?>vende/procesa_ingreso"),
+			data:"porcentaje="+var_porcentaje+"&modelo="+var_modelo+"&token="+token,
+			dataType:'json',
+			success: function(data) {
+				//$('#valor_porcentaje').html(data.formato);
+				$('#credito').val(data.valor);
+				$('#directo').val(data.resta);
+			}
+		})
 	});
 
 
