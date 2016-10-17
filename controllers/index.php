@@ -11,7 +11,8 @@
       {                    
            $this->view->render('login');
       }  
-      function perdido(){         
+      function perdido()
+      {         
           $this->view->render('404');
       }
   }

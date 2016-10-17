@@ -38,7 +38,7 @@
                  </div>
              </div>
              <div class="form-group">
-                     <label class="col-sm-4 control-label">Fono Celular</label>
+                 <label class="col-sm-4 control-label">Fono Celular</label>
                  <div class="col-sm-8">
                      <input type="number" id="fono_celular" name="fono_celular" class="form-control">
                  </div>
@@ -47,24 +47,23 @@
              
          </div>
          <div class="col-sm-4 col-sm-offset-1">
-               <div class="form-group">
-                     <label class="col-sm-4 control-label">Mail*</label>
+            <div class="form-group">
+                 <label class="col-sm-4 control-label">Mail*</label>
                  <div class="col-sm-8">
-                     <input type="mail" id="mail" class="mail" class="form-control">
+                     <input type="mail" id="mail" name="mail" class="form-control">
                  </div>
              </div>
              <div class="form-group">
-                     <label class="col-sm-4  control-label">Dirección</label>
+                 <label class="col-sm-4  control-label">Dirección</label>
                  <div class="col-sm-8">
-                     <input type="text" id="direccion" class="direccion" class="form-control">
+                     <input type="text" id="direccion" name="direccion" class="form-control">
                  </div>
              </div>
              <div class="form-group">
-                     <label class="col-sm-4  control-label">Ciudad*</label>
+                 <label class="col-sm-4  control-label">Ciudad*</label>
                  <div class="col-sm-8">
                      <select name="ciudad" id="ciudad" class="form-control">
-                         <option value="" selected> Seleccione Ciudad</option>
-                        <option value="">Seleccione Ciudad</option>
+                         <option value="" selected> Seleccione Ciudad</option>                        
                         <?php
                         $consulta = 
                             "
@@ -197,12 +196,10 @@
                      <input type="text" name="contado" id="contado" class="form-control" value="0">
                  </div>
              </div>  
-             <div class="form-group">
-                     <label class="col-sm-4  control-label">Ahorro</label>
-                 <div class="col-sm-8">
-                     <input type="text" name="contado" id="contado" class="form-control" value="0">
-                 </div>
-             </div>  
+             
+          </div>
+          <div class="col-sm-6 col-sm-offset-3">
+              <button type="button" class="btn btn-primary" id="btn_enviar" name="btn_enviar">enviar</button>
           </div>
           </form>
       </div>

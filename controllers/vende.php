@@ -46,10 +46,17 @@
       }
       function insert_vende()
       {
+<<<<<<< Updated upstream
           // $datos = {
               
           // };
           //  $this->model->insert_vende($datos);
+=======
+         /* $datos = {
+              
+          };
+           $this->model->insert_vende($datos);*/
+>>>>>>> Stashed changes
       }
   }
 ?>
