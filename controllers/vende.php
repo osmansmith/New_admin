@@ -47,7 +47,31 @@
       function insert_vende()
       {
 
-         
+         $datos = [   
+              'rut'           => $_POST['rut'],
+              'nombres'       => $_POST['nombres'],
+              'paterno'       => $_POST['paterno'],
+              'materno'       => $_POST['materno'],
+              'fono_trabajo'  => $_POST['fono_trabajo'],
+              'fono_celular'  => $_POST['fono_celular'],
+              'fono_casa'     => $_POST['fono_casa'],
+              'fono_contacto' => $_POST['fono_contacto'],
+              'mail'          => $_POST['mail'],
+              'direccion'     => $_POST['direccion'],
+              'ciudad'        => $_POST['ciudad'],
+              'comentario'    => $_POST['comentario'],
+              'proyecto'      => $_POST['proyecto'],
+              'modelo'        => $_POST['modelo'],
+              'valor_vivienda'=> $_POST['valor_vivienda'],
+              'porcentaje'    => $_POST['porcentaje'],
+              'contrato'      => $_POST['contrato'],
+              'credito'       => $_POST['credito'],
+              'directo'       => $_POST['directo'],
+              'subsidio'      => $_POST['subsidio'],
+              'contado'       => $_POST['contado']
+              
+          ];                                             
+              $this->model->insert_vende($datos);     
       }
   }
 ?>

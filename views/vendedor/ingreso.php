@@ -5,7 +5,7 @@
         <div class="col-sm-12 main-chart">
             <h3 class="text-center" style="margin-bottom:50px;" >Realizar Cotizacion</h3>            
         </div>
-        <form class="form-horizontal" id="commentForm" action="<?php echo URL?>vende/insert_vende">
+        <form class="form-horizontal" id="commentForm" method="post" action="<?php echo URL?>vende/insert_vende">
          <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">
                      <label class="col-sm-4 control-label">Rut*</label>
@@ -88,19 +88,19 @@
              <div class="form-group">
                      <label class="col-sm-4  control-label">Fono Casa</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="text" id="fono_casa" name="fono_casa" class="form-control">
                  </div>
              </div>
              <div class="form-group">
                      <label class="col-sm-4 control-label">Fono Contacto*</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="text" id="fono_contacto" name="fono_contacto"class="form-control">
                  </div>
              </div>
              <div class="form-group">
                      <label class="col-sm-4 control-label">Comentarios</label>
                  <div class="col-sm-8">
-                     <textarea class="form-control" rows="3"></textarea>
+                     <textarea class="form-control" id="comentario" name="comentario" rows="3"></textarea>
                  </div>
              </div>
              
@@ -155,7 +155,7 @@
              <div class="form-group">
                      <label class="col-sm-4  control-label">Tipo de Contrato</label>
                  <div class="col-sm-8">
-                     <select name="" id="" class="form-control">
+                     <select name="contrato" id="contrato" class="form-control">
                          <option value="" selected>Seleccione tipo de contrato</option> 
                          <?php
                           $sql="SELECT * FROM cotizador_tipo_contrato";
@@ -198,8 +198,8 @@
              </div>  
              
           </div>
-          <div class="col-sm-6 col-sm-offset-3">
-              <button type="button" class="btn btn-primary" id="btn_enviar" name="btn_enviar">enviar</button>
+          <div class="col-sm-2 col-sm-offset-3">
+              <button type="submit" class="btn btn-primary form-control" id="btn_enviar" name="btn_enviar">enviar</button>
           </div>
           </form>
       </div>
