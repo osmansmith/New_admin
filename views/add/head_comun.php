@@ -9,6 +9,7 @@
     <!-- Bootstrap core CSS -->
     <link href="<?php echo URL;?>public/assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
+    <link rel="stylesheet" type="text/css" href="<?php echo URL;?>public/assets/tabla/datatables-bootstrap/dataTables.bootstrap.css">
     <link href="<?php echo URL;?>public/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo URL?>public/assets/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL?>public/assets/js/gritter/css/jquery.gritter.css" />

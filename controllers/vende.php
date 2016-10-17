@@ -36,7 +36,8 @@
            $this->view->render('add/menu_vende');
            $this->view->render('vendedor/lista');
            $this->view->render('add/footer');
-           $this->view->render('add/js_comun');           
+           $this->view->render('add/js_comun');
+           $this->view->render('add/js_lista');           
            $this->view->render('add/cierre');           
       } 
       function procesa_ingreso()
@@ -45,10 +46,10 @@
       }
       function insert_vende()
       {
-          $datos = {
+          // $datos = {
               
-          };
-           $this->model->insert_vende($datos);
+          // };
+          //  $this->model->insert_vende($datos);
       }
   }
 ?>
