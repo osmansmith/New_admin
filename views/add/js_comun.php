@@ -17,4 +17,11 @@
     <script type="text/javascript" src="<?php //echo URL?>public/assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="<?php //echo URL?>public/assets/js/gritter-conf.js"></script> -->
   
+  <script type="text/javascript">
+      $(function () {
+  $('[data-toggle="tooltip"]').tooltip({
+  container: 'body'
+  })
+})
+  </script>
 

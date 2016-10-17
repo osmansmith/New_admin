@@ -1,7 +1,7 @@
-<section id="main-content">
-    <section class="wrapper">
+<section id="main-content" class="listado">
+    <section class="wrapper site-min-height">
                  <div class="col-sm-12">
-                  <h3><i class="fa fa-file-text" aria-hidden="true"></i>Seguimiento de Clientes</h3>
+                  <h3><i class="fa fa-users" aria-hidden="true"></i> Seguimiento de Clientes</h3>
                   <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -45,7 +45,7 @@
                             ORDER BY
                                 cotizador_cotizacion.fecha_cot ASC
                             ";
-
+                        // echo $consulta;
                         $conexion->consulta($consulta);
                         while ($fila = $conexion->extraer_registro()) {
                             $fecha = date("d/m/Y",strtotime($fila['fecha_cot']));
@@ -103,7 +103,7 @@
                                     ";
                                 $conexion->consulta2($consulta_con);
                                 while ($fila_con = $conexion->extraer_registro2()) {
-                                    $nombre_con = $fila_ven['nombre_con'];
+                                    $nombre_con = $fila_con['nombre_con'];
                                 }
                             ?>
                             <tr>
@@ -115,7 +115,9 @@
                                 <td><?php echo $rut_cot_cli;?></td>
                                 <td><?php echo $nombre_mod;?></td>
                                 <td><?php echo $nombre_con;?></td>
-                                <td class="acciones"><button value="<?php echo $id_fic_cli;?>" type="button" class="btn btn-sm btn-icon btn-default ver" data-toggle="tooltip" data-original-title="Ver Ficha"><i class="fa fa-search"></i></button>
+                                <td class="acciones">
+                                    <button value="<?php echo $id_cot_cli;?>" type="button" class="btn btn-sm btn-icon btn-info ver" data-toggle="tooltip" data-original-title="Ver Cotización"><i class="fa fa-search"></i></button>
+                                    <button value="<?php echo $id_cot_cli;?>" type="button" class="btn btn-sm btn-icon btn-warning ver" data-toggle="tooltip" data-original-title="Ingresar Nueva Cotización al Cliente"><i class="fa fa-pencil-square-o"></i></button>
                                 </td>
                             </tr>
                             <?php  
