@@ -5,42 +5,42 @@
         <div class="col-sm-12 main-chart">
             <h3 class="text-center" style="margin-bottom:50px;" >Realizar Cotizacion</h3>            
         </div>
-        <form class="form-horizontal" action="">
+        <form class="form-horizontal" id="commentForm" action="<?php echo URL?>vende/insert_vende">
          <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">
                      <label class="col-sm-4 control-label">Rut*</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="text" id="rut" name="rut" class="form-control">
                  </div>
              </div>
              <div class="form-group">
                      <label class="col-sm-4  control-label">Nombres*</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="text" id="nombres" name="nombres" class="form-control">
                  </div>
              </div>
              <div class="form-group">
                      <label class="col-sm-4  control-label">Ape. Paterno*</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="text" id="paterno" name="paterno" class="form-control">
                  </div>
              </div>
              <div class="form-group">
                      <label class="col-sm-4  control-label">Ape. Materno</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="text" id="materno" name="materno" class="form-control">
                  </div>
              </div>
              <div class="form-group">
                      <label class="col-sm-4 control-label">Fono Trabajo</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="number" id="fono_trabajo" name="fono_trabajo" class="form-control">
                  </div>
              </div>
              <div class="form-group">
                      <label class="col-sm-4 control-label">Fono Celular</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="number" id="fono_celular" name="fono_celular" class="form-control">
                  </div>
              </div>
              
@@ -50,22 +50,39 @@
                <div class="form-group">
                      <label class="col-sm-4 control-label">Mail*</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="mail" id="mail" class="mail" class="form-control">
                  </div>
              </div>
              <div class="form-group">
                      <label class="col-sm-4  control-label">Dirección</label>
                  <div class="col-sm-8">
-                     <input type="text" class="form-control">
+                     <input type="text" id="direccion" class="direccion" class="form-control">
                  </div>
              </div>
              <div class="form-group">
                      <label class="col-sm-4  control-label">Ciudad*</label>
                  <div class="col-sm-8">
-                     <select name="" id="" class="form-control">
+                     <select name="ciudad" id="ciudad" class="form-control">
                          <option value="" selected> Seleccione Ciudad</option>
-                         <option value="">La Serena</option>
-                         <option value="">Coquimbo</option>
+                        <option value="">Seleccione Ciudad</option>
+                        <?php
+                        $consulta = 
+                            "
+                            SELECT *
+                            FROM 
+                                ciudad_ciudad 
+                            ORDER BY 
+                                nombre_ciu
+                            ASC 
+                            ";
+                        $conexion->consulta($consulta);
+                        while ($fila = $conexion->extraer_registro()) {
+                            $nombre_ciu = $fila["nombre_ciu"];
+                        ?>
+                            <option value="<?php echo utf8_encode($nombre_ciu);?>"><?php echo utf8_encode($nombre_ciu);?></option>
+                        <?php
+                        }
+                        ?>
                      </select>
                  </div>
              </div>
