@@ -43,5 +43,12 @@
       {
           $this->view->render('vendedor/add/procesa_ingreso');
       }
+      function insert_vende()
+      {
+          $datos = {
+              
+          };
+           $this->model->insert_vende($datos);
+      }
   }
 ?>

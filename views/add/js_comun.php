@@ -7,6 +7,7 @@
     <script class="include" type="text/javascript" src="<?php echo URL?>public/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="<?php echo URL?>public/assets/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo URL?>public/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="<?php echo URL?>public/assets/js/jquery.validate" type="text/javascript"></script>
 
 
     <!--common script for all pages-->
