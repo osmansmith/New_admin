@@ -69,7 +69,8 @@
         VALUES(
         ".$id_ven.",".$contrato.",'','',".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
             
-        header("location".URL."vende/ingreso?envio=exitoso");
+        header("location:".URL."vende/ingreso");
+            
         }
         
         
