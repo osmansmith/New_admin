@@ -16,51 +16,57 @@
 	});
     $('#boton_credito').click(function(){
         
-		var_porcentaje = $('#porcentaje').val();
+		var_porcentaje =  $('#porcentaje').val();
 		var_valor_vivienda = $('#valor_vivienda').val();
-        //alert(var_valor_vivienda);
         var token = "btn_credito";
+        var datos = {
+            porcentaje : var_porcentaje,
+            valor_vivienda : var_valor_vivienda,
+            token : token
+        }; 
+        //alert(var_valor_vivienda);
+       
 		$.ajax({
 			type: 'POST',
 			url: ("<?php echo URL?>vende/procesa_ingreso"),
-			data:"porcentaje="+var_porcentaje+"&valor_vivienda="+var_valor_vivienda+"&token="+token,
+			data: datos,
 			dataType:'json',
-			success: function(data) {
-                alert("aca");
-				//$('#valor_porcentaje').html(data.formato);
+			success: function(data){  
+               /*console.log(data.valor);
+               console.log(data.resta);*/
 				$('#credito').val(data.valor);
 				$('#directo').val(data.resta);
 			},
             error: function(jqXHR, textStatus, errorThrown){
                  if (jqXHR.status === 0) {
 
-    alert('Not connect: Verify Network.');
+                    alert('Not connect: Verify Network.');
 
-  } else if (jqXHR.status == 404) {
+                  } else if (jqXHR.status == 404) {
 
-    alert('Requested page not found [404]');
+                    alert('Requested page not found [404]');
 
-  } else if (jqXHR.status == 500) {
+                  } else if (jqXHR.status == 500) {
 
-    alert('Internal Server Error [500].');
+                    alert('Internal Server Error [500].');
 
-  } else if (textStatus === 'parsererror') {
+                  } else if (textStatus === 'parsererror') {
 
-    alert('Requested JSON parse failed.');
+                    alert('Requested JSON parse failed.');
 
-  } else if (textStatus === 'timeout') {
+                  } else if (textStatus === 'timeout') {
 
-    alert('Time out error.');
+                    alert('Time out error.');
 
-  } else if (textStatus === 'abort') {
+                  } else if (textStatus === 'abort') {
 
-    alert('Ajax request aborted.');
+                    alert('Ajax request aborted.');
 
-  } else {
+                  } else {
 
-    alert('Uncaught Error: ' + jqXHR.responseText);
+                    alert('Uncaught Error: ' + jqXHR.responseText);
 
-  }
+                  }
             }
 		})
 	});

@@ -2,7 +2,7 @@
 
 $conexion = new conexion();
 $token = $_POST["token"];
-echo $token;
+
 
 switch ($token) 
 {
@@ -20,15 +20,13 @@ switch ($token)
         }            
         break;
     case "btn_credito":
-            header("Content-Type: application/json;charset=utf-8");
+            
             $porcentaje = $_POST["porcentaje"];
             $valor_vivienda = $_POST["valor_vivienda"];
-            
-
-            //$valor = $_SESSION["valor_vivienda_porcentaje"];
-            $imprimir = ($porcentaje * valor_vivienda) / 100;
-            $resta = valor_vivienda - $imprimir;
-            //echo $imprimir." UF";
+                      
+            $imprimir = ($porcentaje * $valor_vivienda) / 100;            
+            $resta = $valor_vivienda - $imprimir;            
+        
             $jsondata['valor'] = $imprimir;
             $imprimir = number_format($imprimir, 2, ',', '.');
             $jsondata['formato'] = $imprimir." UF";

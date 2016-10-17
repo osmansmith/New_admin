@@ -126,7 +126,7 @@
                      <label class="col-sm-4  control-label">Porcentaje de Credito</label>
                  <div class="col-sm-8">
                      <select name="porcentaje" id="porcentaje" class="form-control">
-                         <option id="90" value="90">90</option>
+                         <option value="90">90</option>
                          <option value="80">80</option>
                          <option value="70">70</option>
                          <option value="60">60</option>
@@ -175,6 +175,12 @@
                  </div>
              </div>
               <div class="form-group">
+                     <label class="col-sm-4  control-label">Ahorro</label>
+                 <div class="col-sm-8">
+                     <input type="text" name="contado" id="contado" class="form-control" value="0">
+                 </div>
+             </div>  
+             <div class="form-group">
                      <label class="col-sm-4  control-label">Ahorro</label>
                  <div class="col-sm-8">
                      <input type="text" name="contado" id="contado" class="form-control" value="0">
