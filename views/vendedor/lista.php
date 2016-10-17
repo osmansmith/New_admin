@@ -38,36 +38,23 @@
                             SELECT
                                 *
                             FROM 
-                                cliente_ficha_cliente
+                                cotizador_cliente,
+                                cotizador_cotizacion
                             WHERE 
-                                id_cli = '".$id_cli."'
+                                cotizador_cliente.id_cot_cli = cotizador_cotizacion.id_cliente_cot AND
+                                cotizador_cotizacion.id_ven = ".session::getValue('id')."
                             ORDER BY
-                                numero_ficha_fic_cli ASC
+                                cotizador_cotizacion.fecha_cot ASC
                             ";
                         $conexion->consulta($consulta);
                         while ($fila = $conexion->extraer_registro()) {
-                            $fecha = date("d/m/Y",strtotime($fila['fecha_fic_cli']));
-                            $fechaorden = date("Ymd",strtotime($fila['fecha_fic_cli']));
+                            $fecha = date("d/m/Y",strtotime($fila['fecha_cot']));
+                            $fechaorden = date("Ymd",strtotime($fila['fecha_cot']));
                             $hoy = date("Ymd");
-                            $id_fic_cli = $fila['id_fic_cli'];
+                            $id_cot_cli = $fila['id_cot_cli'];
                             $id_usu = $fila['id_usu'];
 
                             $servicio = "";
-                            $consulta = 
-                                "
-                                SELECT
-                                    ser.nombre_ser
-                                FROM 
-                                    servicio_servicio as ser,
-                                    cliente_servicio_cliente as cli
-                                WHERE 
-                                    cli.id_fic_cli = '".$id_fic_cli."' AND
-                                    ser.id_ser = cli.id_ser
-                                ";
-                            $conexion->consulta2($consulta);
-                            while ($fila_ser = $conexion->extraer_registro2()) {
-                                $servicio.= $fila_ser['nombre_ser']." ";
-                              }
                             ?>
                             <tr>
                                 <td><?php echo $fila['numero_ficha_fic_cli'];?></td>
