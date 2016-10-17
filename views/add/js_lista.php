@@ -19,4 +19,11 @@
                   ]
     });
 });
+
+
+    $('.detalle').click(function(){
+        valor = $(this).val();
+        url = "<?php echo URL?>views/pdf.php?id="+valor;
+        window.open(url, '_blank');
+    });
 </script>
