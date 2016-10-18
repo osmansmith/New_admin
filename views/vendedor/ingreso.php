@@ -6,33 +6,33 @@
             <h3 class="text-center" style="margin-bottom:50px;" >Realizar Cotización</h3>            
         </div>
         <form class="form-horizontal" id="commentForm" method="post" action="<?php echo URL?>vende/insert_vende">
-         <div class="col-sm-4 col-sm-offset-1">
+        <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">
-                     <label class="col-sm-4 control-label">Rut*</label>
+                 <label class="col-sm-4 control-label">Rut*</label>
                  <div class="col-sm-8">
                      <input type="text" id="rut" name="rut" class="form-control">
                  </div>
              </div>
              <div class="form-group">
-                     <label class="col-sm-4  control-label">Nombres*</label>
+                 <label class="col-sm-4  control-label">Nombres*</label>
                  <div class="col-sm-8">
                      <input type="text" id="nombres" name="nombres" class="form-control">
                  </div>
              </div>
              <div class="form-group">
-                     <label class="col-sm-4  control-label">Ape. Paterno*</label>
+                 <label class="col-sm-4  control-label">Ape. Paterno*</label>
                  <div class="col-sm-8">
                      <input type="text" id="paterno" name="paterno" class="form-control">
                  </div>
              </div>
              <div class="form-group">
-                     <label class="col-sm-4  control-label">Ape. Materno</label>
+                 <label class="col-sm-4  control-label">Ape. Materno</label>
                  <div class="col-sm-8">
                      <input type="text" id="materno" name="materno" class="form-control">
                  </div>
              </div>
              <div class="form-group">
-                     <label class="col-sm-4 control-label">Fono Trabajo</label>
+                 <label class="col-sm-4 control-label">Fono Trabajo</label>
                  <div class="col-sm-8">
                      <input type="number" id="fono_trabajo" name="fono_trabajo" class="form-control">
                  </div>
@@ -45,8 +45,8 @@
              </div>
              
              
-         </div>
-         <div class="col-sm-4 col-sm-offset-1">
+            </div>
+        <div class="col-sm-4 col-sm-offset-1">
             <div class="form-group">
                  <label class="col-sm-4 control-label">Mail*</label>
                  <div class="col-sm-8">
@@ -106,7 +106,7 @@
              
          </div>
         <div class="col-sm-10 col-sm-offset-1"><hr></div>      
-          <div class="col-sm-4 col-sm-offset-1">
+        <div class="col-sm-4 col-sm-offset-1">
               <div class="form-group">
                      <label class="col-sm-4  control-label">Proyecto</label>
                  <div class="col-sm-8">
@@ -151,7 +151,7 @@
              </div>
              
           </div>
-          <div class="col-sm-4 col-sm-offset-1">
+        <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">
                      <label class="col-sm-4  control-label">Tipo de Contrato</label>
                  <div class="col-sm-8">
@@ -198,10 +198,10 @@
              </div>  
              
           </div>
-          <div class="col-sm-2 col-sm-offset-3">
+        <div class="col-sm-2 col-sm-offset-3">
               <button type="submit" class="btn btn-primary form-control" id="btn_enviar" name="btn_enviar">enviar</button>
           </div>
-          </form>
+        </form>
       </div>
      </section>
  </section>

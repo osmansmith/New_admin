@@ -52,7 +52,8 @@
         
             
         $ultimo = $this->base->ultimo_id();
-        $id_ven = session::getValue('id');   
+        $id_ven = session::getValue('id');
+        $fecha = date('Y-m-d H:m:s');
             
         $this->base->consulta("INSERT INTO cotizador_cotizacion(
         id_ven,
@@ -67,7 +68,7 @@
         id_mod,
         valor_viv_cot)
         VALUES(
-        ".$id_ven.",".$contrato.",'','',".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
+        ".$id_ven.",".$contrato.",".$fecha.",'',".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
             
         header("location:".URL."vende/ingreso");
             
