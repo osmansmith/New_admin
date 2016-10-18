@@ -5,17 +5,16 @@ if(session::exist()){
   header("location:".URL."index/login");
 }
 
- if(session::getValue('perfil') == 0 and $_GET['url'] == 'vende/index'){
-        
-    }else{
-        header("location:".URL."index/login");
-    } 
-if(session::getValue('perfil') == 1 and $_GET['url'] == 'admin/index'){
-        
-    }else{
-        header("location:".URL."index/login"); 
+if(session::getValue('perfil') == 0 ){
+       if($_GET['url'] == "admin/index"){
+           header("location:".URL."user/salir?error=Que pretende?");
+       }
     }
-
+if(session::getValue('perfil') == 1 ){
+       if($_GET['url'] == "vende/index"){
+           header("location:".URL."user/salir?error=Que pretende?");
+       }
+    } 
 
 ?>
 <!DOCTYPE html>

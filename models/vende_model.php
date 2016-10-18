@@ -68,7 +68,7 @@
         id_mod,
         valor_viv_cot)
         VALUES(
-        ".$id_ven.",".$contrato.",".$fecha.",'',".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
+        ".$id_ven.",".$contrato.",'".$fecha."','',".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
             
         header("location:".URL."vende/ingreso");
             
