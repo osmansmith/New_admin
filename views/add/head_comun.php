@@ -8,12 +8,12 @@ if(session::exist()){
  if(session::getValue('perfil') == 0 and $_GET['url'] == 'vende/index'){
         
     }else{
-        header("location:".URL."admin/index");
+        header("location:".URL."index/login");
     } 
 if(session::getValue('perfil') == 1 and $_GET['url'] == 'admin/index'){
         
     }else{
-        header("location:".URL."vende/index"); 
+        header("location:".URL."index/login"); 
     }
 
 
