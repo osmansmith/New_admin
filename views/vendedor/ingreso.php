@@ -10,19 +10,19 @@
              <div class="form-group">
                  <label class="col-sm-4 control-label">Rut*</label>
                  <div class="col-sm-8">
-                     <input type="text" id="rut" name="rut" class="form-control">
+                     <input type="text" id="rut" name="rut" class="form-control" required oninput="checkRut(this)">
                  </div>
              </div>
              <div class="form-group">
                  <label class="col-sm-4  control-label">Nombres*</label>
                  <div class="col-sm-8">
-                     <input type="text" id="nombres" name="nombres" class="form-control">
+                     <input type="text" id="nombres" name="nombres" class="form-control" required>
                  </div>
              </div>
              <div class="form-group">
                  <label class="col-sm-4  control-label">Ape. Paterno*</label>
                  <div class="col-sm-8">
-                     <input type="text" id="paterno" name="paterno" class="form-control">
+                     <input type="text" id="paterno" name="paterno" class="form-control" required>
                  </div>
              </div>
              <div class="form-group">
@@ -50,7 +50,7 @@
             <div class="form-group">
                  <label class="col-sm-4 control-label">Mail*</label>
                  <div class="col-sm-8">
-                     <input type="mail" id="mail" name="mail" class="form-control">
+                     <input type="email" id="mail" name="mail" class="form-control" required>
                  </div>
              </div>
              <div class="form-group">
@@ -62,7 +62,7 @@
              <div class="form-group">
                  <label class="col-sm-4  control-label">Ciudad*</label>
                  <div class="col-sm-8">
-                     <select name="ciudad" id="ciudad" class="form-control">
+                     <select name="ciudad" id="ciudad" class="form-control" required>
                          <option value="" selected> Seleccione Ciudad</option>                        
                         <?php
                         $consulta = 
@@ -88,13 +88,13 @@
              <div class="form-group">
                      <label class="col-sm-4  control-label">Fono Casa</label>
                  <div class="col-sm-8">
-                     <input type="text" id="fono_casa" name="fono_casa" class="form-control">
+                     <input type="number" id="fono_casa" name="fono_casa" class="form-control">
                  </div>
              </div>
              <div class="form-group">
                      <label class="col-sm-4 control-label">Fono Contacto*</label>
                  <div class="col-sm-8">
-                     <input type="text" id="fono_contacto" name="fono_contacto"class="form-control">
+                     <input type="number" id="fono_contacto" name="fono_contacto" class="form-control" required>
                  </div>
              </div>
              <div class="form-group">
@@ -133,9 +133,9 @@
                  </div>
              </div>
               <div class="form-group">
-                     <label class="col-sm-4  control-label">Valor Vivienda</label>
+                     <label class="col-sm-4  control-label">Valor Vivienda*</label>
                  <div class="col-sm-8">
-                     <input type="number" id="valor_vivienda" name="valor_vivienda" class="form-control">
+                     <input type="number" id="valor_vivienda" name="valor_vivienda" class="form-control" required>
                  </div>
              </div>
               <div class="form-group">
@@ -201,6 +201,7 @@
         <div class="col-sm-2 col-sm-offset-3">
               <button type="submit" class="btn btn-primary form-control" id="btn_enviar" name="btn_enviar">enviar</button>
           </div>
+          
         </form>
       </div>
      </section>

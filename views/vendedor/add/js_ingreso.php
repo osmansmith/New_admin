@@ -70,81 +70,55 @@
             }
 		})
 	});
-    $.validator.setDefaults({
-	//submitHandler: function() { alert("Enviado!"); }
-});
+    
 
-$().ready(function() {
-	// validate the comment form when it is submitted
-	//$("#commentForm").validate();
-$('.numero').numeric();
-		$.validator.addMethod("rut", function(value, element) {
-  			return this.optional(element) || $.Rut.validar(value);
-			}, "<br>Rut inválido.");
-	// validate signup form on keyup and submit
-	$("#commentForm").validate({
-		rules: {
-			rut: "required",
-			rut: { 
-					required: true
-				},
-			nombres: {
-				required: true,
-				minlength: 3
-			},
-			paterno: {
-				required: true,
-				minlength: 3
-			},
-            materno: {
-				required: true,
-				minlength: 3
-			},
-			ciudad: {
-				required: true
-			},
-			fono_contacto: {
-				required: true,
-				minlength: 6
-			},
-			credito: {
-				required: true
-			},
-			mail: {
-				required: true
-			}
-		},
-		messages: {
-			rut: {
-				required: "<br>Ingrese un Rut"
-				},
-			nombres: {
-				required: "<br>Por favor ingrese Nombres",
-				minlength: "<br>Al menos 3 caracteres"
-			},
-			paterno: {
-				required: "<br>Por favor ingrese Apellido Paterno",
-				minlength: "<br>Al menos 3 caracteres"
-			},
-			ciudad: {
-				required: "<br>Por favor seleccione Ciudad"
-			},
-			credito: {
-				required: "<br>Por favor ingrese crédito"
-			},
-			fono_contacto: {
-				required: "<br>Por favor ingrese Fono",
-				minlength: "<br>Al menos 6 caracteres"
-			},
-			mail: {
-				required: "<br>Por favor ingrese mail"
-			}
-		}
-	});
-$('#rut').Rut({
-  			
-		});
+function checkRut(rut) {
+    // Despejar Puntos
+    var valor = rut.value.replace('.','');
+    // Despejar Guión
+    valor = valor.replace('-','');
+    
+    // Aislar Cuerpo y Dígito Verificador
+    cuerpo = valor.slice(0,-1);
+    dv = valor.slice(-1).toUpperCase();
+    
+    // Formatear RUN
+    rut.value = cuerpo + '-'+ dv
+    
+    // Si no cumple con el mínimo ej. (n.nnn.nnn)
+    if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
+    
+    // Calcular Dígito Verificador
+    suma = 0;
+    multiplo = 2;
+    
+    // Para cada dígito del Cuerpo
+    for(i=1;i<=cuerpo.length;i++) {
+    
+        // Obtener su Producto con el Múltiplo Correspondiente
+        index = multiplo * valor.charAt(cuerpo.length - i);
+        
+        // Sumar al Contador General
+        suma = suma + index;
+        
+        // Consolidar Múltiplo dentro del rango [2,7]
+        if(multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
+  
+    }
+    
+    // Calcular Dígito Verificador en base al Módulo 11
+    dvEsperado = 11 - (suma % 11);
+    
+    // Casos Especiales (0 y K)
+    dv = (dv == 'K')?10:dv;
+    dv = (dv == 0)?11:dv;
+    
+    // Validar que el Cuerpo coincide con su Dígito Verificador
+    if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
+    
+    // Si todo sale bien, eliminar errores (decretar que es válido)
+    rut.setCustomValidity('');
+}
 
-});
 
 </script>
