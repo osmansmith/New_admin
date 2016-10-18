@@ -1,4 +1,23 @@
-<?php //if(session::getValue('id')){}else{header("location:".URL."index/login");}?>
+<?php 
+if(session::exist()){                      
+    
+}else{
+  header("location:".URL."index/login");
+}
+
+ if(session::getValue('perfil') == 0 and $_GET['url'] == 'vende/index'){
+        
+    }else{
+        header("location:".URL."admin/index");
+    } 
+if(session::getValue('perfil') == 1 and $_GET['url'] == 'admin/index'){
+        
+    }else{
+        header("location:".URL."vende/index"); 
+    }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
