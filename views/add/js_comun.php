@@ -24,6 +24,27 @@
   $('[data-toggle="tooltip"]').tooltip({
   container: 'body'
   })
-})
+});
+ var url = "<?php echo URL?>";
+ var url_web=window.location.href;
+ var arr=url_web.split('.')[0];     	
+        
+	   if(arr == url+"vende/index")
+		{
+			$('.sidebar-menu li a').removeClass('active');
+			$('#escritorio').addClass('active');		
+		}else if(arr == url+"vende/ingreso")
+		{
+			$('.sidebar-menu li').removeClass('active');
+			$('.sidebar-menu li a').removeClass('active');
+			$('#cot_ingresar').addClass('active');
+			$('#cot').addClass('active');
+		}else if(arr == url+"vende/listado")
+		{
+			$('.sidebar-menu li').removeClass('active');
+			$('.sidebar-menu li a').removeClass('active');
+			$('#cot_listar').addClass('active');
+			$('#cot').addClass('active');
+		}
   </script>
 

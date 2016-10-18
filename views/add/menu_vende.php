@@ -29,20 +29,20 @@
               	  <h5 class="centered"><?php echo session::getValue('nombre');?><br><small>Vendedor</small></h5>
               	  	
                   <li class="mt">
-                      <a href="<?php echo URL?>vende/index">
+                      <a href="<?php echo URL?>vende/index" id="escritorio">
                           <i class="fa fa-dashboard"></i>
                           <span>Escritorio</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
+                      <a href="javascript:;" id="cot" >
                           <i class="fa fa-desktop"></i>
                           <span>Cotizaciones</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="<?php echo URL?>vende/ingreso">Ingresar</a></li>
-                          <li><a  href="<?php echo URL?>vende/listado">Listar</a></li>                                                                          
+                          <li id="cot_ingresar"><a  href="<?php echo URL?>vende/ingreso">Ingresar</a></li>
+                          <li id="cot_listar"><a  href="<?php echo URL?>vende/listado">Listar</a></li>                                                                          
                       </ul>
                   </li>            
               </ul>
