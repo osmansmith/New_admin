@@ -11,6 +11,7 @@ $consulta = "SELECT
 $conexion->consulta($consulta);
 while($fila = $conexion->extraer_registro())
      { 
+              $id_cli        = $fila['id_cot_cli'];
               $rut           = $fila['rut_cot_cli'];
               $nombres       = $fila['nombre_cot_cli'];
               $paterno       = $fila['apellidop_cot_cli'];
@@ -33,6 +34,7 @@ while($fila = $conexion->extraer_registro())
             <h3 class="text-center" style="margin-bottom:50px;" >Realizar Cotización</h3>            
         </div>
         <form class="form-horizontal">
+        <input type="text" id="id_cli" value="<?php echo $id_cli?>" hidden>
         <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">
                  <label class="col-sm-4 control-label">Rut*</label>

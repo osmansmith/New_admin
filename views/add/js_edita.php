@@ -1,6 +1,7 @@
 <script>
     $("#btn_enviar").click(function(){
         var rut = $("#rut").val();
+        var id_cli = $("#id_cli").val();
         var nombres = $("#nombres").val();
         var paterno = $("#paterno").val();
         var materno = $("#materno").val();
@@ -24,6 +25,7 @@
         
         var edita = {
         'rut' : rut,
+        'id_cli' : id_cli,
         'nombres' : nombres,
         'paterno': paterno,
         'materno': materno,
@@ -48,14 +50,42 @@
         
         $.ajax({
             type : 'POST',
-            url  : '<?php echo URL?>vende/editar',
+            url  : '<?php echo URL?>vende/update_vende',
             data : edita,
             success : function(response){
                 alert('datos editados correctamente');
             },
-            error : function(){
-                
-            } 
+            error: function(jqXHR, textStatus, errorThrown){
+                 if (jqXHR.status === 0) {
+
+                    alert('Not connect: Verify Network.');
+
+                  } else if (jqXHR.status == 404) {
+
+                    alert('Requested page not found [404]');
+
+                  } else if (jqXHR.status == 500) {
+
+                    alert('Internal Server Error [500].');
+
+                  } else if (textStatus === 'parsererror') {
+
+                    alert('Requested JSON parse failed.');
+
+                  } else if (textStatus === 'timeout') {
+
+                    alert('Time out error.');
+
+                  } else if (textStatus === 'abort') {
+
+                    alert('Ajax request aborted.');
+
+                  } else {
+
+                    alert('Uncaught Error: ' + jqXHR.responseText);
+
+                  }
+            }
         });
         
         
