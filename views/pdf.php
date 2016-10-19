@@ -1,6 +1,5 @@
 <?
 $perfil = session::getValue('perfil');
-$id_cot = session::getValue('id_cot');
 if(session::exist()){
     
 }else{
@@ -19,9 +18,11 @@ $conexion = new conexion();
     <link href="<?php echo URL;?>public/assets/css/pdf.css" rel="stylesheet" />
     <script src="<?php echo URL?>public/assets/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function(){       
+    $(document).ready(function(){
         $('#correo').click(function() {
-            $.ajax({                
+            $.ajax({
+                data:"id="+<?=$_GET["id"]?>,
+                type: 'POST',
                 url: "<?php echo URL?>index/correo",
                 success: function(data) {
                     alert("Envío de correo con exito");
@@ -29,8 +30,7 @@ $conexion = new conexion();
             })
         });
     });
-    function imprimir(e){
-      e.event.preventDefault();
+    function imprimir(){
       var objeto=document.getElementById('imprimir');  //obtenemos el objeto a imprimir
       var ventana=window.open('','_blank');  //abrimos una ventana vacía nueva
       ventana.document.write(objeto.innerHTML);  //imprimimos el HTML del objeto en la nueva ventana
@@ -42,7 +42,7 @@ $conexion = new conexion();
 </head>
 <body>
 	<?
-	$id = $id_cot;
+	$id = $_GET["id"];
 	$consulta = 
         "
         SELECT 
