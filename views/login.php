@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
 
-    <title>DASHGUM - Bootstrap Admin Template</title>
+    <title>Inmobiliaria NOVA</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo URL?>public/assets/css/bootstrap.css" rel="stylesheet">

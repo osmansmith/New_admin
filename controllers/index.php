@@ -27,5 +27,6 @@
           
           $this->view->render('correo');
       }
+      
   }
 ?>

@@ -40,6 +40,17 @@
            $this->view->render('add/js_lista');           
            $this->view->render('add/cierre');           
       } 
+      function edita()
+      {          
+           $this->view->render('add/head_comun');
+           $this->view->render('add/menu_vende');
+           $this->view->render('vendedor/edita');
+           $this->view->render('add/footer');
+           $this->view->render('add/js_comun');                  
+           $this->view->render('add/cierre');  
+      }
+      
+      
       function procesa_ingreso()
       {
           $this->view->render('vendedor/add/procesa_ingreso');

@@ -26,4 +26,13 @@
         url = "<?php echo URL?>index/pdf?id="+valor;
         window.open(url, '_blank');
     });
+    
+    $('.edita').click(function(){
+        var valor = $( this ).val();
+        url = "<?php echo URL?>vende/edita?val="+valor;        
+        window.open(url, '_blank');
+        
+        
+        
+    });
 </script>
