@@ -1,12 +1,14 @@
 <?
-session_start();
-if(!isset($_GET["id"])){
-    header("Location: index.php");
+$perfil = session::getValue('perfil');
+$id_cot = session::getValue('id_cot');
+if(session::exist()){
+    
+}else{
+   header("Location: ".URL."user/salir");
 }
-if($_GET["id"] == ""){
-    header("Location: index.php");
-}
-include ("../padmin_ise/class/conexion.php");
+/*if($perfil<>0 || $perfil<>1){
+    header("Location: ".URL."user/salir");
+}*/
 $conexion = new conexion();
 ?>
 <!doctype html>
@@ -14,49 +16,45 @@ $conexion = new conexion();
 <head>
 	<meta charset="utf-8">
 	<title>Panel</title>
-    <link rel="stylesheet" type="text/css" href="css/pdf.css">
-    <script src="../js/jquery.js"></script>
-    <script src="../js/pie.js"></script>
+    <link href="<?php echo URL;?>public/assets/css/pdf.css" rel="stylesheet" />
+    <script src="<?php echo URL?>public/assets/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
-	$(document).ready(function(){
-		$('#footer').pieAlFinal();
-		
-		$('#correo').click(function() {
-			$.ajax({
-				data:"id="+<?=$_GET["id"]?>,
-				type: 'POST',
-				url: "correo.php",
-				success: function(data) {
-					alert("Envío de correo con exito");
-				}           
-			})
-		});
+    $(document).ready(function(){       
+        $('#correo').click(function() {
+            $.ajax({                
+                url: "<?php echo URL?>index/correo",
+                success: function(data) {
+                    alert("Envío de correo con exito");
+                }           
+            })
+        });
     });
-	function imprimir(){
-	  var objeto=document.getElementById('imprimir');  //obtenemos el objeto a imprimir
-	  var ventana=window.open('','_blank');  //abrimos una ventana vacía nueva
-	  ventana.document.write(objeto.innerHTML);  //imprimimos el HTML del objeto en la nueva ventana
-	  ventana.document.close();  //cerramos el documento
-	  ventana.print();  //imprimimos la ventana
-	  ventana.close();  //cerramos la ventana
-	}
-	</script>
+    function imprimir(e){
+      e.event.preventDefault();
+      var objeto=document.getElementById('imprimir');  //obtenemos el objeto a imprimir
+      var ventana=window.open('','_blank');  //abrimos una ventana vacía nueva
+      ventana.document.write(objeto.innerHTML);  //imprimimos el HTML del objeto en la nueva ventana
+      ventana.document.close();  //cerramos el documento
+      ventana.print();  //imprimimos la ventana
+      ventana.close();  //cerramos la ventana
+    }
+    </script>
 </head>
 <body>
 	<?
-	$id = $_GET["id"];
+	$id = $id_cot;
 	$consulta = 
         "
         SELECT 
-			cotizacion_cotizacion.uf_cot,
-			cotizacion_cotizacion.directo_cot,
-			cotizacion_cotizacion.credito_cot,
-			cotizacion_cotizacion.subsidio_cot,
-			cotizacion_cotizacion.contado_cot,
-			cotizacion_cotizacion.fecha_cot,
-			cotizacion_cotizacion.id_ven,
-			cotizacion_cotizacion.id_viv,
-			cotizacion_cotizacion.id_con,
+			cotizador_cotizacion.uf_cot,
+			cotizador_cotizacion.directo_cot,
+			cotizador_cotizacion.credito_cot,
+			cotizador_cotizacion.subsidio_cot,
+			cotizador_cotizacion.contado_cot,
+			cotizador_cotizacion.fecha_cot,
+			cotizador_cotizacion.id_ven,
+			cotizador_cotizacion.id_viv,
+			cotizador_cotizacion.id_con,
 			contacto_contacto_especifica.nombre_con_esp,
 			contacto_contacto_especifica.direccion_con_esp,
 			contacto_contacto_especifica.papellido_con_esp,

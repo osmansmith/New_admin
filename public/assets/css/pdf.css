@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+#contenido{
+	margin-bottom:50px;
+}
+#footer {
+	width:900px;
+}
+.texto_pie{
+	width:200px;
+	margin-left:38%;
+}
+.texto_pie2{
+	float:left;
+	margin-top:-15px;
+}
+.texto_pie3{
+	float:right;
+	margin-top:-15px;
+}
+#contenedor{
+	width:900px;
+	margin:auto;
+}
+#logo{
+	float:left;
+	margin-top:10px;
+}
+#texto_header{
+	float:right;
+	margin-top:10px;
+	font-size:18px;
+	color:#06C;
+	padding-top:15px;
+}
+.clear{
+	clear:both;
+}
+#texto_contenido1{
+	float:left;
+	margin-top:60px;
+	margin-left:45px;
+}
+#texto_contenido2{
+	float:right;
+	margin-right:50px;
+}
+#texto_firma{
+	float:right;
+	width:250px;
+	margin-right:50px;
+}

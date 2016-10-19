@@ -15,5 +15,17 @@
       {         
           $this->view->render('404');
       }
+      function pdf()
+      {
+        
+          $data = $_GET['id'];
+          session::setValue('id_cot',$data);      
+          $this->view->render('pdf');
+      }
+      function correo()
+      {
+          
+          $this->view->render('correo');
+      }
   }
 ?>

@@ -23,7 +23,7 @@
 
     $('.detalle').click(function(){
         valor = $(this).val();
-        url = "<?php echo URL?>views/pdf.php?id="+valor;
+        url = "<?php echo URL?>index/pdf?id="+valor;
         window.open(url, '_blank');
     });
 </script>
