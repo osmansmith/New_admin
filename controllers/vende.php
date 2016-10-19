@@ -47,6 +47,7 @@
            $this->view->render('vendedor/edita');
            $this->view->render('add/footer');
            $this->view->render('add/js_comun');                  
+           $this->view->render('add/js_edita');                  
            $this->view->render('add/cierre');  
       }
       

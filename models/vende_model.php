@@ -35,6 +35,8 @@
         $subsidio = $dato['subsidio'];   
         $contado = $dato['contado'];  
             
+        //aca consultar si existe el rut en cliente    
+            
         $this->base->consulta("INSERT INTO cotizador_cliente(
         nombre_cot_cli,
         apellidop_cot_cli,
