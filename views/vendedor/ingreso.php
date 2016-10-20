@@ -1,8 +1,16 @@
  <?php $conexion = new Conexion;?>
-   <section id="main-content">
+
+<?php 
+$uf = $indicadores[0][1];
+session::setValue('valor_uf_sitio',$uf);  
+ ?>
+    <section id="main-content">
     <section class="wrapper site-min-height">
      <div class="row">
         <div class="col-sm-12 main-chart">
+            <?php echo $uf."aaca";
+            echo $fecha_hoy;
+            ?>
             <h3 class="text-center" style="margin-bottom:50px;" >Realizar Cotización</h3>            
         </div>
         <form class="form-horizontal" id="commentForm" method="post" action="<?php echo URL?>vende/insert_vende">
@@ -199,7 +207,7 @@
              
           </div>
         <div class="col-sm-2 col-sm-offset-3">
-              <button type="submit" class="btn btn-primary form-control" id="btn_enviar" name="btn_enviar">enviar</button>
+              <button type="submit" class="btn btn-primary form-control" id="btn_enviar" name="btn_enviar">Registrar</button>
           </div>
           
         </form>

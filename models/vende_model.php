@@ -56,6 +56,7 @@
         $ultimo = $this->base->ultimo_id();
         $id_ven = session::getValue('id');
         $fecha = date('Y-m-d H:m:s');
+        $uf = session::getValue('valor_uf_sitio');
             
         $this->base->consulta("INSERT INTO cotizador_cotizacion(
         id_ven,
@@ -70,7 +71,7 @@
         id_mod,
         valor_viv_cot)
         VALUES(
-        ".$id_ven.",".$contrato.",'".$fecha."','',".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
+        ".$id_ven.",".$contrato.",'".$fecha."',".$uf.",".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
             
         header("location:".URL."vende/ingreso");
             
@@ -123,6 +124,7 @@
         $ultimo = $this->base->ultimo_id();
         $id_ven = session::getValue('id');
         $fecha = date('Y-m-d H:m:s');
+        $uf = session::getValue('valor_uf_sitio');
             
         $this->base->consulta("INSERT INTO cotizador_cotizacion(
         id_ven,
@@ -137,7 +139,7 @@
         id_mod,
         valor_viv_cot)
         VALUES(
-        ".$id_ven.",".$contrato.",'".$fecha."','',".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
+        ".$id_ven.",".$contrato.",'".$fecha."',".$uf.",".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
             
        
             
