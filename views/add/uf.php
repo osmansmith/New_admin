@@ -48,6 +48,9 @@ if ( !empty($contenido_url) ) {
 	$indicadores[] = array(0 => 'TCM', 1 => 0);
 }
 //echo '<pre>'; print_r($indicadores); echo '</pre>';
-//echo $indicadores[1][0]; 
+//echo $indicadores[0][1]; 
 //echo $indicadores[1][1]; 
+
+$uf = $indicadores[0][1];
+session::setValue('valor_uf_sitio',$uf);  
 ?>

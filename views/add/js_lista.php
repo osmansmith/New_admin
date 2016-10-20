@@ -29,9 +29,7 @@
     
     $('.edita').click(function(){
         var valor = $( this ).val();
-        url = "<?php echo URL?>vende/edita?val="+valor;        
-        window.open(url, '_blank');
-        
+        window.location='<?php echo URL?>vende/edita?val='+valor;      
         
         
     });

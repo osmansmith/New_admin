@@ -42,7 +42,9 @@
            $this->view->render('add/cierre');           
       } 
       function edita()
-      {          
+      {         
+           if(isset($_GET['val'])){
+               
            $this->view->render('add/head_comun');
            $this->view->render('add/menu_vende');
            $this->view->render('vendedor/edita');
@@ -51,6 +53,10 @@
            $this->view->render('vendedor/add/js_ingreso'); 
            $this->view->render('add/js_edita');                  
            $this->view->render('add/cierre');  
+           }else{
+               
+               $this->listado();
+           }
       }
       
       
@@ -114,7 +120,7 @@
               'contado'       => $_POST['contado']
               
           ];                                             
-              $this->model->update_vende($datos);       
+              $this->model->update_vende($datos);               
       }
   }
 ?>

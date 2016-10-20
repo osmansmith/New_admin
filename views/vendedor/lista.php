@@ -52,6 +52,7 @@
                             $fechaorden = date("Ymd",strtotime($fila['fecha_cot']));
                             $hoy = date("Ymd");
                             $id_cot_cli = $fila['id_cot_cli'];
+                            $id_cot = $fila['id_cot'];
                             $nombre_cot_cli = $fila['nombre_cot_cli'];
                             $apellidop_cot_cli = $fila['apellidop_cot_cli'];
                             $apellidom_cot_cli = $fila['apellidom_cot_cli'];
@@ -106,8 +107,8 @@
                                     $nombre_con = $fila_con['nombre_con'];
                                 }
                             ?>
-                            <tr>
-                                <td><?php echo $id_cot_cli;?></td>
+                            <tr>                        
+                                <td><?php echo $id_cot;?></td>
                                 <td><?php echo $pro_nom;?></td>
                                 <td><span style="display:none"><?php echo $fechaorden;?></span><?php echo $fecha;?></td>
                                 <td><?php echo $nombre_ven;?></td>

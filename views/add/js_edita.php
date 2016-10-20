@@ -52,8 +52,10 @@
             type : 'POST',
             url  : '<?php echo URL?>vende/update_vende',
             data : edita,
-            success : function(response){
-                alert('datos editados correctamente');
+            success : function(dat){
+                alert('datos enviados exitosamente');
+               
+                
             },
             error: function(jqXHR, textStatus, errorThrown){
                  if (jqXHR.status === 0) {

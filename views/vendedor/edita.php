@@ -1,4 +1,5 @@
 <?php 
+
 $val =  $_GET['val'];
 $conexion = new Conexion;
 $consulta = "SELECT 
@@ -33,7 +34,7 @@ while($fila = $conexion->extraer_registro())
         <div class="col-sm-12 main-chart">
             <h3 class="text-center" style="margin-bottom:50px;" >Realizar Cotización</h3>            
         </div>
-        <form class="form-horizontal">
+        <form class="form-horizontal" method="post">
         <input type="text" id="id_cli" value="<?php echo $id_cli?>" hidden>
         <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">

@@ -121,7 +121,7 @@
         estado_cot_cli = 0  WHERE id_cot_cli = ".$id_cli." ");
         
             
-        $ultimo = $this->base->ultimo_id();
+       /* $ultimo = $this->base->ultimo_id();*/
         $id_ven = session::getValue('id');
         $fecha = date('Y-m-d H:m:s');
         $uf = session::getValue('valor_uf_sitio');
@@ -139,7 +139,7 @@
         id_mod,
         valor_viv_cot)
         VALUES(
-        ".$id_ven.",".$contrato.",'".$fecha."',".$uf.",".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
+        ".$id_ven.",".$contrato.",'".$fecha."',".$uf.",".$credito.",".$subsidio.",".$contado.",".$directo.",".$id_cli.",".$modelo.",".$valor_vivienda.")");
             
        
             
