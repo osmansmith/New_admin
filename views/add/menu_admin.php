@@ -28,20 +28,20 @@
               	  <h5 class="centered"><?php echo session::getValue('nombre');?></h5>
               	  	
                   <li class="mt">
-                      <a class="active" href="<?php echo URL?>admin/index">
+                      <a class="active" href="<?php echo URL?>admin/index" id="escritorio">
                           <i class="fa fa-dashboard"></i>
                           <span>Escritorio</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-desktop"></i>
+                      <a href="javascript:;" id="user">
+                          <i class="fa fa-user"></i>
                           <span>Usuario</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="<?php echo URL?>admin/">General</a></li>
-                          <li><a  href="buttons.php">Buttons</a></li>                          
+                          <li id="user_ingreso"><a  href="<?php echo URL?>admin/ingreso">Ingreso</a></li>
+                          <li id="user_listado"><a  href="<?php echo URL?>admin/listado">Listado</a></li>                          
                       </ul>
                   </li>                
 

@@ -45,6 +45,22 @@
 			$('.sidebar-menu li a').removeClass('active');
 			$('#cot_listar').addClass('active');
 			$('#cot').addClass('active');
+		}else if(arr == url+"admin/index")
+		{
+			$('.sidebar-menu li a').removeClass('active');
+			$('#escritorio').addClass('active');		
+		}else if(arr == url+"admin/ingreso")
+		{
+			$('.sidebar-menu li').removeClass('active');
+			$('.sidebar-menu li a').removeClass('active');
+			$('#user_ingreso').addClass('active');
+			$('#user').addClass('active');
+		}else if(arr == url+"admin/listado")
+		{
+			$('.sidebar-menu li').removeClass('active');
+			$('.sidebar-menu li a').removeClass('active');
+			$('#user_listado').addClass('active');
+			$('#user').addClass('active');
 		}
   </script>
 
