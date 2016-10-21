@@ -1,18 +1,16 @@
 <script>
-  $("#btn_usuario").click( function(){
+  $("#formuser").submit( function(e){
+      e.preventDefault();
       var nombre = $("#nombre").val();
       var usuario = $("#usuario").val();
       var mail = $("#mail").val();
       var perfil = $("#perfil").val();
       var password = $("#password").val();
       
-      
-      
-      if(nombre !== "" && usuario !== "" && mail !== "" && perfil !== "" && password !== "" )
-      {                
+                                
       $.ajax({
           type : 'POST',
-          url  : '<?php echo URL?>admin/insert_user',
+          url  : $( this ).attr('action'),
           data : "nombre="+nombre+"&usuario="+usuario+"&mail="+mail+"&perfil="+perfil+"&password="+password,
           success : function(data)
           {
@@ -50,9 +48,7 @@
                   }
             }
       });
-      }else{
-          alert('complete todos los campos');
-      }
+      
       
   });
 </script>

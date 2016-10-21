@@ -4,7 +4,7 @@
         <div class="col-sm-12 main-chart">
             <h3 class="text-center" style="margin-bottom:50px;" >Ingresar Usuario</h3>            
         </div>
-        <form class="form-horizontal" id="formuser" method="post">
+        <form class="form-horizontal" id="formuser" method="post" action="<?php echo URL?>admin/insert_user">
         <div class="col-sm-6 col-sm-offset-3">
              <div class="form-group">
                  <label class="col-sm-4 control-label">Nombre Completo</label>
@@ -47,7 +47,7 @@
                  </div>
              </div>                                                          
              <div class="form-group">
-                  <button class="btn btn-primary form-control" id="btn_usuario" >Registrar</button>
+                  <input type="submit" class="btn btn-primary form-control" id="btn_usuario" value="Registrar" />
              </div>             
           </div>   
         </form>
