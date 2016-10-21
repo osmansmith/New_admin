@@ -1,15 +1,16 @@
 </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="<?php echo URL?>public/assets/js/jquery.js"></script>
-    <script src="<?php echo URL?>public/assets/js/jquery-1.8.3.min.js"></script>
+    <!--<script src="<?php echo URL?>public/assets/js/jquery.js"></script>-->
+    <script src="<?php echo URL?>public/assets/js/jquery-3.1.1.min.js"></script>
+   <!-- <script src="<?php echo URL?>public/assets/js/jquery-1.8.3.min.js"></script>-->
     <script src="<?php echo URL?>public/assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="<?php echo URL?>public/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="<?php echo URL?>public/assets/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo URL?>public/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="<?php echo URL?>public/assets/js/jquery.validate.js" type="text/javascript"></script>
+    <!--<script src="<?php echo URL?>public/assets/js/jquery.validate.js" type="text/javascript"></script>
     <script src="<?php echo URL?>public/assets/js/jquery.rut.js" type="text/javascript"></script>
-    <script src="<?php echo URL?>public/assets/js/jquery.numeric.js" type="text/javascript"></script>
+    <script src="<?php echo URL?>public/assets/js/jquery.numeric.js" type="text/javascript"></script>-->
 
 
     <!--common script for all pages-->

@@ -47,7 +47,7 @@
                  </div>
              </div>                                                          
              <div class="form-group">
-                  <button type="submit" class="btn btn-primary form-control" id="btn_enviar_usuario" name="btn_enviar_usuario">Registrar</button>
+                  <button class="btn btn-primary form-control" id="btn_usuario" >Registrar</button>
              </div>             
           </div>   
         </form>

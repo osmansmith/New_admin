@@ -26,7 +26,7 @@
            $this->view->render('admin/ingreso');
            $this->view->render('add/footer');
            $this->view->render('add/js_comun');
-           $this->view->render('admin/add/js_ingreso');
+           $this->view->render('admin/add/js_usuario');
            $this->view->render('add/cierre');     
       } 
       function listado()
