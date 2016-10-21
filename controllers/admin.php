@@ -39,6 +39,16 @@
            $this->view->render('add/js_comun');                     
            $this->view->render('add/cierre');           
       }
+       function cot_listado()
+      {
+          # el metodo render admite un parametro que es la pagina de la carpeta views sin el .php
+           $this->view->render('add/head_comun');
+           $this->view->render('add/menu_admin');
+           $this->view->render('admin/cot_lista');
+           $this->view->render('add/footer');
+           $this->view->render('add/js_comun');                     
+           $this->view->render('add/cierre');           
+      }
       function insert_user()
       {
           if(isset($_POST['nombre']) and !empty($_POST['nombre']) and

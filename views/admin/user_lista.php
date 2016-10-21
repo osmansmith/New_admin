@@ -1,7 +1,7 @@
 <section id="main-content" class="listado">
     <section class="wrapper site-min-height">
                  <div class="col-sm-12">
-                  <h3><i class="fa fa-users" aria-hidden="true"></i> Seguimiento de Clientes</h3>
+                  <h3><i class="fa fa-users" aria-hidden="true"></i> Seguimiento de Usuarios</h3>
                   <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>

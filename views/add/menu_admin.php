@@ -43,7 +43,16 @@
                           <li id="user_ingreso"><a  href="<?php echo URL?>admin/user_ingreso">Ingreso</a></li>
                           <li id="user_listado"><a  href="<?php echo URL?>admin/user_listado">Listado</a></li>                          
                       </ul>
-                  </li>                
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" id="cot">
+                          <i class="fa fa-file-text-o"></i>
+                          <span>Cotizaciones</span>
+                      </a>
+                      <ul class="sub">                          
+                          <li id="cot_listado"><a  href="<?php echo URL?>admin/cot_listado">Listado</a></li>                          
+                      </ul>
+                  </li>                 
 
               </ul>
               <!-- sidebar menu end-->

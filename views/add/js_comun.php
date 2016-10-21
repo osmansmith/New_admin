@@ -62,6 +62,12 @@
 			$('.sidebar-menu li a').removeClass('active');
 			$('#user_listado').addClass('active');
 			$('#user').addClass('active');
+		}else if(arr == url+"admin/cot_listado")
+		{
+			$('.sidebar-menu li').removeClass('active');
+			$('.sidebar-menu li a').removeClass('active');
+			$('#cot_listado').addClass('active');
+			$('#cot').addClass('active');
 		}
   </script>
 
