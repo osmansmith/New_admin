@@ -34,11 +34,17 @@ $conexion = new conexion();
       var objeto=document.getElementById('imprimir');  //obtenemos el objeto a imprimir
       var ventana=window.open('','_blank');  //abrimos una ventana vacía nueva
       ventana.document.write(objeto.innerHTML);  //imprimimos el HTML del objeto en la nueva ventana
+      ventana.document.write("<style type='text/css'>body{font-family:Arial; font-size: 13px;}</style>");
       ventana.document.close();  //cerramos el documento
       ventana.print();  //imprimimos la ventana
       ventana.close();  //cerramos la ventana
     }
     </script>
+    <style>
+        body{
+            background-color: #fff;
+        }
+    </style>
 </head>
 <body>
 	<?
@@ -53,27 +59,27 @@ $conexion = new conexion();
 			cotizador_cotizacion.contado_cot,
 			cotizador_cotizacion.fecha_cot,
 			cotizador_cotizacion.id_ven,
-			cotizador_cotizacion.id_viv,
+            cotizador_cotizacion.valor_viv_cot,
+			cotizador_cotizacion.id_mod,
 			cotizador_cotizacion.id_con,
-			contacto_contacto_especifica.nombre_con_esp,
-			contacto_contacto_especifica.direccion_con_esp,
-			contacto_contacto_especifica.papellido_con_esp,
-			contacto_contacto_especifica.mapellido_con_esp,
-			contacto_contacto_especifica.rut_con_esp,
-			contacto_contacto_especifica.contacto_con_esp,
-			contacto_contacto_especifica.fono_contacto_con_esp,
-			contacto_contacto_especifica.codigo_gescon_con_esp,
-			contacto_contacto_especifica.fono_casa_con_esp,
-			contacto_contacto_especifica.fono_contacto_con_esp,
-			contacto_contacto_especifica.correo_con_esp,
-			contacto_contacto_especifica.celular_con_esp
+			cotizador_cliente.nombre_cot_cli,
+			cotizador_cliente.direccion_cot_cli,
+			cotizador_cliente.apellidop_cot_cli,
+			cotizador_cliente.apellidom_cot_cli,
+			cotizador_cliente.rut_cot_cli,
+			cotizador_cliente.contacto_cot_cli,
+			cotizador_cliente.fono_contacto_cot_cli,
+			cotizador_cliente.fono_casa_cot_cli,
+			cotizador_cliente.correo_cot_cli,
+			cotizador_cliente.celular_cot_cli
         FROM 
-            contacto_contacto_especifica,
-			cotizacion_cotizacion
+            cotizador_cliente,
+			cotizador_cotizacion
 		WHERE	
-			 cotizacion_cotizacion.id_cot = '".$id."' AND 
-			 cotizacion_cotizacion.id_cotizacion_cot = contacto_contacto_especifica.id_cont_esp
+			 cotizador_cotizacion.id_cot = '".$id."' AND 
+			 cotizador_cotizacion.id_cliente_cot = cotizador_cliente.id_cot_cli
         ";
+    // echo $consulta;
     $conexion->consulta($consulta);
     while ($fila = $conexion->extraer_registro()) {
         $uf_cot = $fila["uf_cot"];
@@ -81,22 +87,21 @@ $conexion = new conexion();
 		$subsidio_cot = $fila["subsidio_cot"];
 		$contado_cot = $fila["contado_cot"];
 		$directo_cot = $fila["directo_cot"];
-		$nombre_con_esp = $fila["nombre_con_esp"];
-		$direccion_con_esp = $fila["direccion_con_esp"];
+		$nombre_cot_cli = $fila["nombre_cot_cli"];
+		$direccion_cot_cli = $fila["direccion_cot_cli"];
 		$fecha_cot = $fila["fecha_cot"];
-		$papellido_con_esp = $fila["papellido_con_esp"];
-		$mapellido_con_esp = $fila["mapellido_con_esp"];
-		$rut_con_esp = $fila["rut_con_esp"];
-		$contacto_con_esp = $fila["contacto_con_esp"];
-		$fono_contacto_con_esp = $fila["fono_contacto_con_esp"];
-		$fono_trabajo_con_esp = $fila["fono_trabajo_con_esp"];
-		$fono_casa_con_esp = $fila["fono_casa_con_esp"];
-		$fono_contacto_con_esp = $fila["fono_contacto_con_esp"];
-		$codigo_gescon_con_esp = $fila["codigo_gescon_con_esp"];
-		$correo_con_esp = $fila["correo_con_esp"];
-		$celular_con_esp = $fila["celular_con_esp"];
-		$id_ven = $fila["id_ven"];
-		$id_viv = $fila["id_viv"];
+		$apellidop_cot_cli = $fila["apellidop_cot_cli"];
+		$apellidom_cot_cli = $fila["apellidom_cot_cli"];
+		$rut_cot_cli = $fila["rut_cot_cli"];
+		$contacto_cot_cli = $fila["contacto_cot_cli"];
+		$fono_contacto_cot_cli = $fila["fono_contacto_cot_cli"];
+		$fono_trabajo_cot_cli = $fila["fono_trabajo_cot_cli"];
+		$fono_casa_cot_cli = $fila["fono_casa_cot_cli"];
+		$correo_cot_cli = $fila["correo_cot_cli"];
+		$celular_cot_cli = $fila["celular_cot_cli"];
+        $id_ven = $fila["id_ven"];
+		$id_mod = $fila["id_mod"];
+		$valor_viv_cot = $fila["valor_viv_cot"];
 		$id_con = $fila["id_con"];
 		$fecha = date("d-m-Y",strtotime($fecha_cot));
     }
@@ -104,72 +109,46 @@ $conexion = new conexion();
 	$consulta = 
         "
         SELECT 
-			*
+			cotizador_proyecto.pro_nom,
+            cotizador_proyecto_modelo.nombre_mod
         FROM 
-            cotizacion_proyecto
+            cotizador_proyecto,
+            cotizador_proyecto_modelo
 		WHERE	
-			 id_pro = '".$codigo_gescon_con_esp."'
+			cotizador_proyecto_modelo.idcotizador_proyecto_modelo = ".$id_mod." AND
+            cotizador_proyecto_modelo.cotizador_pro_cod = cotizador_proyecto.idcotizador_proyecto
         ";
     $conexion->consulta($consulta);
     while ($fila = $conexion->extraer_registro()) {
-        $nombre_pro = $fila["nombre_pro"];
+        $pro_nom = $fila["pro_nom"];
+        $nombre_mod = $fila["nombre_mod"];
     }
 	$consulta = 
         "
         SELECT 
 			*
         FROM 
-            cotizacion_vendedor
+            cotizador_vendedor
 		WHERE	
 			 id_ven = '".$id_ven."'
         ";
     $conexion->consulta($consulta);
     while ($fila = $conexion->extraer_registro()) {
         $nombre_ven = $fila["nombre_ven"];
-		$apellidop_ven = $fila["apellidop_ven"];
-		$apellidom_ven = $fila["apellidom_ven"];
-		$correo_vendedor_cot = $fila["correo_ven"];
-		$fono_vendedor_cot = $fila["fono_ven"];
+		$correo_ven = $fila["correo_ven"];
     }
 	$consulta = 
         "
         SELECT 
 			*
         FROM 
-            cotizacion_tipo_contrato
+            cotizador_tipo_contrato
 		WHERE	
 			 id_con = '".$id_con."'
         ";
     $conexion->consulta($consulta);
     while ($fila = $conexion->extraer_registro()) {
         $nombre_con = $fila["nombre_con"];
-    }
-	$consulta = 
-        "
-        SELECT 
-			*
-        FROM 
-            cotizacion_vivienda
-		WHERE	
-			 id_viv = '".$id_viv."'
-        ";
-    $conexion->consulta($consulta);
-    while ($fila = $conexion->extraer_registro()) {
-        $manzana_viv = $fila["manzana_viv"];
-		$sitio_viv = $fila["sitio_viv"];
-
-        $aporte_iva = $fila['aporte_iva'];
-
-        // si es 0 no lo hace
-        if ($aporte_iva>0) {
-            $puntos = 1;
-            $valor_uf_viv = $fila['valor_uf_viv'] + ($fila['valor_uf_viv'] * $aporte_iva/100);
-            $iva = $fila['valor_uf_viv'] * $aporte_iva/100;
-        } else {
-            $puntos = 0;
-            // $_SESSION["valor_vivienda_porcentaje"] = $fila['valor_uf_viv'];
-            $valor_uf_viv = $fila['valor_uf_viv'];
-        }
     }
 	?>
 	<div id="contenedor">
@@ -179,13 +158,13 @@ $conexion = new conexion();
             	<tr>
                 	<td width="60%">
                         <div id="logo">
-                            <img src="img/logo_iserena.jpg" width="113" height="146" alt="logo">
+                            <img src="<?php echo URL ?>public/assets/img/logo-nova.jpg" width="200" alt="logo">
                         </div>
                     </td>
                     <td width="40%">
-                    	<!-- EMPRESA: INMOBILIARIA SERENA<br>
-                        DIRECCION: LOS CARRERA 110<br>
-                        FONO 2221543 <br> -->
+                    	EMPRESA: INMOBILIARIA NOVA<br>
+                        DIRECCION: Avda. El Santo Nº 1656<br>
+                        FONO (51) 2558 201<br>
                         CIUDAD: LA SERENA
                     </td>
                 </tr>
@@ -196,7 +175,7 @@ $conexion = new conexion();
         	<table id="seccion2" width="100%">
             	<tr>
                 	<td style="font-weight:bolder;">
-                        COTIZACION PROYECTO <?=$nombre_pro?> (N° <?=$id?>)
+                        COTIZACION PROYECTO <?php echo $pro_nom;?>
                     </td>
                 </tr>
             </table>
@@ -212,13 +191,13 @@ $conexion = new conexion();
                         <b>Rut:</b> <br>
                     </td>
                     <td width="25%">
-                    	<?=$rut_con_esp?>
+                    	<?php echo $rut_cot_cli;?>
                     </td>
                     <td width="25%">
-                        <b>Fecha:</b>  <br>
+                        <b>Fecha:</b><br>
                     </td>
                     <td width="25%">
-                    	<?=$fecha?>
+                    	<?php echo $fecha;?>
                     </td>
                 </tr>
                 <tr>
@@ -226,13 +205,13 @@ $conexion = new conexion();
                         <b>Nombre:</b> <br>
                     </td>
                     <td width="25%">
-                    	<?=$nombre_con_esp?> <?=$papellido_con_esp?> <?=$mapellido_con_esp?>
+                    	<?php echo $nombre_cot_cli;?> <?php echo $apellidop_cot_cli;?> <?php echo $apellidom_cot_cli;?>
                     </td>
                     <td width="25%">
                         <b>Valor UF:</b>  <br>
                     </td>
                     <td width="25%">
-                    	<?="$".number_format($uf_cot, 2, ',', '.')?>
+                    	<?php echo "$ ".number_format($uf_cot, 2, ',', '.');?>
                     </td>
                 </tr>
                 <tr>
@@ -240,13 +219,13 @@ $conexion = new conexion();
                         <b>Dirección:</b> <br>
                     </td>
                     <td width="25%">
-                    	<?=$direccion_con_esp?>
+                    	<?php echo $direccion_cot_cli;?>
                     </td>
                     <td width="25%">
                         <b>Fono Casa:</b>  <br>
                     </td>
                     <td width="25%">
-                    	051- <?=$fono_casa_con_esp?>
+                    	51-<?php echo $fono_casa_cot_cli;?>
                     </td>
                 </tr>
                 <tr>
@@ -254,13 +233,13 @@ $conexion = new conexion();
                        <b>Celular:</b> <br>
                     </td>
                     <td width="25%">
-                    	9-<?=$celular_con_esp?>
+                    	<?php echo $celular_cot_cli;?>
                     </td>
                     <td width="25%">
                         <b>Ejecutivo de Ventas:</b>  <br>
                     </td>
                     <td width="25%">
-                    	<?=$nombre_ven?> <?=$apellidop_ven?> <?=$apellidom_ven?>
+                    	<?php echo $nombre_ven;?>
                     </td>
                 </tr>
                 <tr>
@@ -268,27 +247,23 @@ $conexion = new conexion();
                         <b>Correo:</b> <br>
                     </td>
                     <td width="25%">
-                    	<?=$correo_con_esp?>
+                    	<?php echo $correo_cot_cli;?>
                     </td>
                     <td width="25%">
                         <b>Fono Contacto:</b>  <br>
                     </td>
                     <td width="25%">
-                    	<?=$fono_contacto_con_esp?>
+                    	<?php echo $fono_contacto_cot_cli;?>
                     </td>
                 </tr>
                 <tr>
                 	<td width="25%">
-                        <b>Correo Vendedor:</b> <br>
                     </td>
                     <td width="25%">
-                    	<? //=$correo_vendedor_cot?>
                     </td>
                     <td width="25%">
-                        <b>Fono Vendedor:</b>  <br>
                     </td>
                     <td width="25%">
-                    	<?=$fono_vendedor_cot?>
                     </td>
                 </tr>
             </table>
@@ -304,15 +279,15 @@ $conexion = new conexion();
                         <b>Proyecto:</b> <br>
                     </td>
                     <td width="25%" colspan="3" align="left">
-                    	<?=$nombre_pro?>
+                    	<?php echo $pro_nom;?>
                     </td>
                 </tr>
                 <tr>
                 	<td width="25%" colspan="1">
-                        <b>Vivienda:</b> <br>
+                        <b>Modelo:</b> <br>
                     </td>
                     <td width="25%" colspan="3" align="left">
-                    	<?=$manzana_viv?>-<?=$sitio_viv?>
+                    	<?php echo $nombre_mod;?>
                     </td>
                 </tr>
                 <tr>
@@ -320,7 +295,7 @@ $conexion = new conexion();
                         <b>Tipo de Contrato:</b> <br>
                     </td>
                     <td width="25%" colspan="3" align="left">
-                    	<?=$nombre_con?>
+                    	<?php echo $nombre_con;?>
                     </td>
                 </tr>
                 <tr>
@@ -339,8 +314,8 @@ $conexion = new conexion();
                 </tr>
                 <?
 				//---------------------------- FORMATO DE VALORES DE INGRESO DE LA COTIZACION(CREDITO-SUBSIDIO-AHORRO)
-				if($valor_uf_viv != 0){
-					$valor_uf_viv_formato = number_format($valor_uf_viv, 2, ',', '.')." UF";
+				if($valor_viv_cot != 0){
+					$valor_viv_cot_formato = number_format($valor_viv_cot, 2, ',', '.')." UF";
 				}
 				else{
 					$valor_uf_viv_formato= "";
@@ -364,16 +339,16 @@ $conexion = new conexion();
 					$contado_cot_formato= "";
 				}
 				//---------------------------- VALORES PASADOS A PESOS(CREDITO-SUBSIDIO-AHORRO)
-				$valor_uf_viv_peso = $valor_uf_viv * $uf_cot;
+				$valor_viv_cot_peso = $valor_viv_cot * $uf_cot;
 				$credito_cot_peso = $credito_cot * $uf_cot;
 				$subsidio_cot_peso = $subsidio_cot * $uf_cot;
 				$contado_cot_peso = $contado_cot * $uf_cot;
 				//---------------------------- FORMATO VALORES PASADOS A PESOS(CREDITO-SUBSIDIO-AHORRO)
-				if($valor_uf_viv_peso != ""){
-					$valor_uf_viv_peso_formato = "$ ".number_format($valor_uf_viv_peso, 0, ',', '.');
+				if($valor_viv_cot_peso != ""){
+					$valor_viv_cot_peso_formato = "$ ".number_format($valor_viv_cot_peso, 0, ',', '.');
 				}
 				else{
-					$valor_uf_viv_peso_formato = "";
+					$valor_viv_cot_peso_formato = "";
 				}
 				if($credito_cot_peso != ""){
 					$credito_cot_peso_formato = "$ ".number_format($credito_cot_peso, 0, ',', '.');
@@ -394,9 +369,9 @@ $conexion = new conexion();
 					$contado_cot_peso_formato = "";
 				}
 				//---------------------------- PORCENTAJE Y FORMATO VALORES(CREDITO-SUBSIDIO-AHORRO)
-				$credito_cot_porcentaje = ($credito_cot * 100) / $valor_uf_viv;
-				$subsidio_cot_porcentaje = ($subsidio_cot * 100) / $valor_uf_viv;
-				$contado_cot_porcentaje = ($contado_cot * 100) / $valor_uf_viv;
+				$credito_cot_porcentaje = ($credito_cot * 100) / $valor_viv_cot;
+				$subsidio_cot_porcentaje = ($subsidio_cot * 100) / $valor_viv_cot;
+				$contado_cot_porcentaje = ($contado_cot * 100) / $valor_viv_cot;
 				if($credito_cot_porcentaje != 0){
 					$credito_cot_porcentaje_formato = 	number_format($credito_cot_porcentaje, 2, '.', ',')."%";
 				}
@@ -422,10 +397,10 @@ $conexion = new conexion();
                         <b>Valor Vivienda:</b> <br>
                     </td>
                     <td width="25%">
-                    	<?=$valor_uf_viv_formato?>
+                    	<?=$valor_viv_cot_formato?>
                     </td>
                     <td width="25%">
-                        <?=$valor_uf_viv_peso_formato?> <br>
+                        <?=$valor_viv_cot_peso_formato?> <br>
                     </td>
                     <td width="25%">
                     	
@@ -656,22 +631,6 @@ $conexion = new conexion();
                         <b>6- La superficie del terreno es aproximada y puede sufrir variaciones.</b>
                     </td>
                 </tr>
-                <?php 
-                if ($puntos==1) {
-                    ?>
-                    <tr>
-                        <td>
-                            <b>7- El precio de <?php echo number_format($valor_uf_viv, 2, ',', '.');?> U.F., incluye <?php echo number_format($iva, 2, ',', '.');?> U.F., agregadas por concepto de Impuesto Al Valor Agregado (I.V.A.), establecido para la Venta Habitual de Inmuebles por la Reforma Tributaria de la ley N° 20.780 del 29/09/2014.-</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <b>8- Para el caso que el Prometiente Comprador obtenga y pague parte del precio con un subsidio Habitacional o se modifique la Reforma tributaria y no sea necesario pagar las <?php echo number_format($iva, 2, ',', '.');?> U.F., de I.V.A. incluidas en el precio, estas se deducirán de dicho precio para todos los efectos.-</b>
-                        </td>
-                    </tr>
-                    <?php
-                }
-                 ?>
             </table>
             
             <div class="clear"></div>
@@ -679,9 +638,8 @@ $conexion = new conexion();
         </div>
         <table style="margin-top:30px; margin:auto">
             <tr>
-            <td align="right"><input type="button" value="Volver" onclick="javascript:window.location='area_ventas.php'"/></td>
-                <td align="center"><input type="button" value="Imprimir" onclick="imprimir();"/></td>
-                <td  align="left"><input type="button" value="Envío por Correo" id="correo"/></td>
+                <td align="center"><input type="button" value="Imprimir" class="btn btn-primary" onclick="imprimir();"/></td>
+                <td  align="left"><input type="button" value="Envío por Correo" class="btn btn-primary" id="correo"/></td>
             </tr>
         </table>
     </div>
