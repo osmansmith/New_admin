@@ -56,10 +56,9 @@
                                 <td><?php echo $clave_ven;?></td>
                                 <td><?php echo $correo_ven?></td>
                                 <td><?php if($perfil_ven == 0) echo 'Vendedor'; else echo 'Administrador';?></td>                               
-                                <td class="acciones">
-                                 <a href="" class="btn btn-sm btn-icon btn-info detalle" data-toggle="tooltip" data-original-title="Ver Usuario"><i class="fa fa-search"></i></a>
-                                 <a href="" class="btn btn-sm btn-icon btn-warning edita" data-toggle="tooltip" data-original-title="Editar Usuario"><i class="fa fa-pencil-square-o"></i></a>
-                                 <a href="" class="btn btn-sm btn-icon btn-danger edita" data-toggle="tooltip" data-original-title="Editar Usuario"><i class="fa fa-times"></i></a>
+                                <td class="acciones">                                
+                                 <a href="<?php echo URL?>admin/user_edita?id=<?php echo $id_ven;?>" class="btn btn-sm btn-icon btn-warning edita" data-toggle="tooltip" data-original-title="Editar Usuario"><i class="fa fa-pencil-square-o"></i></a>
+                                 <a href="<?php echo URL?>admin/user_elimina?id2=<?php echo $id_ven;?>" class="btn btn-sm btn-icon btn-danger edita" data-toggle="tooltip" data-original-title="Eliminar Usuario"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                             <?php  
