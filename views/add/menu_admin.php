@@ -40,8 +40,8 @@
                           <span>Usuario</span>
                       </a>
                       <ul class="sub">
-                          <li id="user_ingreso"><a  href="<?php echo URL?>admin/ingreso">Ingreso</a></li>
-                          <li id="user_listado"><a  href="<?php echo URL?>admin/listado">Listado</a></li>                          
+                          <li id="user_ingreso"><a  href="<?php echo URL?>admin/user_ingreso">Ingreso</a></li>
+                          <li id="user_listado"><a  href="<?php echo URL?>admin/user_listado">Listado</a></li>                          
                       </ul>
                   </li>                
 

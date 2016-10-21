@@ -24,6 +24,26 @@
             
              echo 'consulta realizada con exito';
         }
+         function update_user($user)
+        {
+        $id_usu   = $user['id_usu'];   
+        $nombre   = $user['nombre'];   
+        $usuario  = $user['usuario'];   
+        $mail     = $user['mail'];                                 
+        $perfil   = $user['perfil'];                                 
+        $password = $user['password'];                                 
+            
+        $this->base->consulta("UPDATE cotizador_vendedor SET        
+        nombre_ven = '".$nombre."',
+        usuario_ven = '".$usuario."',
+        clave_ven = '".$password."',
+        correo_ven = '".$mail."',
+        perfil_ven = ".$perfil."            
+        WHERE id_ven = ".$id_usu." ");
+            
+            
+             echo 'Usuario Editado con exito';
+        }
        
        
         

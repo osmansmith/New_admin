@@ -50,13 +50,13 @@
 		{
 			$('.sidebar-menu li a').removeClass('active');
 			$('#escritorio').addClass('active');		
-		}else if(arr == url+"admin/ingreso")
+		}else if(arr == url+"admin/user_ingreso")
 		{
 			$('.sidebar-menu li').removeClass('active');
 			$('.sidebar-menu li a').removeClass('active');
 			$('#user_ingreso').addClass('active');
 			$('#user').addClass('active');
-		}else if(arr == url+"admin/listado")
+		}else if(arr == url+"admin/user_listado")
 		{
 			$('.sidebar-menu li').removeClass('active');
 			$('.sidebar-menu li a').removeClass('active');
