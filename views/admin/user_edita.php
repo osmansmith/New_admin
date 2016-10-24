@@ -17,7 +17,7 @@
     <section class="wrapper site-min-height">
      <div class="row">
         <div class="col-sm-12 main-chart">
-            <h3 class="text-center" style="margin-bottom:50px;" >Ingresar Usuario</h3>            
+            <h3 class="text-center" style="margin-bottom:50px;" >Editar Usuario</h3>            
         </div>
         <form class="form-horizontal" id="formuseredita" method="post" action="<?php echo URL?>admin/update_user">
         <input type="text" value="<?php echo $id_usu?>" id="id_usu" name="id_usu" hidden="hidden">
@@ -63,7 +63,7 @@
                  </div>
              </div>                                                          
              <div class="form-group">
-                  <input type="submit" class="btn btn-primary form-control" id="btn_usuario" value="Registrar" />
+                  <input type="submit" class="btn btn-primary center-block" id="btn_usuario" value="Registrar" />
              </div>             
           </div>   
         </form>

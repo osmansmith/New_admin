@@ -36,7 +36,8 @@
            $this->view->render('add/menu_admin');
            $this->view->render('admin/user_lista');
            $this->view->render('add/footer');
-           $this->view->render('add/js_comun');                     
+           $this->view->render('add/js_comun');
+           $this->view->render('add/js_lista');                      
            $this->view->render('add/cierre');           
       }
        function cot_listado()
