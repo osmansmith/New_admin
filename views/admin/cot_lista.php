@@ -12,7 +12,8 @@
                             <th>Nombre</th>
                             <th>Rut</th>
                             <th>Modelo</th>
-                            <th>Tipo Contrato</th>                            
+                            <th>Tipo Contrato</th> 
+                            <th>Acción</th>                           
                         </tr>
                     </thead>
                     <tfoot>
@@ -24,7 +25,8 @@
                             <th>Nombre</th>
                             <th>Rut</th>
                             <th>Modelo</th>
-                            <th>Tipo Contrato</th>                            
+                            <th>Tipo Contrato</th> 
+                            <th>Acción</th>                           
                         </tr>
                     </tfoot>
                     <tbody>
@@ -114,7 +116,9 @@
                                 <td><?php echo $rut_cot_cli;?></td>
                                 <td><?php echo $nombre_mod;?></td>
                                 <td><?php echo $nombre_con;?></td>
-                                
+                                 <td class="acciones">
+                                    <button value="<?php echo $id_cot_cli;?>" type="button" class="btn btn-sm btn-icon btn-info detalle" data-toggle="tooltip" data-original-title="Ver Cotización"><i class="fa fa-search"></i></button>                                    
+                                </td>
                             </tr>
                             <?php  
                         }

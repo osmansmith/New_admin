@@ -47,6 +47,7 @@
            $this->view->render('admin/cot_lista');
            $this->view->render('add/footer');
            $this->view->render('add/js_comun');                     
+           $this->view->render('add/js_lista');                     
            $this->view->render('add/cierre');           
       }
       function insert_user()
