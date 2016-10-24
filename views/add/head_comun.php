@@ -46,6 +46,7 @@ if(session::getValue('perfil') == 1 ){
     <![endif]-->
     <!-- listado -->
     <link href="<?php echo URL?>public/assets/css/listado.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo URL?>public/assets/alert/sweet-alert.css">
   </head>
 
   <body>

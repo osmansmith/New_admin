@@ -14,7 +14,7 @@
           data : "nombre="+nombre+"&usuario="+usuario+"&mail="+mail+"&perfil="+perfil+"&password="+password,
           success : function(data)
           {
-              alert(data);
+              resultado(data);
           },
             error: function(jqXHR, textStatus, errorThrown){
                  if (jqXHR.status === 0) {

@@ -22,7 +22,9 @@
         $this->base->consulta("INSERT INTO cotizador_vendedor(nombre_ven,usuario_ven,clave_ven,correo_ven, perfil_ven)VALUES('".$nombre."','".$usuario."','".$password."','".$mail."',".$perfil.")");
             
             
-             echo 'consulta realizada con exito';
+        $jsondata['envio'] = 1;
+        echo json_encode($jsondata);
+        
         }
          function update_user($user)
         {

@@ -8,6 +8,7 @@
     <script class="include" type="text/javascript" src="<?php echo URL?>public/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="<?php echo URL?>public/assets/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo URL?>public/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="<?php echo URL?>public/assets/js/alert/sweet-alert.js"></script>
     <!--<script src="<?php echo URL?>public/assets/js/jquery.validate.js" type="text/javascript"></script>
     <script src="<?php echo URL?>public/assets/js/jquery.rut.js" type="text/javascript"></script>
     <script src="<?php echo URL?>public/assets/js/jquery.numeric.js" type="text/javascript"></script>-->
@@ -71,3 +72,31 @@
 		}
   </script>
 
+<script type="text/javascript">
+	function resultado(data) {
+        if(data.envio == 1){
+            swal({
+              title: "Gracias!",
+              text: "Cotización Enviada!",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#9bde94",
+              confirmButtonText: "Aceptar",
+              closeOnConfirm: false
+            },
+            function(){
+                // window.location='index.php';
+            });
+            //swal("Excelente!", "Registro eliminado con exito!", "success",location.reload());
+        }
+        if(data.envio == 2){
+            swal("Error!", "No ingrese urls por favor","error");
+        }
+        if(data.envio == 3){
+            swal("Error!", "Favor intentar de nuevo","error");
+        }
+        // if(data.envio != ""){
+        //     alert(data.envio);
+        // }
+    }
+</script>
