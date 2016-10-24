@@ -16,7 +16,8 @@
           $this->view->render('404');
       }
       function pdf()
-      {                        
+      {              
+          $this->view->render('add/head_comun');          
           $this->view->render('pdf');
       }
       function correo()
