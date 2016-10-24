@@ -1,17 +1,43 @@
 <script>
-  $("#formuser").submit( function(e){
-      e.preventDefault();
+    function resultado(data) {
+        if(data.envio == 1){
+            swal({
+              title: "Gracias!",
+              text: "Cotización Enviada!",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#9bde94",
+              confirmButtonText: "Aceptar",
+              closeOnConfirm: false
+            },
+            function(){
+                // window.location='index.php';
+            });
+            //swal("Excelente!", "Registro eliminado con exito!", "success",location.reload());
+        }
+        if(data.envio == 2){
+            swal("Error!", "No ingrese urls por favor","error");
+        }
+        if(data.envio == 3){
+            swal("Error!", "Favor intentar de nuevo","error");
+        }
+        // if(data.envio != ""){
+        //     alert(data.envio);
+        // }
+    }
+  $("#btn_usuario").click( function(){
+    
       var nombre = $("#nombre").val();
       var usuario = $("#usuario").val();
       var mail = $("#mail").val();
       var perfil = $("#perfil").val();
       var password = $("#password").val();
-      
-                                
+                 
       $.ajax({
           type : 'POST',
-          url  : $( this ).attr('action'),
+          url  : ("<?php echo URL?>admin/insert_user"),
           data : "nombre="+nombre+"&usuario="+usuario+"&mail="+mail+"&perfil="+perfil+"&password="+password,
+          dataType : 'json',
           success : function(data)
           {
               resultado(data);
@@ -64,7 +90,7 @@
                                 
       $.ajax({
           type : 'POST',
-          url  : $( this ).attr('action'),
+          url  : '<?php echo URL?>admin/update_user',
           data : "id_usu="+id_usu+"&nombre="+nombre+"&usuario="+usuario+"&mail="+mail+"&perfil="+perfil+"&password="+password,
           success : function(data)
           {

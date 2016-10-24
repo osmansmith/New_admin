@@ -53,12 +53,8 @@
       }
       function insert_user()
       {
-          if(isset($_POST['nombre']) and !empty($_POST['nombre']) and
-             isset($_POST['usuario']) and !empty($_POST['usuario']) and
-             isset($_POST['mail']) and !empty($_POST['mail']) and
-             isset($_POST['perfil']) and !empty($_POST['perfil']) and
-             isset($_POST['password']) and !empty($_POST['password']))
-            {
+        
+         
             $user = [
             'nombre'    => $_POST['nombre'], 
             'usuario'   => $_POST['usuario'], 
@@ -68,9 +64,7 @@
           ];
           
           $this->model->insert_user($user);         
-            }else{
-              $this->user_ingreso();
-          }
+            
           
       }
       function update_user()
