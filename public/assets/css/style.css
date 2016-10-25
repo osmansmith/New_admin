@@ -849,7 +849,8 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	border-bottom: 1px solid #989898;
 }
 
-.box1 span {
+.box1 span,
+.box1 i {
 	font-size: 50px;
 
 }

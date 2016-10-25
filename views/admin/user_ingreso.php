@@ -1,8 +1,8 @@
 <section id="main-content">
     <section class="wrapper site-min-height">
      <div class="row">
-        <div class="col-sm-12 main-chart">
-            <h3 class="text-center" style="margin-bottom:50px;" >Ingresar Usuario</h3>            
+        <div class="col-sm-12">
+            <h3 style="margin-bottom:50px;" ><i class="fa fa-user-plus" aria-hidden="true"></i> Ingresar Usuario</h3>            
         </div>
         <div class="form-horizontal" id="formuser"  >
         <div class="col-sm-6 col-sm-offset-3">

@@ -14,6 +14,8 @@
     <script src="<?php echo URL?>public/assets/js/jquery.numeric.js" type="text/javascript"></script>-->
     <!--common script for all pages-->
     <script src="<?php echo URL?>public/assets/js/common-scripts.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
     
     <!-- Librerias para las notificaciones flotantes
     <script type="text/javascript" src="<?php //echo URL?>public/assets/js/gritter/js/jquery.gritter.js"></script>
@@ -70,6 +72,108 @@
 			$('#cot_listado').addClass('active');
 			$('#cot').addClass('active');
 		}
+
+		// Graficos
+
+		
+                       
+                  
+                            $(function () {
+                                Highcharts.setOptions({
+                                    lang: {
+                                        decimalPoint: ',',
+                                        thousandsSep: '.'
+                                    },
+                                    credits: {
+                                        enabled: false
+                                    }
+                                });
+                                $('#grafico_venta').highcharts({
+                                    // chart: {
+                                    //     type: 'column'
+                                    // },
+                                    title: {
+                                        text: 'Cotizaciones Mensuales'
+                                    },
+                                    // subtitle: {
+                                    //     text: 'Source: WorldClimate.com'
+                                    // },
+                                    xAxis: {
+                                        categories: [
+                                            'Ene',
+                                            'Feb',
+                                            'Mar',
+                                            'Abr',
+                                            'May',
+                                            'Jun',
+                                            'Jul',
+                                            'Ago',
+                                            'Sep',
+                                            'Oct',
+                                            'Nov',
+                                            'Dic'
+                                        ],
+                                        crosshair: true
+                                    },
+                                    yAxis: {
+                                        min: 0,
+                                        tickPixelInterval: 50,
+                                        title: {
+                                            text: 'Cotizaciones'
+                                        },
+                                        labels: {
+                                                format: '{value:.,0f}'
+                                            }
+                                    },
+                                    tooltip: {
+                                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                            '<td style="padding:0"><b>$ {point.y:,.0f}</b></td></tr>',
+                                        footerFormat: '</table>',
+                                        shared: true,
+                                        useHTML: true
+                                    },
+                                    series: [{
+                                        name: 'Cotizaciones',
+                                        data: [
+                                            <?php
+                                            $conexion = new Conexion;
+                                            $fecha_venta = "01-01-".date("Y");
+                                            for($i=1;$i<=12;$i++){
+                                                $fecha_mes = date("m",strtotime($fecha_venta));
+                                               
+                                                //-------   SALDO
+                                                $consulta = 
+                                                    "
+                                                    SELECT
+                                                        id_cot
+                                                    FROM
+                                                        cotizador_cotizacion
+                                                    WHERE
+                                                        MONTH(fecha_cot) = '".$fecha_mes."' AND
+                                                        YEAR(fecha_cot) = '".date("Y")."'
+                                                    ";
+
+                                                $conexion->consulta($consulta);
+                                                $nquery = $conexion->total();
+                                                // $fila = $conexion->extraer_registro();
+                                                // $total_mes_grafico = utf8_encode($fila["fecha_cot"]);
+                                                
+                                                if($i < 12){
+                                                    echo $nquery.","; 
+                                                }
+                                                else{
+                                                    echo $nquery;
+                                                }
+                                                $fecha_venta = date('Y-m-d',strtotime ('+1 month' , strtotime ( $fecha_venta)));    
+                                            }
+                                           
+                                            ?>
+                                        
+                                        ]
+                                    }]
+                                });
+                            });
 
 	
 </script>

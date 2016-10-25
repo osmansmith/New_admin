@@ -66,8 +66,7 @@
       }
       function insert_vende()
       {
-
-         $datos = [   
+          $datos = [   
               'rut'           => $_POST['rut'],
               'nombres'       => $_POST['nombres'],
               'paterno'       => $_POST['paterno'],
@@ -88,10 +87,9 @@
               'credito'       => $_POST['credito'],
               'directo'       => $_POST['directo'],
               'subsidio'      => $_POST['subsidio'],
-              'contado'       => $_POST['contado']
-              
+              'contado'       => $_POST['contado'] 
           ];                                             
-              $this->model->insert_vende($datos);     
+              $this->model->insert_vende($datos);       
       }
       function update_vende()
       {

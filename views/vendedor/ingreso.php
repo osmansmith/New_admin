@@ -1,12 +1,11 @@
  <?php $conexion = new Conexion;?>
-
     <section id="main-content">
     <section class="wrapper site-min-height">
      <div class="row">
-        <div class="col-sm-12 main-chart">
-            <h3 class="text-center" style="margin-bottom:50px;" >Realizar Cotización</h3>            
+        <div class="col-sm-12">
+            <h3 style="margin-bottom:50px;" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Realizar Cotización</h3>            
         </div>
-        <form class="form-horizontal" id="commentForm" method="post" action="<?php echo URL?>vende/insert_vende">
+        <form class="form-horizontal" id="commentForm" method="post">
         <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">
                  <label class="col-sm-4 control-label">Rut*</label>
@@ -47,7 +46,7 @@
              
              
             </div>
-        <div class="col-sm-4 col-sm-offset-1">
+            <div class="col-sm-4 col-sm-offset-1">
             <div class="form-group">
                  <label class="col-sm-4 control-label">Mail*</label>
                  <div class="col-sm-8">
@@ -152,7 +151,7 @@
              </div>
              
           </div>
-        <div class="col-sm-4 col-sm-offset-1">
+            <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">
                      <label class="col-sm-4  control-label">Tipo de Contrato</label>
                  <div class="col-sm-8">

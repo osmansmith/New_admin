@@ -1,5 +1,6 @@
 <section id="main-content" class="listado">
     <section class="wrapper site-min-height">
+        <div class="row">
                  <div class="col-sm-12">
                   <h3><i class="fa fa-users" aria-hidden="true"></i> Seguimiento de Clientes</h3>
                   <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -114,7 +115,7 @@
                                 <td><?php echo $nombre_ven;?></td>
                                 <td><?php echo $nombre_cot_cli." ".$apellidop_cot_cli." ".$apellidom_cot_cli;?></td>
                                 <td><?php echo $rut_cot_cli;?></td>
-                                <td><?php echo $nombre_mod;?></td>
+                                <td><?php echo utf8_encode($nombre_mod);?></td>
                                 <td><?php echo $nombre_con;?></td>
                                 <td class="acciones">
                                     <button value="<?php echo $id_cot;?>" type="button" class="btn btn-sm btn-icon btn-info detalle" data-toggle="tooltip" data-original-title="Ver Cotización"><i class="fa fa-search"></i></button>
@@ -127,5 +128,6 @@
                     </tbody>
                 </table>
               </div>
+        </div>
      </section>
     </section>

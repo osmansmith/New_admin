@@ -16,6 +16,7 @@
            $this->view->render('admin/index');
            $this->view->render('add/footer');
            $this->view->render('add/js_comun');
+           $this->view->render('add/cierre');
            
       } 
       function user_ingreso()

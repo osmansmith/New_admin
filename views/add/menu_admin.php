@@ -5,7 +5,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Cambiar Menú"></div>
               </div>
             <!--logo start-->
-            <a href="<?php echo URL?>vende/index" class="logo"><img src="<?php echo URL?>/public/assets/img/logo-top.png" class="img-responsive"></a>
+            <a href="<?php echo URL?>admin/index" class="logo"><img src="<?php echo URL?>/public/assets/img/logo-top.png" class="img-responsive"></a>
             <!--logo end-->
            
             <div class="top-menu">

@@ -15,6 +15,7 @@
     <!-- Custom styles for this template -->
     <link href="<?php echo URL?>public/assets/css/style.css" rel="stylesheet">
     <link href="<?php echo URL?>public/assets/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo URL?>public/assets/alert/sweet-alert.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,47 +29,18 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="<?php echo URL?>user/ingreso" method="post">
+		      <form class="form-login" method="post" id="loginform">
 		        <h2 class="form-login-heading">Iniciar Sesión</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" name="nombre"  placeholder="Usuario" autofocus required>
+		            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Usuario" autofocus required>
 		            <br>
-		            <input type="password" class="form-control" name="pass" maxlength="5" placeholder="Contraseña" required>
+		            <input type="password" class="form-control" name="pass" id="pass" maxlength="5" placeholder="Contraseña" required>
 		            <label class="checkbox">
-		               <!-- <span class="pull-right">
-		                    <a data-toggle="modal" href="index/login#myModal"> Forgot Password?</a>
-		
-		                </span>-->
+		              
 		            </label>
 		            <button class="btn btn-theme03 btn-block" type="submit"><i class="fa fa-lock"></i> Acceder</button>
 		           <!-- <hr>-->
-		            
-		      
-		
-		        </div>
-		
-		          <!-- Modal -->
-		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-		              <div class="modal-dialog">
-		                  <div class="modal-content">
-		                      <div class="modal-header">
-		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                          <h4 class="modal-title">Forgot Password ?</h4>
-		                      </div>
-		                      <div class="modal-body">
-		                          <p>Enter your e-mail address below to reset your password.</p>
-		                          <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-		
-		                      </div>
-		                      <div class="modal-footer">
-		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-		                          <button class="btn btn-theme" type="button">Submit</button>
-		                      </div>
-		                  </div>
-		              </div>
-		          </div>
-		          <!-- modal -->
-		
+		        </div>				          		
 		      </form>	
 		        <div class="row">  	
 		        <div class="col-sm-4 col-md-4  col-sm-offset-4" style="margin-top:10px;">
@@ -92,7 +64,7 @@
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="<?php echo URL?>public/assets/js/jquery.js"></script>
     <script src="<?php echo URL?>public/assets/js/bootstrap.min.js"></script>
-
+    <script src="<?php echo URL?>public/assets/js/alert/sweet-alert.js"></script>
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
     <script type="text/javascript" src="<?php echo URL?>public/assets/js/jquery.backstretch.min.js"></script>
@@ -100,6 +72,77 @@
         $.backstretch("<?php echo URL?>public/assets/img/login-bg.jpg", {speed: 500});
     </script>
 
+    <script>
+$().ready(function() {
+    function resultado(data) {
+        if(data.envio == 1 ){
+            swal({
+              title: "Gracias!",
+              text: "Ingresó con éxito!",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#9bde94",
+              confirmButtonText: "Aceptar",
+              closeOnConfirm: true
+            },
+            function(){
+            	if (data.perfil == 0) 
+            	{
+            		window.location='<?php echo URL;?>vende/index';
+            	}
+            	if(data.perfil == 1)
+            	{
+            	    window.location='<?php echo URL;?>admin/index';
+            	}
+                
+            });
+            //swal("Excelente!", "Registro eliminado con exito!", "success",location.reload());
+        }
+        if(data.envio == 2){
+            swal("Error!", "Datos Incorrectos","error");
+        }
+        if(data.envio == 3){
+            swal("Error!", "Favor intenta de nuevo","error");
+        }
+        /*if(data.envio != ""){
+            alert(data.envio);
+        }*/
+    }
 
+    $('#loginform').submit(function() {
+        var nombre = $("#nombre").val();
+        var pass = $("#pass").val();
+
+        // alert(nombre);
+        $.ajax({
+            data : "nombre="+nombre+"&pass="+pass,
+            type : 'POST',
+            url  : '<?php echo URL?>user/ingreso',
+            dataType:'json',
+            success : function(data){
+               resultado(data);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                 if (jqXHR.status === 0) {
+                    alert('Not connect: Verify Network.');
+                  } else if (jqXHR.status == 404) {
+                    alert('Requested page not found [404]');
+                  } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error [500].');
+                  } else if (textStatus === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                  } else if (textStatus === 'timeout') {
+                    alert('Time out error.');
+                  } else if (textStatus === 'abort') {
+                    alert('Ajax request aborted.');
+                  } else {
+                    alert('Uncaught Error: ' + jqXHR.responseText);
+                  }
+            }
+        });
+    return false;
+    });
+});
+</script>
   </body>
 </html>

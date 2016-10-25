@@ -34,14 +34,31 @@
               }             
               if($val == 1)
               {
-                $this->select(); 
+                if($this->perfil == 0)
+                {
+                 /* echo "usted es vendedor";*/
+                  $jsondata['envio'] = 1;
+                  $jsondata['perfil'] = 0;
+                  echo json_encode($jsondata);
+                }else{
+                  // echo "usted es administrador";
+                   $jsondata['envio'] = 1;
+                  $jsondata['perfil'] = 1;
+                  echo json_encode($jsondata);
+                }
+                /*$this->select();
+*/
               }else
               {
-                  header("location:".URL."index/login?error=1"); 
+                   $jsondata['envio'] = 2;                 
+                  echo json_encode($jsondata);
+                 /*echo 'datos incorrectos';*/
+                 /* header("location:".URL."index/login?error=1"); */
               }
           }
         function select()
-        {                 
+        {     
+
              switch($this->perfil)
              {
                 case "0":

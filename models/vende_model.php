@@ -35,22 +35,61 @@
         $subsidio = $dato['subsidio'];   
         $contado = $dato['contado'];  
             
-        //aca consultar si existe el rut en cliente    
+        //aca consultar si existe el rut en cliente
+        $consulta = "SELECT 
+                        id_cot_cli 
+                     FROM
+                        cotizador_cliente
+                     WHERE 
+                     rut_cot_cli = '".$rut."'";
+        $this->base->consulta($consulta);
+        $fila = $this->base->extraer_registro();
+        $id_cot_cli = $fila['id_cot_cli'];
+
+        if (!empty($id_cot_cli)) {
+            $datos = [             
+              'rut'           => $dato['rut'],
+              'id_cli'        => $id_cot_cli,
+              'nombres'       => $dato['nombres'],
+              'paterno'       => $dato['paterno'],
+              'materno'       => $dato['materno'],
+              'fono_trabajo'  => $dato['fono_trabajo'],
+              'fono_celular'  => $dato['fono_celular'],
+              'fono_casa'     => $dato['fono_casa'],
+              'fono_contacto' => $dato['fono_contacto'],
+              'mail'          => $dato['mail'],
+              'direccion'     => $dato['direccion'],
+              'ciudad'        => $dato['ciudad'],
+              'comentario'    => $dato['comentario'],
+              'proyecto'      => $dato['proyecto'],
+              'modelo'        => $dato['modelo'],
+              'valor_vivienda'=> $dato['valor_vivienda'],
+              'porcentaje'    => $dato['porcentaje'],
+              'contrato'      => $dato['contrato'],
+              'credito'       => $dato['credito'],
+              'directo'       => $dato['directo'],
+              'subsidio'      => $dato['subsidio'],
+              'contado'       => $dato['contado']
+              
+          ]; 
+          $this->update_vende($datos);
+
+        } else{
             
-        $this->base->consulta("INSERT INTO cotizador_cliente(
-        nombre_cot_cli,
-        apellidop_cot_cli,
-        apellidom_cot_cli,
-        rut_cot_cli,
-        fono_casa_cot_cli,
-        correo_cot_cli,
-        direccion_cot_cli,
-        celular_cot_cli,
-        fono_trabajo_cot_cli,
-        fono_contacto_cot_cli,
-        contacto_cot_cli,
-        comentario_cot_cli,
-        ciudad_cot_cli, estado_cot_cli)VALUES('".$nombres."','".$paterno."','".$materno."','".$rut."','".$fono_casa."','".$mail."','".$direccion."','".$fono_celular."','".$fono_trabajo."','".$fono_contacto."','','".$comentario."','".$ciudad."', 0 )");
+            $this->base->consulta("INSERT INTO cotizador_cliente(
+            nombre_cot_cli,
+            apellidop_cot_cli,
+            apellidom_cot_cli,
+            rut_cot_cli,
+            fono_casa_cot_cli,
+            correo_cot_cli,
+            direccion_cot_cli,
+            celular_cot_cli,
+            fono_trabajo_cot_cli,
+            fono_contacto_cot_cli,
+            contacto_cot_cli,
+            comentario_cot_cli,
+            ciudad_cot_cli, estado_cot_cli)VALUES('".$nombres."','".$paterno."','".$materno."','".$rut."','".$fono_casa."','".$mail."','".$direccion."','".$fono_celular."','".$fono_trabajo."','".$fono_contacto."','','".$comentario."','".$ciudad."', 0 )");
         
             
         $ultimo = $this->base->ultimo_id();
@@ -73,8 +112,9 @@
         VALUES(
         ".$id_ven.",".$contrato.",'".$fecha."',".$uf.",".$credito.",".$subsidio.",".$contado.",".$directo.",".$ultimo.",".$modelo.",".$valor_vivienda.")");
             
-        header("location:".URL."vende/listado");
-            
+        $jsondata['envio'] = 1;
+        echo json_encode($jsondata);
+            }   
         }
          function update_vende($datos)
         {

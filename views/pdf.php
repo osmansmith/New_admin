@@ -175,7 +175,7 @@ $conexion = new conexion();
         	<table id="seccion2" width="100%">
             	<tr>
                 	<td style="font-weight:bolder;">
-                        COTIZACION PROYECTO <?php echo $pro_nom;?>
+                        COTIZACION PROYECTO <?php echo strtoupper($pro_nom);?>
                     </td>
                 </tr>
             </table>

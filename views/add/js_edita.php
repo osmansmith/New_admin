@@ -1,5 +1,33 @@
 <script>
 $().ready(function() {
+
+    function resultado(data) {
+        if(data.envio == 1){
+            swal({
+              title: "Gracias!",
+              text: "Contacto registrado con éxito!",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#9bde94",
+              confirmButtonText: "Aceptar",
+              closeOnConfirm: true
+            },
+            function(){
+                window.location='<?php echo URL;?>vende/listado';
+            });
+            //swal("Excelente!", "Registro eliminado con exito!", "success",location.reload());
+        }
+        if(data.envio == 2){
+            swal("Error!", "No ingreses urls por favor","error");
+        }
+        if(data.envio == 3){
+            swal("Error!", "Favor intenta de nuevo","error");
+        }
+        /*if(data.envio != ""){
+            alert(data.envio);
+        }*/
+    }
+
     $('#editaform').submit(function() {
         var rut = $("#rut").val();
         var id_cli = $("#id_cli").val();
@@ -55,7 +83,7 @@ $().ready(function() {
             url  : '<?php echo URL?>vende/update_vende',
             dataType:'json',
             success : function(data){
-                alert(data);  
+                resultado(data);  
             },
             error: function(jqXHR, textStatus, errorThrown){
                  if (jqXHR.status === 0) {
