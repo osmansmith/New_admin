@@ -1,7 +1,6 @@
 <?
-
 $perfil = session::getValue('perfil');
-$id_cot = session::getValue('id_cot');
+// $id_cot = session::getValue('id_cot');
 if(session::exist()){
     header("Location: ".URL."user/salir");
 }
@@ -17,284 +16,268 @@ $conexion = new conexion();
 </head>
 <body>
 	<?
-	$id = $id_cot;
-	$consulta = 
+	$id = $_POST["id"];
+    $consulta = 
         "
         SELECT 
-			cotizacion_cotizacion.uf_cot,
-			cotizacion_cotizacion.credito_cot,
-			cotizacion_cotizacion.directo_cot,
-			cotizacion_cotizacion.subsidio_cot,
-			cotizacion_cotizacion.contado_cot,
-			cotizacion_cotizacion.fecha_cot,
-			cotizacion_cotizacion.id_ven,
-			cotizacion_cotizacion.id_viv,
-			cotizacion_cotizacion.id_con,
-			contacto_contacto_especifica.nombre_con_esp,
-			contacto_contacto_especifica.direccion_con_esp,
-			contacto_contacto_especifica.papellido_con_esp,
-			contacto_contacto_especifica.mapellido_con_esp,
-			contacto_contacto_especifica.rut_con_esp,
-			contacto_contacto_especifica.contacto_con_esp,
-			contacto_contacto_especifica.fono_contacto_con_esp,
-			contacto_contacto_especifica.codigo_gescon_con_esp,
-			contacto_contacto_especifica.fono_casa_con_esp,
-			contacto_contacto_especifica.fono_contacto_con_esp,
-			contacto_contacto_especifica.correo_con_esp,
-			contacto_contacto_especifica.celular_con_esp
+            cotizador_cotizacion.uf_cot,
+            cotizador_cotizacion.directo_cot,
+            cotizador_cotizacion.credito_cot,
+            cotizador_cotizacion.subsidio_cot,
+            cotizador_cotizacion.contado_cot,
+            cotizador_cotizacion.fecha_cot,
+            cotizador_cotizacion.id_ven,
+            cotizador_cotizacion.valor_viv_cot,
+            cotizador_cotizacion.id_mod,
+            cotizador_cotizacion.id_con,
+            cotizador_cliente.nombre_cot_cli,
+            cotizador_cliente.direccion_cot_cli,
+            cotizador_cliente.apellidop_cot_cli,
+            cotizador_cliente.apellidom_cot_cli,
+            cotizador_cliente.rut_cot_cli,
+            cotizador_cliente.contacto_cot_cli,
+            cotizador_cliente.fono_contacto_cot_cli,
+            cotizador_cliente.fono_casa_cot_cli,
+            cotizador_cliente.correo_cot_cli,
+            cotizador_cliente.celular_cot_cli
         FROM 
-            contacto_contacto_especifica,
-			cotizacion_cotizacion
-		WHERE	
-			 cotizacion_cotizacion.id_cot = '".$id."' AND 
-			 cotizacion_cotizacion.id_cotizacion_cot = contacto_contacto_especifica.id_cont_esp
+            cotizador_cliente,
+            cotizador_cotizacion
+        WHERE   
+             cotizador_cotizacion.id_cot = '".$id."' AND 
+             cotizador_cotizacion.id_cliente_cot = cotizador_cliente.id_cot_cli
         ";
+    // echo $consulta;
     $conexion->consulta($consulta);
     while ($fila = $conexion->extraer_registro()) {
         $uf_cot = $fila["uf_cot"];
-		$credito_cot = $fila["credito_cot"];
-		$subsidio_cot = $fila["subsidio_cot"];
-		$directo_cot = $fila["directo_cot"];
-		$contado_cot = $fila["contado_cot"];
-		$nombre_con_esp = $fila["nombre_con_esp"];
-		$direccion_con_esp = $fila["direccion_con_esp"];
-		$fecha_cot = $fila["fecha_cot"];
-		$papellido_con_esp = $fila["papellido_con_esp"];
-		$mapellido_con_esp = $fila["mapellido_con_esp"];
-		$rut_con_esp = $fila["rut_con_esp"];
-		$contacto_con_esp = $fila["contacto_con_esp"];
-		$fono_contacto_con_esp = $fila["fono_contacto_con_esp"];
-		$fono_trabajo_con_esp = $fila["fono_trabajo_con_esp"];
-		$fono_casa_con_esp = $fila["fono_casa_con_esp"];
-		$fono_contacto_con_esp = $fila["fono_contacto_con_esp"];
-		$codigo_gescon_con_esp = $fila["codigo_gescon_con_esp"];
-		$correo_con_esp = $fila["correo_con_esp"];
-		$celular_con_esp = $fila["celular_con_esp"];
-		$id_ven = $fila["id_ven"];
-		$id_viv = $fila["id_viv"];
-		$id_con = $fila["id_con"];
-		$fecha = date("d-m-Y",strtotime($fecha_cot));
+        $credito_cot = $fila["credito_cot"];
+        $subsidio_cot = $fila["subsidio_cot"];
+        $contado_cot = $fila["contado_cot"];
+        $directo_cot = $fila["directo_cot"];
+        $nombre_cot_cli = $fila["nombre_cot_cli"];
+        $direccion_cot_cli = $fila["direccion_cot_cli"];
+        $fecha_cot = $fila["fecha_cot"];
+        $apellidop_cot_cli = $fila["apellidop_cot_cli"];
+        $apellidom_cot_cli = $fila["apellidom_cot_cli"];
+        $rut_cot_cli = $fila["rut_cot_cli"];
+        $contacto_cot_cli = $fila["contacto_cot_cli"];
+        $fono_contacto_cot_cli = $fila["fono_contacto_cot_cli"];
+        $fono_trabajo_cot_cli = $fila["fono_trabajo_cot_cli"];
+        $fono_casa_cot_cli = $fila["fono_casa_cot_cli"];
+        $correo_cot_cli = $fila["correo_cot_cli"];
+        $celular_cot_cli = $fila["celular_cot_cli"];
+        $id_ven = $fila["id_ven"];
+        $id_mod = $fila["id_mod"];
+        $valor_viv_cot = $fila["valor_viv_cot"];
+        $id_con = $fila["id_con"];
+        $fecha = date("d-m-Y",strtotime($fecha_cot));
     }
-	$contado_cot = $contado_cot + $directo_cot;
-	$consulta = 
+    $contado_cot = $contado_cot + $directo_cot;
+    $consulta = 
         "
         SELECT 
-			*
+            cotizador_proyecto.pro_nom,
+            cotizador_proyecto_modelo.nombre_mod
         FROM 
-            cotizacion_proyecto
-		WHERE	
-			 id_pro = '".$codigo_gescon_con_esp."'
+            cotizador_proyecto,
+            cotizador_proyecto_modelo
+        WHERE   
+            cotizador_proyecto_modelo.idcotizador_proyecto_modelo = ".$id_mod." AND
+            cotizador_proyecto_modelo.cotizador_pro_cod = cotizador_proyecto.idcotizador_proyecto
         ";
     $conexion->consulta($consulta);
     while ($fila = $conexion->extraer_registro()) {
-        $nombre_pro = $fila["nombre_pro"];
+        $pro_nom = $fila["pro_nom"];
+        $nombre_mod = $fila["nombre_mod"];
     }
-	$consulta = 
+    $consulta = 
         "
         SELECT 
-			*
+            *
         FROM 
-            cotizacion_vendedor
-		WHERE	
-			 id_ven = '".$id_ven."'
+            cotizador_vendedor
+        WHERE   
+             id_ven = '".$id_ven."'
         ";
     $conexion->consulta($consulta);
     while ($fila = $conexion->extraer_registro()) {
         $nombre_ven = $fila["nombre_ven"];
-		$apellidop_ven = $fila["apellidop_ven"];
-		$apellidom_ven = $fila["apellidom_ven"];
-		$correo_vendedor_cot = $fila["correo_ven"];
-		$fono_vendedor_cot = $fila["fono_ven"];
+        $correo_ven = $fila["correo_ven"];
     }
-	$consulta = 
+    $consulta = 
         "
         SELECT 
-			*
+            *
         FROM 
-            cotizacion_tipo_contrato
-		WHERE	
-			 id_con = '".$id_con."'
+            cotizador_tipo_contrato
+        WHERE   
+             id_con = '".$id_con."'
         ";
     $conexion->consulta($consulta);
     while ($fila = $conexion->extraer_registro()) {
         $nombre_con = $fila["nombre_con"];
     }
-	$consulta = 
-        "
-        SELECT 
-			*
-        FROM 
-            cotizacion_vivienda
-		WHERE	
-			 id_viv = '".$id_viv."'
-        ";
-    $conexion->consulta($consulta);
-    while ($fila = $conexion->extraer_registro()) {
-        $manzana_viv = $fila["manzana_viv"];
-		$sitio_viv = $fila["sitio_viv"];
-		$valor_uf_viv = $fila["valor_uf_viv"];
-    }
 
 				//---------------------------- FORMATO DE VALORES DE INGRESO DE LA COTIZACION(CREDITO-SUBSIDIO-AHORRO)
-				if($valor_uf_viv != 0){
-					$valor_uf_viv_formato = number_format($valor_uf_viv, 2, '.', ',')." UF";
-				}
-				else{
-					$valor_uf_viv_formato= "";
-				}
-				if($credito_cot != 0){
-					$credito_cot_formato = number_format($credito_cot, 2, '.', ',')." UF";
-				}
-				else{
-					$credito_cot_formato= "";
-				}
-				if($subsidio_cot != 0){
-					$subsidio_cot_formato = number_format($subsidio_cot, 2, '.', ',')." UF";
-				}
-				else{
-					$subsidio_cot_formato= "";
-				}
-				if($contado_cot != 0){
-					$contado_cot_formato = number_format($contado_cot, 2, '.', ',')." UF";
-				}
-				else{
-					$contado_cot_formato= "";
-				}
-				//---------------------------- VALORES PASADOS A PESOS(CREDITO-SUBSIDIO-AHORRO)
-				$valor_uf_viv_peso = $valor_uf_viv * $uf_cot;
-				$credito_cot_peso = $credito_cot * $uf_cot;
-				$subsidio_cot_peso = $subsidio_cot * $uf_cot;
-				$contado_cot_peso = $contado_cot * $uf_cot;
-				//---------------------------- FORMATO VALORES PASADOS A PESOS(CREDITO-SUBSIDIO-AHORRO)
-				if($valor_uf_viv_peso != ""){
-					$valor_uf_viv_peso_formato = "$".number_format($valor_uf_viv_peso, 2, '.', ',');
-				}
-				else{
-					$valor_uf_viv_peso_formato = "";
-				}
-				if($credito_cot_peso != ""){
-					$credito_cot_peso_formato = "$".number_format($credito_cot_peso, 2, '.', ',');
-				}
-				else{
-					$credito_cot_peso_formato = "";
-				}
-				if($subsidio_cot_peso != ""){
-					$subsidio_cot_peso_formato = "$".number_format($subsidio_cot_peso, 2, '.', ',');
-				}
-				else{
-					$subsidio_cot_peso_formato = "";
-				}
-				if($contado_cot_peso != ""){
-					$contado_cot_peso_formato = "$".number_format($contado_cot_peso, 2, '.', ',');
-				}
-				else{
-					$contado_cot_peso_formato = "";
-				}
-				//---------------------------- PORCENTAJE Y FORMATO VALORES(CREDITO-SUBSIDIO-AHORRO)
-				$credito_cot_porcentaje = ($credito_cot * 100) / $valor_uf_viv;
-				$subsidio_cot_porcentaje = ($subsidio_cot * 100) / $valor_uf_viv;
-				$contado_cot_porcentaje = ($contado_cot * 100) / $valor_uf_viv;
-				if($credito_cot_porcentaje != 0){
-					$credito_cot_porcentaje_formato = 	number_format($credito_cot_porcentaje, 2, '.', ',')."%";
-				}
-				else{
-					$credito_cot_porcentaje_formato = "";
-				}
-				
-				if($subsidio_cot_porcentaje != 0){
-					$subsidio_cot_porcentaje_formato = 	number_format($subsidio_cot_porcentaje, 2, '.', ',')."%";
-				}
-				else{
-					$subsidio_cot_porcentaje_formato = "";
-				}
-				if($contado_cot_porcentaje != 0){
-					$contado_cot_porcentaje_formato = 	number_format($contado_cot_porcentaje, 2, '.', ',')."%";
-				}
-				else{
-					$contado_cot_porcentaje_formato = "";
-				}
+                if($valor_viv_cot != 0){
+                    $valor_viv_cot_formato = number_format($valor_viv_cot, 2, ',', '.')." UF";
+                }
+                else{
+                    $valor_uf_viv_formato= "";
+                }
+                if($credito_cot != 0){
+                    $credito_cot_formato = number_format($credito_cot, 2, ',', '.')." UF";
+                }
+                else{
+                    $credito_cot_formato= "";
+                }
+                if($subsidio_cot != 0){
+                    $subsidio_cot_formato = number_format($subsidio_cot, 2, ',', '.')." UF";
+                }
+                else{
+                    $subsidio_cot_formato= "";
+                }
+                if($contado_cot != 0){
+                    $contado_cot_formato = number_format($contado_cot, 2, ',', '.')." UF";
+                }
+                else{
+                    $contado_cot_formato= "";
+                }
+                //---------------------------- VALORES PASADOS A PESOS(CREDITO-SUBSIDIO-AHORRO)
+                $valor_viv_cot_peso = $valor_viv_cot * $uf_cot;
+                $credito_cot_peso = $credito_cot * $uf_cot;
+                $subsidio_cot_peso = $subsidio_cot * $uf_cot;
+                $contado_cot_peso = $contado_cot * $uf_cot;
+                //---------------------------- FORMATO VALORES PASADOS A PESOS(CREDITO-SUBSIDIO-AHORRO)
+                if($valor_viv_cot_peso != ""){
+                    $valor_viv_cot_peso_formato = "$ ".number_format($valor_viv_cot_peso, 0, ',', '.');
+                }
+                else{
+                    $valor_viv_cot_peso_formato = "";
+                }
+                if($credito_cot_peso != ""){
+                    $credito_cot_peso_formato = "$ ".number_format($credito_cot_peso, 0, ',', '.');
+                }
+                else{
+                    $credito_cot_peso_formato = "";
+                }
+                if($subsidio_cot_peso != ""){
+                    $subsidio_cot_peso_formato = "$ ".number_format($subsidio_cot_peso, 0, ',', '.');
+                }
+                else{
+                    $subsidio_cot_peso_formato = "";
+                }
+                if($contado_cot_peso != ""){
+                    $contado_cot_peso_formato = "$ ".number_format($contado_cot_peso, 0, ',', '.');
+                }
+                else{
+                    $contado_cot_peso_formato = "";
+                }
+                //---------------------------- PORCENTAJE Y FORMATO VALORES(CREDITO-SUBSIDIO-AHORRO)
+                $credito_cot_porcentaje = ($credito_cot * 100) / $valor_viv_cot;
+                $subsidio_cot_porcentaje = ($subsidio_cot * 100) / $valor_viv_cot;
+                $contado_cot_porcentaje = ($contado_cot * 100) / $valor_viv_cot;
+                if($credito_cot_porcentaje != 0){
+                    $credito_cot_porcentaje_formato =   number_format($credito_cot_porcentaje, 2, '.', ',')."%";
+                }
+                else{
+                    $credito_cot_porcentaje_formato = "";
+                }
+                
+                if($subsidio_cot_porcentaje != 0){
+                    $subsidio_cot_porcentaje_formato =  number_format($subsidio_cot_porcentaje, 2, '.', ',')."%";
+                }
+                else{
+                    $subsidio_cot_porcentaje_formato = "";
+                }
+                if($contado_cot_porcentaje != 0){
+                    $contado_cot_porcentaje_formato =   number_format($contado_cot_porcentaje, 2, '.', ',')."%";
+                }
+                else{
+                    $contado_cot_porcentaje_formato = "";
+                }
 			function PMT($i, $n, $p){
-				$valor = $i * $p * pow((1 + $i), $n) / (1 - pow((1 + $i), $n));
-				return $valor;
-			}
-			//------------------------------- CALCULO DIVIDENDO A 20 AÑOS
-			$credito = -$credito_cot;
-			$numero_pago = 12 * 20;
-			$interes = 5.00;
-			
-			$valor_uf_8 = PMT($interes / 1200, $numero_pago, $credito);
-			$valor_uf_8_formato = number_format($valor_uf_8, 2, '.', ',');
-			$valor_peso_8 = $valor_uf_8_formato * $uf_cot;
-			$valor_peso_8_formato = "$ ".number_format($valor_peso_8, 2, '.', ',');
-			
-			$valor_uf_8_formato_renta = $valor_uf_8_formato * 4;
-			$valor_peso_8_renta = $valor_uf_8_formato_renta * $uf_cot;
-			$valor_peso_8_formato_renta = "$ ".number_format($valor_peso_8_renta, 2, '.', ',');
-			$valor_uf_8_formato_renta = $valor_uf_8_formato_renta." UF";
-			$valor_uf_8_formato = $valor_uf_8_formato." UF";
-			
-			//------------------------------- CALCULO DIVIDENDO A 25 AÑOS
-			$credito = -$credito_cot;
-			$numero_pago = 12 * 25;
-			$interes = 5.00;
-			
-			$valor_uf_20 = PMT($interes / 1200, $numero_pago, $credito);
-			$valor_uf_20_formato = number_format($valor_uf_20, 2, '.', ',');
-			$valor_peso_20 = $valor_uf_20_formato * $uf_cot;
-			$valor_peso_20_formato = "$ ".number_format($valor_peso_20, 2, '.', ',');
-			
-			$valor_uf_20_formato_renta = $valor_uf_20_formato * 4;
-			$valor_peso_20_renta = $valor_uf_20_formato_renta * $uf_cot;
-			$valor_peso_20_formato_renta = "$ ".number_format($valor_peso_20_renta, 2, '.', ',');
-			$valor_uf_20_formato_renta = $valor_uf_20_formato_renta." UF";
-			$valor_uf_20_formato = $valor_uf_20_formato." UF";
-			
-			//------------------------------- CALCULO DIVIDENDO A 30 AÑOS
-			$credito = -$credito_cot;
-			$numero_pago = 12 * 30;
-			$interes = 5.00;
-			
-			$valor_uf_30 = PMT($interes / 1200, $numero_pago, $credito);
-			$valor_uf_30_formato = number_format($valor_uf_30, 2, '.', ',');
-			$valor_peso_30 = $valor_uf_30_formato * $uf_cot;
-			$valor_peso_30_formato = "$ ".number_format($valor_peso_30, 2, '.', ',');
-			
-			$valor_uf_30_formato_renta = $valor_uf_30_formato * 4;
-			$valor_peso_30_renta = $valor_uf_30_formato_renta * $uf_cot;
-			$valor_peso_30_formato_renta = "$ ".number_format($valor_peso_30_renta, 2, '.', ',');
-			$valor_uf_30_formato_renta = $valor_uf_30_formato_renta." UF";
-			$valor_uf_30_formato = $valor_uf_30_formato." UF";
-	?>
-<?
-$email_msg1  = "<div id='contenedor'>
+                $valor = $i * $p * pow((1 + $i), $n) / (1 - pow((1 + $i), $n));
+                return $valor;
+            }
+            //------------------------------- CALCULO DIVIDENDO A 8 AÑOS
+            $credito = -$credito_cot;
+            $numero_pago = 12 * 20;
+            $interes = 5.00;
+            
+            $valor_uf_8 = PMT($interes / 1200, $numero_pago, $credito);
+            $valor_uf_8_formato = number_format($valor_uf_8, 2, ',', '.');
+            $valor_peso_8 = $valor_uf_8_formato * $uf_cot;
+            $valor_peso_8_formato = "$ ".number_format($valor_peso_8, 2, ',', '.');
+            
+            $valor_uf_8_formato_renta = $valor_uf_8_formato * 4;
+            $valor_peso_8_renta = $valor_uf_8_formato_renta * $uf_cot;
+            $valor_peso_8_formato_renta = "$ ".number_format($valor_peso_8_renta, 2, ',', '.');
+            $valor_uf_8_formato_renta = $valor_uf_8_formato_renta." UF";
+            $valor_uf_8_formato = $valor_uf_8_formato." UF";
+            
+            //------------------------------- CALCULO DIVIDENDO A 20 AÑOS
+            $credito = -$credito_cot;
+            $numero_pago = 12 * 25;
+            $interes = 5.00;
+            
+            $valor_uf_20 = PMT($interes / 1200, $numero_pago, $credito);
+            $valor_uf_20_formato = number_format($valor_uf_20, 2, ',', '.');
+            $valor_peso_20 = $valor_uf_20_formato * $uf_cot;
+            $valor_peso_20_formato = "$ ".number_format($valor_peso_20, 2, ',', '.');
+            
+            $valor_uf_20_formato_renta = $valor_uf_20_formato * 4;
+            $valor_peso_20_renta = $valor_uf_20_formato_renta * $uf_cot;
+            $valor_peso_20_formato_renta = "$ ".number_format($valor_peso_20_renta, 2, ',', '.');
+            $valor_uf_20_formato_renta = $valor_uf_20_formato_renta." UF";
+            $valor_uf_20_formato = $valor_uf_20_formato." UF";
+            
+            //------------------------------- CALCULO DIVIDENDO A 30 AÑOS
+            $credito = -$credito_cot;
+            $numero_pago = 12 * 30;
+            $interes = 5.00;
+            
+            $valor_uf_30 = PMT($interes / 1200, $numero_pago, $credito);
+            $valor_uf_30_formato = number_format($valor_uf_30, 2, ',', '.');
+            $valor_peso_30 = $valor_uf_30_formato * $uf_cot;
+            $valor_peso_30_formato = "$ ".number_format($valor_peso_30, 2, ',', '.');
+            
+            $valor_uf_30_formato_renta = $valor_uf_30_formato * 4;
+            $valor_peso_30_renta = $valor_uf_30_formato_renta * $uf_cot;
+            $valor_peso_30_formato_renta = "$ ".number_format($valor_peso_30_renta, 2, ',', '.');
+            $valor_uf_30_formato_renta = $valor_uf_30_formato_renta." UF";
+            $valor_uf_30_formato = $valor_uf_30_formato." UF";
+
+$email_msg1  = "<div id='contenedor' style='font-family:Arial;'>
     	<header>
-        	<table id='seccion1' width='100%'>
-            	<tr>
-                	<td width='60%'>
+        	<table id='seccion1' style='width:80%; margin:0 auto;'>
+                <tr>
+                    <td width='60%'>
                         <div id='logo'>
-                            <img src='http://www.iserena.cl/img/logo_iserena.jpg' width='113' height='146' alt='logo'>
+                            <img src='http://www.inmobiliarianova.cl/img/logo-nova.jpg' width='200' alt='logo'>
                         </div>
                     </td>
                     <td width='40%'>
-                    	EMPRESA: INMOBILIARIA SERENA<br>
-                        DIRECCION: LOS CARRERA 110<br>
-                        FONO 2221543 <br>
+                        EMPRESA: INMOBILIARIA NOVA<br>
+                        DIRECCION: Avda. El Santo Nº 1656<br>
+                        FONO (51) 2558 201<br>
                         CIUDAD: LA SERENA
                     </td>
                 </tr>
             </table>
-            <hr width=100%>	
+            <hr style='width:80%; margin:0 auto;'> 
         </header>
-        <section id='contenido'>
-        	<table id='seccion2' width='100%'>
+        <section id='contenido' style='font-family:Arial;'>
+        	<table id='seccion2' style='width:80%; margin:0 auto;'>
             	<tr>
-                	<td style='font-weight:bolder;'>
-                        COTIZACION PROYECTO ".$nombre_pro." (N° ".$id.")
+                    <td style='font-weight:bolder;'>
+                        COTIZACION PROYECTO ".$pro_nom."
                     </td>
                 </tr>
             </table>
         	<br>
-            <table id='seccion3' width='800px' align='center'>
+            <table id='seccion' style='width:80%; margin:0 auto;' align='center'>
             	<tr>
                 	<td>
                         <b>Antecedentes del Cliente</b> <p>
@@ -305,7 +288,7 @@ $email_msg1  = "<div id='contenedor'>
                         <b>Rut:</b> <br>
                     </td>
                     <td width='25%'>
-                    	".$rut_con_esp."
+                    	".$rut_cot_cli."
                     </td>
                     <td width='25%'>
                         <b>Fecha:</b>  <br>
@@ -319,7 +302,7 @@ $email_msg1  = "<div id='contenedor'>
                         <b>Nombre:</b> <br>
                     </td>
                     <td width='25%'>
-                    	".$nombre_con_esp." ".$papellido_con_esp." ".$mapellido_con_esp."
+                    	".$nombre_cot_cli." ".$apellidop_cot_cli." ".$apellidom_cot_cli."
                     </td>
                     <td width='25%'>
                         <b>Valor UF:</b>  <br>
@@ -333,13 +316,13 @@ $email_msg1  = "<div id='contenedor'>
                         <b>Dirección:</b> <br>
                     </td>
                     <td width='25%'>
-                    	".$direccion_con_esp."
+                    	".$direccion_cot_cli."
                     </td>
                     <td width='25%'>
                         <b>Fono Casa:</b>  <br>
                     </td>
                     <td width='25%'>
-                    	051- ".$fono_casa_con_esp."
+                    	051- ".$fono_casa_cot_cli."
                     </td>
                 </tr>
                 <tr>
@@ -347,13 +330,13 @@ $email_msg1  = "<div id='contenedor'>
                        <b>Celular:</b> <br>
                     </td>
                     <td width='25%'>
-                    	9-".$celular_con_esp."
+                    	9-".$celular_cot_cli."
                     </td>
                     <td width='25%'>
                         <b>Ejecutivo de Ventas:</b>  <br>
                     </td>
                     <td width='25%'>
-                    	".$nombre_ven." ".$apellidop_ven." ".$apellidom_ven."
+                    	".$nombre_ven."
                     </td>
                 </tr>
                 <tr>
@@ -361,32 +344,28 @@ $email_msg1  = "<div id='contenedor'>
                         <b>Correo:</b> <br>
                     </td>
                     <td width='25%'>
-                    	".$correo_con_esp."
+                    	".$correo_cot_cli."
                     </td>
                     <td width='25%'>
                         <b>Fono Contacto:</b>  <br>
                     </td>
                     <td width='25%'>
-                    	".$fono_contacto_con_esp."
+                    	".$fono_contacto_cot_cli."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
-                        <b>Correo Vendedor:</b> <br>
+                    <td width='25%'>
                     </td>
                     <td width='25%'>
-                    	".$correo_vendedor_cot."
                     </td>
                     <td width='25%'>
-                        <b>Fono Vendedor:</b>  <br>
                     </td>
                     <td width='25%'>
-                    	".$fono_vendedor_cot."
                     </td>
                 </tr>
             </table>
             <p><br>
-            <table id='seccion4' width='800px' align='center' style='margin-top:-30px;'>
+            <table id='seccion4' align='center' style='width:80%; margin:0 auto;'>
             	<tr>
                 	<td>
                         <b>Antecedentes de la Vivienda <p></p>
@@ -397,15 +376,15 @@ $email_msg1  = "<div id='contenedor'>
                         <b>Proyecto:</b> <br>
                     </td>
                     <td width='25%' colspan='3' align='left'>
-                    	".$nombre_pro."
+                    	".$pro_nom."
                     </td>
                 </tr>
                 <tr>
                 	<td width='25%' colspan='1'>
-                        <b>Vivienda:</b> <br>
+                        <b>Modelo:</b> <br>
                     </td>
                     <td width='25%' colspan='3' align='left'>
-                    	".$manzana_viv."-".$sitio_viv."
+                    	".$nombre_mod."
                     </td>
                 </tr>
                 <tr>
@@ -436,10 +415,10 @@ $email_msg1  = "<div id='contenedor'>
                         <b>Valor Vivienda:</b> <br>
                     </td>
                     <td width='25%'>
-                    	".$valor_uf_viv_formato."
+                    	".$valor_viv_cot_formato."
                     </td>
                     <td width='25%'>
-                        ".$valor_uf_viv_peso_formato." <br>
+                        ".$valor_viv_cot_peso_formato." <br>
                     </td>
                     <td width='25%'>
                     	
@@ -488,7 +467,7 @@ $email_msg1  = "<div id='contenedor'>
                     </td>
                 </tr>
             </table>
- <table id='seccion4' width='800px' align='center' style='margin-top:20px;'>
+ <table id='seccion4' align='center' style='width:80%; margin:20px auto;'>
             	<tr>
                 	<td colspan='2'>
                         <b>Antecedentes del Dividendo según Plazos <p></p>
@@ -580,35 +559,40 @@ $email_msg1  = "<div id='contenedor'>
                 </tr>
             </table>
             
-            <table style='margin-top:20px;'>
+            <table style='width:80%; margin:20px auto;'>
             	<tr>
                 	<td>
                     	<b>NOTAS</b>
                     </td>
                 </tr>
                 <tr>
-                	<td>
-                    	<b>1- Esta cotización no es un contrato, por lo tanto no garantiza la compra.</b>
+                    <td>
+                        <b>1- Esta cotización no es un contrato, por lo tanto no garantiza la compra.</b>
                     </td>
                 </tr>
                 <tr>
-                	<td>
-                    	<b>2- La presente cotización tiene una validez de 10 dias.</b>
+                    <td>
+                        <b>2- La presente cotización tiene una validez de 3 dias.</b>
                     </td>
                 </tr>
                 <tr>
-                	<td>
-                    	<b>3- El valor del dividendo no incluye seguros ni impuestos.</b>
+                    <td>
+                        <b>3- El valor del dividendo no incluye seguros ni impuestos.</b>
                     </td>
                 </tr>
                 <tr>
-                	<td>
-                    	<b>4- El monto exacto del dividendo debe ser proporcionado por la institución financiera que otarga el crédito.</b>
+                    <td>
+                        <b>4- El monto exacto del dividendo debe ser proporcionado por la institución financiera que otarga el crédito.</b>
                     </td>
                 </tr>
                 <tr>
-                	<td>
-                    	<b>5- El dividendo calculado es solo referencial.</b>
+                    <td>
+                        <b>5- El dividendo calculado es solo referencial.</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>6- La superficie del terreno es aproximada y puede sufrir variaciones.</b>
                     </td>
                 </tr>
             </table>
@@ -617,12 +601,12 @@ $email_msg1  = "<div id='contenedor'>
         </section>
     </div>";
 
-$headers1  = "From: Inmobiliaria Serena<info@inmobiliariaserena.cl>\r\n";
+$headers1  = "From: Inmobiliaria Nova<info@inmobiliarianova.cl>\r\n";
 $headers1 .= "Content-Type: text/html; charset=UTF-8\n";
-$asunto1 = 'Registro Cotización Expo Vivienda - I. Serena';
+$asunto1 = 'Cotización Inmobiliaria Nova - Proyecto: '.$pro_nom;
 
   /**************************************/
-	mail($correo_con_esp,$asunto1,$email_msg1,$headers1);
+	mail($correo_cot_cli,$asunto1,$email_msg1,$headers1);
 
 /****************************************/
 ?>

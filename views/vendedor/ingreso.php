@@ -111,7 +111,7 @@
               <div class="form-group">
                      <label class="col-sm-4  control-label">Proyecto</label>
                  <div class="col-sm-8">
-                     <select name="proyecto" id="proyecto" class="form-control">
+                     <select name="proyecto" id="proyecto" class="form-control" required>
                          <option value="" selected>Elija una opción</option>
                          <?php $sql="SELECT * FROM cotizador_proyecto";
                                $conexion->consulta($sql);
@@ -128,7 +128,7 @@
               <div class="form-group">
                      <label class="col-sm-4  control-label">Modelos</label>
                  <div class="col-sm-8">
-                     <select name="modelo" id="modelo" class="form-control">
+                     <select name="modelo" id="modelo" class="form-control" required>
                      <option value="" selected>Seleccione un Proyecto</option>                         
                      </select>
                  </div>

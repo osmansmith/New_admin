@@ -1,5 +1,6 @@
 <script>
-    $("#btn_enviar").click(function(){
+$().ready(function() {
+    $('#editaform').submit(function() {
         var rut = $("#rut").val();
         var id_cli = $("#id_cli").val();
         var nombres = $("#nombres").val();
@@ -47,52 +48,34 @@
         'subsidio' : subsidio,
         'contado' : contado        
         };
-        
+        // alert(edita['valor_vivienda']);
         $.ajax({
+            data : edita,
             type : 'POST',
             url  : '<?php echo URL?>vende/update_vende',
-            data : edita,
-            success : function(dat){
-                alert('datos enviados exitosamente');
-               
-                
+            dataType:'json',
+            success : function(data){
+                alert(data);  
             },
             error: function(jqXHR, textStatus, errorThrown){
                  if (jqXHR.status === 0) {
-
                     alert('Not connect: Verify Network.');
-
                   } else if (jqXHR.status == 404) {
-
                     alert('Requested page not found [404]');
-
                   } else if (jqXHR.status == 500) {
-
                     alert('Internal Server Error [500].');
-
                   } else if (textStatus === 'parsererror') {
-
                     alert('Requested JSON parse failed.');
-
                   } else if (textStatus === 'timeout') {
-
                     alert('Time out error.');
-
                   } else if (textStatus === 'abort') {
-
                     alert('Ajax request aborted.');
-
                   } else {
-
                     alert('Uncaught Error: ' + jqXHR.responseText);
-
                   }
             }
         });
-        
-        
-        
-        
+    return false;
     });
-
+});
 </script>

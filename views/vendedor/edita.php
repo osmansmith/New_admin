@@ -34,7 +34,7 @@ while($fila = $conexion->extraer_registro())
         <div class="col-sm-12 main-chart">
             <h3 class="text-center" style="margin-bottom:50px;" >Realizar Cotización</h3>            
         </div>
-        <form class="form-horizontal" method="post">
+        <form class="form-horizontal" id="editaform" method="post">
         <input type="text" id="id_cli" value="<?php echo $id_cli?>" hidden>
         <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">
@@ -73,8 +73,6 @@ while($fila = $conexion->extraer_registro())
                      <input type="number" id="fono_celular" name="fono_celular" class="form-control" value="<?php echo $fono_celular;?>" >
                  </div>
              </div>
-             
-             
             </div>
         <div class="col-sm-4 col-sm-offset-1">
             <div class="form-group">
@@ -143,7 +141,7 @@ while($fila = $conexion->extraer_registro())
               <div class="form-group">
                      <label class="col-sm-4  control-label">Proyecto</label>
                  <div class="col-sm-8">
-                     <select name="proyecto" id="proyecto" class="form-control">
+                     <select name="proyecto" id="proyecto" class="form-control" required>
                          <option value="" selected>Elija una opción</option>
                          <?php $sql="SELECT * FROM cotizador_proyecto";
                                $conexion->consulta($sql);
@@ -160,7 +158,7 @@ while($fila = $conexion->extraer_registro())
               <div class="form-group">
                      <label class="col-sm-4  control-label">Modelos</label>
                  <div class="col-sm-8">
-                     <select name="modelo" id="modelo" class="form-control">
+                     <select name="modelo" id="modelo" class="form-control" required>
                      <option value="" selected>Seleccione un Proyecto</option>                         
                      </select>
                  </div>
@@ -188,7 +186,7 @@ while($fila = $conexion->extraer_registro())
              <div class="form-group">
                      <label class="col-sm-4  control-label">Tipo de Contrato</label>
                  <div class="col-sm-8">
-                     <select name="contrato" id="contrato" class="form-control">
+                     <select name="contrato" id="contrato" class="form-control" required>
                          <option value="" selected>Seleccione tipo de contrato</option> 
                          <?php
                           $sql="SELECT * FROM cotizador_tipo_contrato";
@@ -231,10 +229,10 @@ while($fila = $conexion->extraer_registro())
              </div>  
              
           </div>
-        <div class="col-sm-2 col-sm-offset-3">
-              <button class="btn btn-primary form-control" id="btn_enviar" >enviar</button>
-          </div>
-          
+            <div class="col-sm-2 col-sm-offset-3">
+              <!-- <button class="btn btn-primary form-control" id="btn_enviar" >Ingresar</button> -->
+              <input class="btn btn-primary center-block" type="submit" value="Ingresar"/>
+            </div>
         </form>
       </div>
      </section>
