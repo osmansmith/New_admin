@@ -3,7 +3,7 @@
         if(data.envio == 1){
             swal({
               title: "Gracias!",
-              text: "Cotización Enviada!",
+              text: "Registro completado!",
               type: "success",
               showCancelButton: false,
               confirmButtonColor: "#9bde94",
@@ -11,7 +11,7 @@
               closeOnConfirm: false
             },
             function(){
-                // window.location='index.php';
+                     window.location='<?php echo URL?>admin/user_listado';
             });
             //swal("Excelente!", "Registro eliminado con exito!", "success",location.reload());
         }
@@ -25,7 +25,8 @@
         //     alert(data.envio);
         // }
     }
-  $("#btn_usuario").click( function(){
+   
+  $("#formuseringreso").submit( function(){
     
       var nombre = $("#nombre").val();
       var usuario = $("#usuario").val();
@@ -35,7 +36,7 @@
                  
       $.ajax({
           type : 'POST',
-          url  : ("<?php echo URL?>admin/insert_user"),
+          url  : '<?php echo URL?>admin/insert_user',
           data : "nombre="+nombre+"&usuario="+usuario+"&mail="+mail+"&perfil="+perfil+"&password="+password,
           dataType : 'json',
           success : function(data)
@@ -75,26 +76,25 @@
             }
       });
       
-      
+     return false;   
   });
-    $("#formuseredita").submit( function(e){
-      e.preventDefault();
-        
+    $("#formuseredita").submit( function(){
+              
       var nombre = $("#nombre").val();
       var id_usu = $("#id_usu").val();
       var usuario = $("#usuario").val();
       var mail = $("#mail").val();
       var perfil = $("#perfil").val();
       var password = $("#password").val();
-      
-                                
+                                      
       $.ajax({
           type : 'POST',
           url  : '<?php echo URL?>admin/update_user',
           data : "id_usu="+id_usu+"&nombre="+nombre+"&usuario="+usuario+"&mail="+mail+"&perfil="+perfil+"&password="+password,
+          dataType : 'json',
           success : function(data)
           {
-              alert(data);
+              resultado(data);
           },
             error: function(jqXHR, textStatus, errorThrown){
                  if (jqXHR.status === 0) {
@@ -129,6 +129,6 @@
             }
       });
       
-      
+    return false;  
   });
 </script>

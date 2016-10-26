@@ -26,7 +26,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="<?php echo URL?>public/assets/img/ui-sam.jpg" class="img-circle" width="30"></a></p>
+              	  <p class="centered"><a href="#"><img src="<?php echo URL?>public/assets/img/ui-sam.jpg" class="img-circle" width="30"></a></p>
               	  <h5 class="centered"><?php echo session::getValue('nombre');?><br><small>Vendedor</small></h5>
               	  	
                   <li class="mt">

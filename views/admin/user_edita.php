@@ -19,7 +19,7 @@
         <div class="col-sm-12 main-chart">
             <h3 class="text-center" style="margin-bottom:50px;" >Editar Usuario</h3>            
         </div>
-        <form class="form-horizontal" id="formuseredita" method="post" action="<?php echo URL?>admin/update_user">
+        <form class="form-horizontal" id="formuseredita" method="post">
         <input type="text" value="<?php echo $id_usu?>" id="id_usu" name="id_usu" hidden="hidden">
         <div class="col-sm-6 col-sm-offset-3">
              <div class="form-group">
@@ -44,7 +44,7 @@
                  <label class="col-sm-4 control-label">Perfil</label>
                  <div class="col-sm-8">
                    <select name="perfil" id="perfil" class="form-control">
-                    <option value="<?php echo $perfil?>"><?php if($perfil == 0) echo 'Vendedor'; else echo 'Administrador';?></option>
+                    <option value="<?php echo $perfil?>" selected><?php if($perfil == 0) echo 'Vendedor'; else echo 'Administrador';?></option>
                     <option value="1">Administrador</option>
                     <option value="0">Vendedor</option>
                  </select>  
@@ -63,7 +63,7 @@
                  </div>
              </div>                                                          
              <div class="form-group">
-                  <input type="submit" class="btn btn-primary center-block" id="btn_usuario" value="Registrar" />
+                  <input type="submit" class="btn btn-primary center-block" id="user_edita" value="Registrar" />
              </div>             
           </div>   
         </form>

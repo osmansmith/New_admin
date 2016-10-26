@@ -4,7 +4,7 @@
         <div class="col-sm-12">
             <h3 style="margin-bottom:50px;" ><i class="fa fa-user-plus" aria-hidden="true"></i> Ingresar Usuario</h3>            
         </div>
-        <div class="form-horizontal" id="formuser"  >
+        <form class="form-horizontal" id="formuseringreso" method="post">
         <div class="col-sm-6 col-sm-offset-3">
              <div class="form-group">
                  <label class="col-sm-4 control-label">Nombre Completo</label>
@@ -47,11 +47,12 @@
                  </div>
              </div>                                                          
              <div class="form-group">
-                  <!--<input type="submit" class="btn btn-primary center-block" id="btn_usuario" value="Registrar" />-->
-                 <button  class="btn btn-primary center-block" id="btn_usuario" >Registrar</button>
+                  <input type="submit" class="btn btn-primary center-block" id="user_ingreso" value="Registrar" />
+                  
+                
              </div>             
           </div>   
-        </div>
+        </form>
       </div>     
      </section>
  </section>
