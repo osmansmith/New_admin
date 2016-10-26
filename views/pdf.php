@@ -44,6 +44,7 @@ $conexion = new conexion();
         body{
             background-color: #fff;
         }
+
     </style>
 </head>
 <body>
@@ -121,7 +122,7 @@ $conexion = new conexion();
     $conexion->consulta($consulta);
     while ($fila = $conexion->extraer_registro()) {
         $pro_nom = $fila["pro_nom"];
-        $nombre_mod = $fila["nombre_mod"];
+        $nombre_mod = utf8_encode($fila["nombre_mod"]);
     }
 	$consulta = 
         "
@@ -156,20 +157,19 @@ $conexion = new conexion();
     	<header>
         	<table id="seccion1" width="100%">
             	<tr>
-                	<td width="60%">
-                        <div id="logo">
+                	<td style="text-align: center">
+                        <div id="logo" style="text-align:center; margin: 0 auto 10px">
                             <img src="<?php echo URL ?>public/assets/img/logo-nova.jpg" width="200" alt="logo">
                         </div>
                     </td>
-                    <td width="40%">
-                    	EMPRESA: INMOBILIARIA NOVA<br>
-                        DIRECCION: Avda. El Santo Nº 1656<br>
-                        FONO (51) 2558 201<br>
-                        CIUDAD: LA SERENA
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="font-size:14px; text-align:center; margin: 0px">INMOBILIARIA NOVA - Avda. El Santo Nº 1656 - (51) 2558 201 - LA SERENA</h4>
                     </td>
                 </tr>
             </table>
-            <hr width=100%>	
+        <hr width="100%" style="margin-top:5px">	
         </header>
         <section id="contenido">
         	<table id="seccion2" width="100%">
@@ -180,95 +180,72 @@ $conexion = new conexion();
                 </tr>
             </table>
         	<br>
-            <table id="seccion3" width="800px" align="center">
-            	<tr>
-                	<td>
-                        <b>Antecedentes del Cliente</b> <p>
+            <table class="cliente" style="border: 1px solid #ccc; border-collapse: collapse; width: 800px; margin: 0px auto 14px;">
+                <thead>
+                    <tr>
+                        <th colspan="4" style="text-align: left; padding:5px">Información del Cliente</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td style="padding: 2px 5px"><b>Rut:</b></td>
+                    <td style="padding: 2px 5px"><?php echo $rut_cot_cli;?></td>
+                    <td style="padding: 2px 5px">
+                        <b>Ejecutivo de Ventas:</b>
+                    </td>
+                    <td style="padding: 2px 5px">
+                        <?php echo $nombre_ven;?>
                     </td>
                 </tr>
                 <tr>
-                	<td width="25%">
-                        <b>Rut:</b> <br>
-                    </td>
-                    <td width="25%">
-                    	<?php echo $rut_cot_cli;?>
-                    </td>
-                    <td width="25%">
+                    <td style="padding: 2px 5px"><b>Nombre:</b></td>
+                    <td style="padding: 2px 5px"><?php echo $nombre_cot_cli;?> <?php echo $apellidop_cot_cli;?> <?php echo $apellidom_cot_cli;?></td>
+                    <td style="padding: 2px 5px">
                         <b>Fecha:</b><br>
                     </td>
-                    <td width="25%">
-                    	<?php echo $fecha;?>
+                    <td style="padding: 2px 5px">
+                        <?php echo $fecha;?>
                     </td>
                 </tr>
                 <tr>
-                	<td width="25%">
-                        <b>Nombre:</b> <br>
+                    <td style="padding: 2px 5px"><b>Dirección:</b></td>
+                    <td style="padding: 2px 5px"><?php echo $direccion_cot_cli;?></td>
+                    <td style="padding: 2px 5px">
+                        <b>Valor UF:</b>
                     </td>
-                    <td width="25%">
-                    	<?php echo $nombre_cot_cli;?> <?php echo $apellidop_cot_cli;?> <?php echo $apellidom_cot_cli;?>
-                    </td>
-                    <td width="25%">
-                        <b>Valor UF:</b>  <br>
-                    </td>
-                    <td width="25%">
-                    	<?php echo "$ ".number_format($uf_cot, 2, ',', '.');?>
+                    <td style="padding: 2px 5px">
+                        <?php echo "$ ".number_format($uf_cot, 2, ',', '.');?>
                     </td>
                 </tr>
                 <tr>
-                	<td width="25%">
-                        <b>Dirección:</b> <br>
+                    <td style="padding: 2px 5px">
+                       <b>Celular:</b>
                     </td>
-                    <td width="25%">
-                    	<?php echo $direccion_cot_cli;?>
+                    <td style="padding: 2px 5px">
+                        <?php echo $celular_cot_cli;?>
                     </td>
-                    <td width="25%">
-                        <b>Fono Casa:</b>  <br>
+                    <td style="padding: 2px 5px">
+                        <b>Fono Casa:</b>
                     </td>
-                    <td width="25%">
-                    	51-<?php echo $fono_casa_cot_cli;?>
-                    </td>
-                </tr>
-                <tr>
-                	<td width="25%">
-                       <b>Celular:</b> <br>
-                    </td>
-                    <td width="25%">
-                    	<?php echo $celular_cot_cli;?>
-                    </td>
-                    <td width="25%">
-                        <b>Ejecutivo de Ventas:</b>  <br>
-                    </td>
-                    <td width="25%">
-                    	<?php echo $nombre_ven;?>
+                    <td style="padding: 2px 5px">
+                        51-<?php echo $fono_casa_cot_cli;?>
                     </td>
                 </tr>
                 <tr>
-                	<td width="25%">
-                        <b>Correo:</b> <br>
+                    <td style="padding: 2px 5px">
+                        <b>Correo:</b>
                     </td>
-                    <td width="25%">
-                    	<?php echo $correo_cot_cli;?>
+                    <td style="padding: 2px 5px">
+                        <?php echo $correo_cot_cli;?>
                     </td>
-                    <td width="25%">
-                        <b>Fono Contacto:</b>  <br>
+                    <td style="padding: 2px 5px">
+                        <b>Fono Contacto:</b>
                     </td>
-                    <td width="25%">
-                    	<?php echo $fono_contacto_cot_cli;?>
-                    </td>
-                </tr>
-                <tr>
-                	<td width="25%">
-                    </td>
-                    <td width="25%">
-                    </td>
-                    <td width="25%">
-                    </td>
-                    <td width="25%">
+                    <td style="padding: 2px 5px">
+                        <?php echo $fono_contacto_cot_cli;?>
                     </td>
                 </tr>
-            </table>
-            <p><br>
-            <table id="seccion4" width="800px" align="center" style="margin-top:-30px;">
+            </table><br>
+            <table id="seccion4" style="border-collapse: collapse; width: 800px; margin: 0px auto 10px;">
             	<tr>
                 	<td>
                         <b>Antecedentes de la Vivienda <p></p>
@@ -448,8 +425,7 @@ $conexion = new conexion();
                     	<?=$contado_cot_porcentaje_formato?>
                     </td>
                 </tr>
-            </table>
-            <p><br>
+            </table><br>
             <?
 			function PMT($i, $n, $p){
 				$valor = $i * $p * pow((1 + $i), $n) / (1 - pow((1 + $i), $n));
@@ -503,7 +479,7 @@ $conexion = new conexion();
 			$valor_uf_30_formato_renta = $valor_uf_30_formato_renta." UF";
 			$valor_uf_30_formato = $valor_uf_30_formato." UF";
 			?>
-            <table id="seccion4" width="800px" align="center" style="margin-top:-30px;">
+            <table id="seccion4" style="border-collapse: collapse; width: 800px; margin: 0px auto 14px;">
             	<tr>
                 	<td colspan="2">
                         <b>Antecedentes del Dividendo según Plazos <p></p>
@@ -636,7 +612,7 @@ $conexion = new conexion();
             <div class="clear"></div>
         </section>
         </div>
-        <table style="margin-top:30px; margin:auto">
+        <table style="margin-top:30px; margin:auto;">
             <tr>
                 <td align="center"><input type="button" value="Imprimir" class="btn btn-primary" onclick="imprimir();"/></td>
                 <td  align="left"><input type="button" value="Envío por Correo" class="btn btn-primary" id="correo"/></td>

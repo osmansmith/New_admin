@@ -55,11 +55,11 @@ $conexion = new conexion();
         $subsidio_cot = $fila["subsidio_cot"];
         $contado_cot = $fila["contado_cot"];
         $directo_cot = $fila["directo_cot"];
-        $nombre_cot_cli = $fila["nombre_cot_cli"];
-        $direccion_cot_cli = $fila["direccion_cot_cli"];
+        $nombre_cot_cli = utf8_encode($fila["nombre_cot_cli"]);
+        $direccion_cot_cli = utf8_encode($fila["direccion_cot_cli"]);
         $fecha_cot = $fila["fecha_cot"];
-        $apellidop_cot_cli = $fila["apellidop_cot_cli"];
-        $apellidom_cot_cli = $fila["apellidom_cot_cli"];
+        $apellidop_cot_cli = utf8_encode($fila["apellidop_cot_cli"]);
+        $apellidom_cot_cli = utf8_encode($fila["apellidom_cot_cli"]);
         $rut_cot_cli = $fila["rut_cot_cli"];
         $contacto_cot_cli = $fila["contacto_cot_cli"];
         $fono_contacto_cot_cli = $fila["fono_contacto_cot_cli"];
@@ -249,320 +249,297 @@ $conexion = new conexion();
             $valor_uf_30_formato_renta = $valor_uf_30_formato_renta." UF";
             $valor_uf_30_formato = $valor_uf_30_formato." UF";
 
-$email_msg1  = "<div id='contenedor' style='font-family:Arial;'>
-    	<header>
-        	<table id='seccion1' style='width:80%; margin:0 auto;'>
+
+$email_msg1 = "<div id='contenedor' style='font-family: Arial; font-size: 12px'>
+        <div id='imprimir'>
+        <header>
+            <table id='seccion1' width='100%'>
                 <tr>
-                    <td width='60%'>
-                        <div id='logo'>
-                            <img src='http://www.inmobiliarianova.cl/img/logo-nova.jpg' width='200' alt='logo'>
+                    <td style='text-align: center'>
+                        <div id='logo' style='text-align:center; margin: 0 auto 10px'>
+                            <img src='http://www.inmobiliarianova.cl/cotizador/public/assets/img/logo-nova.jpg' width='200' alt='logo'>
                         </div>
                     </td>
-                    <td width='40%'>
-                        EMPRESA: INMOBILIARIA NOVA<br>
-                        DIRECCION: Avda. El Santo Nº 1656<br>
-                        FONO (51) 2558 201<br>
-                        CIUDAD: LA SERENA
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style='font-size:14px; text-align:center; margin: 0px'>INMOBILIARIA NOVA - Avda. El Santo Nº 1656 - (51) 2558 201 - LA SERENA</h4>
                     </td>
                 </tr>
             </table>
-            <hr style='width:80%; margin:0 auto;'> 
+        <hr width='100%' style='margin-top:5px'>    
         </header>
-        <section id='contenido' style='font-family:Arial;'>
-        	<table id='seccion2' style='width:80%; margin:0 auto;'>
-            	<tr>
+        <section id='contenido'>
+            <table id='seccion2' width='100%'>
+                <tr>
                     <td style='font-weight:bolder;'>
-                        COTIZACION PROYECTO ".$pro_nom."
+                        COTIZACION PROYECTO ".strtoupper($pro_nom)."
                     </td>
                 </tr>
             </table>
-        	<br>
-            <table id='seccion' style='width:80%; margin:0 auto;' align='center'>
-            	<tr>
-                	<td>
-                        <b>Antecedentes del Cliente</b> <p>
+            <br>
+            <table class='cliente' style='border: 1px solid #ccc; border-collapse: collapse; width: 800px; margin: 0px auto 14px;'>
+                <thead>
+                    <tr>
+                        <th colspan='4' style='text-align: left; padding:5px'>Información del Cliente</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td style='padding: 2px 5px'><b>Rut:</b></td>
+                    <td style='padding: 2px 5px'>".$rut_cot_cli."</td>
+                    <td style='padding: 2px 5px'>
+                        <b>Ejecutivo de Ventas:</b>
+                    </td>
+                    <td style='padding: 2px 5px'>
+                        ".$nombre_ven."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
-                        <b>Rut:</b> <br>
+                    <td style='padding: 2px 5px'><b>Nombre:</b></td>
+                    <td style='padding: 2px 5px'>".$nombre_cot_cli." ".$apellidop_cot_cli." ".$apellidom_cot_cli."</td>
+                    <td style='padding: 2px 5px'>
+                        <b>Fecha:</b><br>
                     </td>
-                    <td width='25%'>
-                    	".$rut_cot_cli."
-                    </td>
-                    <td width='25%'>
-                        <b>Fecha:</b>  <br>
-                    </td>
-                    <td width='25%'>
-                    	".$fecha."
+                    <td style='padding: 2px 5px'>
+                        ".$fecha."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
-                        <b>Nombre:</b> <br>
+                    <td style='padding: 2px 5px'><b>Dirección:</b></td>
+                    <td style='padding: 2px 5px'>".$direccion_cot_cli."</td>
+                    <td style='padding: 2px 5px'>
+                        <b>Valor UF:</b>
                     </td>
-                    <td width='25%'>
-                    	".$nombre_cot_cli." ".$apellidop_cot_cli." ".$apellidom_cot_cli."
-                    </td>
-                    <td width='25%'>
-                        <b>Valor UF:</b>  <br>
-                    </td>
-                    <td width='25%'>
-                    	$".number_format($uf_cot, 2, ',', '.')."
+                    <td style='padding: 2px 5px'>
+                        $ ".number_format($uf_cot, 2, ',', '.')."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
-                        <b>Dirección:</b> <br>
+                    <td style='padding: 2px 5px'>
+                       <b>Celular:</b>
                     </td>
-                    <td width='25%'>
-                    	".$direccion_cot_cli."
+                    <td style='padding: 2px 5px'>
+                        ".$celular_cot_cli."
                     </td>
-                    <td width='25%'>
-                        <b>Fono Casa:</b>  <br>
+                    <td style='padding: 2px 5px'>
+                        <b>Fono Casa:</b>
                     </td>
-                    <td width='25%'>
-                    	051- ".$fono_casa_cot_cli."
-                    </td>
-                </tr>
-                <tr>
-                	<td width='25%'>
-                       <b>Celular:</b> <br>
-                    </td>
-                    <td width='25%'>
-                    	9-".$celular_cot_cli."
-                    </td>
-                    <td width='25%'>
-                        <b>Ejecutivo de Ventas:</b>  <br>
-                    </td>
-                    <td width='25%'>
-                    	".$nombre_ven."
+                    <td style='padding: 2px 5px'>
+                        51-".$fono_casa_cot_cli."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
-                        <b>Correo:</b> <br>
+                    <td style='padding: 2px 5px'>
+                        <b>Correo:</b>
                     </td>
-                    <td width='25%'>
-                    	".$correo_cot_cli."
+                    <td style='padding: 2px 5px'>
+                        ".$correo_cot_cli."
                     </td>
-                    <td width='25%'>
-                        <b>Fono Contacto:</b>  <br>
+                    <td style='padding: 2px 5px'>
+                        <b>Fono Contacto:</b>
                     </td>
-                    <td width='25%'>
-                    	".$fono_contacto_cot_cli."
+                    <td style='padding: 2px 5px'>
+                        ".$fono_contacto_cot_cli."
                     </td>
                 </tr>
+            </table><br>
+            <table id='seccion4' style='border-collapse: collapse; width: 800px; margin: 0px auto 10px;'>
                 <tr>
-                    <td width='25%'>
-                    </td>
-                    <td width='25%'>
-                    </td>
-                    <td width='25%'>
-                    </td>
-                    <td width='25%'>
-                    </td>
-                </tr>
-            </table>
-            <p><br>
-            <table id='seccion4' align='center' style='width:80%; margin:0 auto;'>
-            	<tr>
-                	<td>
+                    <td>
                         <b>Antecedentes de la Vivienda <p></p>
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%' colspan='1'>
+                    <td width='25%' colspan='1'>
                         <b>Proyecto:</b> <br>
                     </td>
                     <td width='25%' colspan='3' align='left'>
-                    	".$pro_nom."
+                        ".$pro_nom."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%' colspan='1'>
+                    <td width='25%' colspan='1'>
                         <b>Modelo:</b> <br>
                     </td>
                     <td width='25%' colspan='3' align='left'>
-                    	".$nombre_mod."
+                        ".$nombre_mod."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%' colspan='1'>
+                    <td width='25%' colspan='1'>
                         <b>Tipo de Contrato:</b> <br>
                     </td>
                     <td width='25%' colspan='3' align='left'>
-                    	".$nombre_con."
+                        ".$nombre_con."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
+                    <td width='25%'>
                         <b>Descripción</b> <br>
                     </td>
                     <td width='25%'>
-                    	<b>UF</b>
+                        <b>UF</b>
                     </td>
                     <td width='25%'>
                         <b>Pesos</b>  <br>
                     </td>
                     <td width='25%'>
-                    	<b>Porcentaje</b>
-                    </td>
-                </tr>
-
-                <tr>
-                	<td width='25%'>
-                        <b>Valor Vivienda:</b> <br>
-                    </td>
-                    <td width='25%'>
-                    	".$valor_viv_cot_formato."
-                    </td>
-                    <td width='25%'>
-                        ".$valor_viv_cot_peso_formato." <br>
-                    </td>
-                    <td width='25%'>
-                    	
+                        <b>Porcentaje</b>
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
+                    <td width='25%'>
+                        <b>Valor Vivienda:</b>
+                    </td>
+                    <td width='25%'>
+                        ".$valor_viv_cot_formato."
+                    </td>
+                    <td width='25%'>
+                        ".$valor_viv_cot_peso_formato."
+                    </td>
+                    <td width='25%'>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td width='25%'>
                        <b> Crédito Solicitado: </b><br>
                     </td>
                     <td width='25%'>
-                    	".$credito_cot_formato."
+                        ".$credito_cot_formato."
                     </td>
                     <td width='25%'>
-                        ".$credito_cot_peso_formato."  <br>
+                        ".$credito_cot_peso_formato."
                     </td>
                     <td width='25%'>
-                    	".$credito_cot_porcentaje_formato."
+                        ".$credito_cot_porcentaje_formato."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
+                    <td width='25%'>
                         <b>Subsidio Habitacional: </b><br>
                     </td>
                     <td width='25%'>
-                    	".$subsidio_cot_formato." 
+                        ".$subsidio_cot_formato." 
                     </td>
                     <td width='25%'>
-                        ".$subsidio_cot_peso_formato."<br>
+                        ".$subsidio_cot_peso_formato."
                     </td>
                     <td width='25%'>
-                    	".$subsidio_cot_porcentaje_formato."
+                        ".$subsidio_cot_porcentaje_formato."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
+                    <td width='25%'>
                         <b>Pago Contado:</b> <br>
                     </td>
                     <td width='25%'>
-                    	".$contado_cot_formato." 
+                        ".$contado_cot_formato." 
                     </td>
                     <td width='25%'>
-                        ".$contado_cot_peso_formato." <br>
+                        ".$contado_cot_peso_formato."
                     </td>
                     <td width='25%'>
-                    	".$contado_cot_porcentaje_formato."
+                        ".$contado_cot_porcentaje_formato."
                     </td>
                 </tr>
-            </table>
- <table id='seccion4' align='center' style='width:80%; margin:20px auto;'>
-            	<tr>
-                	<td colspan='2'>
+            </table><br>
+            <table id='seccion4' style='border-collapse: collapse; width: 800px; margin: 0px auto 14px;'>
+                <tr>
+                    <td colspan='2'>
                         <b>Antecedentes del Dividendo según Plazos <p></p>
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
+                    <td width='25%'>
                         <b>Descripción</b> <br>
                     </td>
                     <td width='25%'>
-                    	<b>20 años</b>
+                        <b>20 años</b>
                     </td>
                     <td width='25%'>
                         <b>25 años</b>  <br>
                     </td>
                     <td width='25%'>
-                    	<b>30 años</b>
+                        <b>30 años</b>
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
+                    <td width='25%'>
                         <b>Tasa de interés:</b> <br>
                     </td>
                     <td width='25%'>
-                    	5.00 %
+                        5.00 %
                     </td>
                     <td width='25%'>
                         5.00 %  <br>
                     </td>
                     <td width='25%'>
-                    	5.00 %
+                        5.00 %
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
+                    <td width='25%'>
                         <b>Dividendo en UF:</b> <br>
                     </td>
                     <td width='25%'>
-                    	".$valor_uf_8_formato."
+                        ".$valor_uf_8_formato."
                     </td>
                     <td width='25%'>
-                        ".$valor_uf_20_formato."  <br>
+                        ".$valor_uf_20_formato."
                     </td>
                     <td width='25%'>
-                    	".$valor_uf_30_formato."
+                        ".$valor_uf_30_formato."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
+                    <td width='25%'>
                         <b>Dividendo en Pesos:</b> <br>
                     </td>
                     <td width='25%'>
-                    	".$valor_peso_8_formato."
+                        ".$valor_peso_8_formato."
                     </td>
                     <td width='25%'>
-                        ".$valor_peso_20_formato." <br>
+                        ".$valor_peso_20_formato."
                     </td>
                     <td width='25%'>
-                    	".$valor_peso_30_formato."
+                        ".$valor_peso_30_formato."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
+                    <td width='25%'>
                        <b> Renta Líquida Mínima en UF:</b> <br>
                     </td>
                     <td width='25%'>
-                    	".$valor_uf_8_formato_renta."
+                        ".$valor_uf_8_formato_renta."
                     </td>
                     <td width='25%'>
-                        ".$valor_uf_20_formato_renta." <br>
+                        ".$valor_uf_20_formato_renta."
                     </td>
                     <td width='25%'>
-                    	".$valor_uf_30_formato_renta."
+                        ".$valor_uf_30_formato_renta."
                     </td>
                 </tr>
                 <tr>
-                	<td width='25%'>
+                    <td width='25%'>
                         <b>Renta Líquida Mínima en Pesos: </b><br>
                     </td>
                     <td width='25%'>
-                    	".$valor_peso_8_formato_renta."
+                        ".$valor_peso_8_formato_renta."
                     </td>
                     <td width='25%'>
-                        ".$valor_peso_20_formato_renta." <br>
+                        ".$valor_peso_20_formato_renta."
                     </td>
                     <td width='25%'>
-                    	".$valor_peso_30_formato_renta."
+                        ".$valor_peso_30_formato_renta."
                     </td>
                 </tr>
             </table>
             
-            <table style='width:80%; margin:20px auto;'>
-            	<tr>
-                	<td>
-                    	<b>NOTAS</b>
+            <table style='margin-top:20px;'>
+                <tr>
+                    <td>
+                        <b>NOTAS</b>
                     </td>
                 </tr>
                 <tr>
@@ -599,7 +576,7 @@ $email_msg1  = "<div id='contenedor' style='font-family:Arial;'>
             
             <div class='clear'></div>
         </section>
-    </div>";
+        </div>";
 
 $headers1  = "From: Inmobiliaria Nova<info@inmobiliarianova.cl>\r\n";
 $headers1 .= "Content-Type: text/html; charset=UTF-8\n";
