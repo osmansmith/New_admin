@@ -29,43 +29,49 @@
   container: 'body'
   })
 });
- var url = "<?php echo URL?>";
+ // var url = "<?php echo URL?>";
+ // var url_web=window.location.href;
+ // var arr=url_web.split('/')[2];    
+ var url = "http://inmobiliarianova.cl/cotizador/";
  var url_web=window.location.href;
- var arr=url_web.split('.')[0];     	
-        
-	   if(arr == url+"vende/index")
+ // var arr=url_web.split('/')[4];
+ // var arr2 = url_web.split('/')[0]+'/'+url_web.split('/')[1]+'/'+url_web.split('/')[2]+'/'+url_web.split('/')[3];
+ var arr2 = url_web;
+// alert(arr2);
+// alert(url+"admin/user_ingreso"); 
+	   if(arr2 == url+"vende/index")
 		{
 			$('.sidebar-menu li a').removeClass('active');
 			$('#escritorio').addClass('active');		
-		}else if(arr == url+"vende/ingreso")
+		}else if(arr2 == url+"vende/ingreso")
 		{
 			$('.sidebar-menu li').removeClass('active');
 			$('.sidebar-menu li a').removeClass('active');
 			$('#cot_ingresar').addClass('active');
 			$('#cot').addClass('active');
-		}else if(arr == url+"vende/listado")
+		}else if(arr2 == url+"vende/listado")
 		{
 			$('.sidebar-menu li').removeClass('active');
 			$('.sidebar-menu li a').removeClass('active');
 			$('#cot_listar').addClass('active');
 			$('#cot').addClass('active');
-		}else if(arr == url+"admin/index")
+		}else if(arr2 == url+"admin/index")
 		{
 			$('.sidebar-menu li a').removeClass('active');
 			$('#escritorio').addClass('active');		
-		}else if(arr == url+"admin/user_ingreso")
+		}else if(arr2 == url+"admin/user_ingreso")
 		{
 			$('.sidebar-menu li').removeClass('active');
 			$('.sidebar-menu li a').removeClass('active');
 			$('#user_ingreso').addClass('active');
 			$('#user').addClass('active');
-		}else if(arr == url+"admin/user_listado")
+		}else if(arr2 == url+"admin/user_listado")
 		{
 			$('.sidebar-menu li').removeClass('active');
 			$('.sidebar-menu li a').removeClass('active');
 			$('#user_listado').addClass('active');
 			$('#user').addClass('active');
-		}else if(arr == url+"admin/cot_listado")
+		}else if(arr2 == url+"admin/cot_listado")
 		{
 			$('.sidebar-menu li').removeClass('active');
 			$('.sidebar-menu li a').removeClass('active');
