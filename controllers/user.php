@@ -1,8 +1,8 @@
 <?php  
   class user extends Controller
   {
-      # la funcion constructora hereda de controller
-      function __construct() este gypsy jazz es weno
+      # la funcion constructora hereda de controller kasdhkjasdhkja
+      function __construct() 
       {
            parent::__construct();
       }            
