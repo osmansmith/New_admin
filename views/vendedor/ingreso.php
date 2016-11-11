@@ -108,7 +108,7 @@
         <div class="col-sm-10 col-sm-offset-1"><hr></div>      
         <div class="col-sm-4 col-sm-offset-1">
               <div class="form-group">
-                     <label class="col-sm-4  control-label">Proyecto</label>
+                     <label class="col-sm-4  control-label">Proyecto*</label>
                  <div class="col-sm-8">
                      <select name="proyecto" id="proyecto" class="form-control" required>
                          <option value="" selected>Elija una opción</option>
@@ -125,7 +125,7 @@
                  </div>
              </div>
               <div class="form-group">
-                     <label class="col-sm-4  control-label">Modelos</label>
+                     <label class="col-sm-4  control-label">Modelo*</label>
                  <div class="col-sm-8">
                      <select name="modelo" id="modelo" class="form-control" required>
                      <option value="" selected>Seleccione un Proyecto</option>                         
@@ -133,7 +133,7 @@
                  </div>
              </div>
               <div class="form-group">
-                     <label class="col-sm-4  control-label">Valor Vivienda*</label>
+                     <label class="col-sm-4  control-label">Valor Vivienda UF *</label>
                  <div class="col-sm-8">
                      <input type="number" id="valor_vivienda" name="valor_vivienda" class="form-control" required>
                  </div>
@@ -153,7 +153,7 @@
           </div>
             <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">
-                     <label class="col-sm-4  control-label">Tipo de Contrato</label>
+                     <label class="col-sm-4  control-label">Tipo de Contrato*</label>
                  <div class="col-sm-8">
                      <select name="contrato" id="contrato" class="form-control">
                          <option value="" selected>Seleccione tipo de contrato</option> 
@@ -172,14 +172,14 @@
                  </div>
              </div>
               <div class="form-group">
-                     <label class="col-sm-4  control-label">Credito*</label>
+                     <label class="col-sm-4  control-label">Credito* <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Este valor se calcula solo al hacer click en Calcular"></i></label>
                  <div class="col-sm-8">
                      <input type="text" id="credito" name="credito" class="form-control">
-                     <a class="btn btn-primary" id="boton_credito">Calcular credito</a>
+                     <a class="btn btn-primary" id="boton_credito" data-toggle="tooltip" data-placement="top" title="Debe Colocar el Valor vivienda para que calcule el Crédito">Calcular credito</a>
                  </div>
              </div>
               <div class="form-group">
-                     <label class="col-sm-4  control-label">Pago Directo</label>
+                     <label class="col-sm-4  control-label">Pago Directo <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Este valor se calcula solo al hacer click en Calcular"></i></label>
                  <div class="col-sm-8">
                      <input type="text" id="directo" name="directo" class="form-control" >
                  </div>
@@ -204,5 +204,6 @@
           
         </form>
       </div>
+      <p>* Campos Obligatorios</p>
      </section>
  </section>

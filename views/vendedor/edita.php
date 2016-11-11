@@ -31,8 +31,8 @@ while($fila = $conexion->extraer_registro())
    <section id="main-content">
     <section class="wrapper site-min-height">
      <div class="row">
-        <div class="col-sm-12 main-chart">
-            <h3 class="text-center" style="margin-bottom:50px;" >Realizar Cotización</h3>            
+        <div class="col-sm-12">
+            <h3 style="margin-bottom:50px;" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Realizar Cotización</h3>           
         </div>
         <form class="form-horizontal" id="editaform" method="post">
         <input type="text" id="id_cli" value="<?php echo $id_cli?>" hidden>
@@ -139,7 +139,7 @@ while($fila = $conexion->extraer_registro())
         <div class="col-sm-10 col-sm-offset-1"><hr></div>      
         <div class="col-sm-4 col-sm-offset-1">
               <div class="form-group">
-                     <label class="col-sm-4  control-label">Proyecto</label>
+                     <label class="col-sm-4  control-label">Proyecto*</label>
                  <div class="col-sm-8">
                      <select name="proyecto" id="proyecto" class="form-control" required>
                          <option value="" selected>Elija una opción</option>
@@ -156,7 +156,7 @@ while($fila = $conexion->extraer_registro())
                  </div>
              </div>
               <div class="form-group">
-                     <label class="col-sm-4  control-label">Modelos</label>
+                     <label class="col-sm-4  control-label">Modelo*</label>
                  <div class="col-sm-8">
                      <select name="modelo" id="modelo" class="form-control" required>
                      <option value="" selected>Seleccione un Proyecto</option>                         
@@ -184,7 +184,7 @@ while($fila = $conexion->extraer_registro())
           </div>
         <div class="col-sm-4 col-sm-offset-1">
              <div class="form-group">
-                     <label class="col-sm-4  control-label">Tipo de Contrato</label>
+                     <label class="col-sm-4  control-label">Tipo de Contrato*</label>
                  <div class="col-sm-8">
                      <select name="contrato" id="contrato" class="form-control" required>
                          <option value="" selected>Seleccione tipo de contrato</option> 
@@ -206,7 +206,7 @@ while($fila = $conexion->extraer_registro())
                      <label class="col-sm-4  control-label">Credito*</label>
                  <div class="col-sm-8">
                      <input type="text" id="credito" name="credito" class="form-control">
-                     <a class="btn btn-primary" id="boton_credito">Calcular credito</a>
+                     <a class="btn btn-primary" id="boton_credito" title="Debe Colocar el Valor vivienda para que calcule el Crédito">Calcular credito</a>
                  </div>
              </div>
               <div class="form-group">
@@ -235,5 +235,6 @@ while($fila = $conexion->extraer_registro())
             </div>
         </form>
       </div>
+      <p>* Campos Obligatorios</p>
      </section>
  </section>

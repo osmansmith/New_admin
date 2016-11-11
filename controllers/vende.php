@@ -36,6 +36,7 @@
            $this->view->render('add/head_comun');
            $this->view->render('add/menu_vende');
            $this->view->render('vendedor/lista');
+            $this->view->render('pdf');
            $this->view->render('add/footer');
            $this->view->render('add/js_comun');
            $this->view->render('add/js_lista');           
@@ -66,7 +67,7 @@
       }
       function insert_vende()
       {
-          $datos = [   
+          $datos = array(   
               'rut'           => $_POST['rut'],
               'nombres'       => $_POST['nombres'],
               'paterno'       => $_POST['paterno'],
@@ -88,12 +89,12 @@
               'directo'       => $_POST['directo'],
               'subsidio'      => $_POST['subsidio'],
               'contado'       => $_POST['contado'] 
-          ];                                             
+          );                                             
               $this->model->insert_vende($datos);       
       }
       function update_vende()
       {
-         $datos = [             
+         $datos = array(             
               'rut'           => $_POST['rut'],
               'id_cli'        => $_POST['id_cli'],
               'nombres'       => $_POST['nombres'],
@@ -117,7 +118,7 @@
               'subsidio'      => $_POST['subsidio'],
               'contado'       => $_POST['contado']
               
-          ];                                             
+          );                                             
               $this->model->update_vende($datos);               
       }
   }

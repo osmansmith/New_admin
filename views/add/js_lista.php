@@ -22,9 +22,9 @@
 
 
     $('.detalle').click(function(){
-        valor = $(this).val();
-        url = "<?php echo URL?>index/pdf?id="+valor;
-        window.open(url, '_blank');
+        valor = $( this ).val();
+        window.location = '<?php echo URL?>index/pdf?id='+valor;
+    
     });
     
     $('.edita').click(function(){

@@ -1,6 +1,8 @@
 <?php
 if(isset($_GET['id']) and !empty($_GET['id']))
 {
+require '../config.php';
+require '../libs/Conexion.php';
 $conexion = new conexion();
 ?>
 <!doctype html>
@@ -8,13 +10,25 @@ $conexion = new conexion();
 <head>
 	<meta charset="utf-8">
 	<title>Panel</title>
-    <link href="<?php echo URL;?>public/assets/css/pdf.css" rel="stylesheet" />
-    <script src="<?php echo URL;?>public/assets/js/jquery-1.8.3.min.js"></script>
-    <script src="<?php echo URL;?>public/assets/js/bootstrap.min.js"></script>
+    <link href="../public/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="../public/assets/css/style.css" rel="stylesheet">
+    <link href="../public/assets/css/style-responsive.css" rel="stylesheet">
+    <link href="../public/assets/css/pdf.css" rel="stylesheet" />
+    <script src="../public/assets/js/jquery-1.8.3.min.js"></script>
+    <script src="../public/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
         $('#correo').click(function() {
-           
+            var dato = '<?php echo $_GET['id']?>';
+           $.ajax({
+             type : 'POST',
+             url : 'correo.php',
+             data : "valor="+dato,
+             success : function(datos){
+                alert('correo enviado');
+             }
+
+           });
         });
     });
     function imprimir(){
@@ -140,18 +154,9 @@ $conexion = new conexion();
     }
 	?>
 	
-    <!--modal-->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Vista de Impresion</h4>
-      </div>
-      <div class="modal-body">
-       <div id="contenedor" class="container-fluid">
+
+    <div id="contenedor">
     	<div id="imprimir">
-    	<header>
         	<table id="seccion1" width="100%">
             	<tr>
                 	<td style="text-align: center">
@@ -165,7 +170,8 @@ $conexion = new conexion();
                         <h4 style="font-size:14px; text-align:center; margin: 0px">INMOBILIARIA NOVA - Avda. El Santo Nº 1656 - (51) 2558 201 - LA SERENA</h4>
                     </td>
                 </tr>
-            </table>
+            </table>        <header>
+
         <hr width="100%" style="margin-top:5px">	
         </header>
         <section id="contenido">
@@ -613,21 +619,12 @@ $conexion = new conexion();
             <tr>
                 <td align="center"><input type="button" value="Imprimir" class="btn btn-primary" onclick="imprimir();"/></td>
                 <td  align="left">
-                <a href="http://www.inmobiliarianova.cl/cotizador/envio/correo.php?valor=<?php echo $_GET["id"];?>" class="btn btn-primary">Envío por Correo</a>
+                <a id="correo" class="btn btn-primary">Envío por Correo</a>
                 <!--<input type="button" value="Envío por Correo" class="btn btn-primary" id="correo"/></td>-->
             </tr>
         </table>
-    </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>        
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-        $('#myModal').modal('show');
-</script>
+    </div>      
+
 </body>
 </html>
 <?php }else{  }?>

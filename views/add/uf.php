@@ -6,7 +6,7 @@ echo $fecha_hoy;
 $url_indicadores = 'http://si3.bcentral.cl/indicadoresvalores/secure/indicadoresvalores.aspx';
 
 if( ini_get('allow_url_fopen') ) { // Es necesario tener habilitada la directiva allow_url_fopen para usar file_get_contents
-	$contenido_url = file_get_contents($url_indicadores);
+	$contenido_url = @file_get_contents($url_indicadores);
 } else { // De otra forma utilizamos cURL
 	$curl = curl_init($url_indicadores);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

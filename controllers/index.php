@@ -17,7 +17,7 @@
       }
       function pdf()
       {              
-          $this->view->render('add/head_comun');          
+         /* $this->view->render('add/head_comun');    */      
           $this->view->render('pdf');
       }
       function correo()
