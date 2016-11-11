@@ -2,7 +2,7 @@
   class user extends Controller
   {
       # la funcion constructora hereda de controller
-      function __construct()
+      function __construct() este gypsy jazz es weno
       {
            parent::__construct();
       }            
