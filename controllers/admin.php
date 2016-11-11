@@ -8,7 +8,7 @@
       }            
       # metodo index      
      
-      function index() este si mas texto
+      function index() este si mas texto mas cosas
       {
           # el metodo render admite un parametro que es la pagina de la carpeta views sin el .php
            $this->view->render('add/head_comun');
