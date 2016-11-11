@@ -47,7 +47,7 @@
         $id_cot_cli = $fila['id_cot_cli'];
 
         if (!empty($id_cot_cli)) {
-            $datos = [             
+            $datos = array(             
               'rut'           => $dato['rut'],
               'id_cli'        => $id_cot_cli,
               'nombres'       => $dato['nombres'],
@@ -71,7 +71,7 @@
               'subsidio'      => $dato['subsidio'],
               'contado'       => $dato['contado']
               
-          ]; 
+          ); 
           $this->update_vende($datos);
 
         } else{

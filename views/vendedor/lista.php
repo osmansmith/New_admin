@@ -117,8 +117,8 @@
                                 <td><?php echo $rut_cot_cli;?></td>
                                 <td><?php echo utf8_encode($nombre_mod);?></td>
                                 <td><?php echo $nombre_con;?></td>
-                                <td class="acciones">
-                                    <button value="<?php echo $id_cot;?>" type="button" class="btn btn-sm btn-icon btn-info detalle" data-toggle="tooltip" data-original-title="Ver Cotización"><i class="fa fa-search"></i></button>
+                                <td class="acciones">                                    
+                                    <a href="<?php echo URL?>vende/listado?id=<?php echo $id_cot_cli;?>"  class="btn btn-sm btn-icon btn-info" data-toggle="tooltip" data-original-title="Ver Cotización"><i class="fa fa-search"></i></a>
                                     <button value="<?php echo $id_cot;?>" type="button" class="btn btn-sm btn-icon btn-warning edita" data-toggle="tooltip" data-original-title="Ingresar Nueva Cotización al Cliente"><i class="fa fa-pencil-square-o"></i></button>
                                 </td>
                             </tr>

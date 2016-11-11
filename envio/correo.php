@@ -1,11 +1,13 @@
 <?php
-echo "correo";
-$perfil = session::getValue('perfil');
+// echo "correo";
+// $perfil = session::getValue('perfil');
 // $id_cot = session::getValue('id_cot');
 // if(session::exist()){
 //     header("Location: ".URL."user/salir");
 // }
 require '../../class/phpmailer/class.phpmailer.php';
+require '../config.php';
+require '../libs/Conexion.php';
 $conexion = new conexion();
 ?>
 <!doctype html>
@@ -18,7 +20,7 @@ $conexion = new conexion();
 </head>
 <body>
 	<?php
-	$id = $_GET["valor"];
+	$id = $_POST["valor"];
     $consulta = 
         "
         SELECT 
@@ -593,7 +595,7 @@ $email_msg1 = "<div id='contenedor' style='font-family: Arial; font-size: 12px'>
 	$mail_empresa->charSet = "UTF-8";
 
 
-	$mail_empresa->PluginDir = "class/phpmailer/";
+	$mail_empresa->PluginDir = "../../class/phpmailer/";
 	$mail_empresa->Mailer = "smtp";
 	$mail_empresa->Host = "mail.inmobiliarianova.cl";
 	$mail_empresa->SMTPAuth = true;
